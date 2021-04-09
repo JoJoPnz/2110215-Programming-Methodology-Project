@@ -90,6 +90,12 @@ public class DiceSimulator extends Application
                
                resultDie.setText("You rolled a " + num1 + " and " + num2 + "!");
            }
+
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			// TODO Auto-generated method stub
+			
+		}
        }
 
 
