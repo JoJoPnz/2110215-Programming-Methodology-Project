@@ -2,7 +2,8 @@
 public class Dice {
 	
 	public static final int MAXVALUE = 6;
-	public int numDice;
+	private int numDice;
+	private boolean isThrow;
 	
 	public Dice() {
 		// TODO Auto-generated constructor stub
