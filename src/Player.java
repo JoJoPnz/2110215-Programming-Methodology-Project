@@ -5,18 +5,18 @@ public abstract class Player {
 	private int money;
 	private String characterPictureLink;
 	private boolean turn;
-<<<<<<< HEAD
-	private ArrayList<Property> propertyHave;
-	private String skill;
 
-=======
+	private ArrayList<Property> propertyHave;
+
+
 	private boolean isBankrupt;
 	
-	
->>>>>>> fe5cd3487c15d063322c8b4ed599e8edbd67ab37
+
 	public Player() {
 		// TODO Auto-generated constructor stub
-
+		setMoney(2000);
+		setTurn(false);
+		
 	}
 
 	public String getCharacterPictureLink() {
