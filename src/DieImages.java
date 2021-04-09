@@ -1,7 +1,12 @@
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 
-public class DieImages 
-{
+public class DieImages implements Initializable{
+
     Image pic1 = new Image("dice1.png");
     Image pic2 = new Image("dice2.png");
     Image pic3 = new Image("dice3.png");
@@ -33,5 +38,13 @@ public class DieImages
     {
         return dieImage;
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		File file = new File("src/Box13.jpg");
+        Image image = new Image(file.toURI().toString());
+       // imageView.setImage(image);
+	}
     
 }

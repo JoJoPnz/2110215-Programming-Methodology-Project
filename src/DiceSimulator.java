@@ -11,11 +11,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-import java.util.Random;
 
-public class DiceSimulator extends Application
+import java.net.URL;
+import java.util.Random;
+import java.util.ResourceBundle;
+
+public class DiceSimulator extends Application 
 {
      private ImageView viewDie1 = new ImageView();
      private ImageView viewDie2 = new ImageView();
@@ -41,9 +45,12 @@ public class DiceSimulator extends Application
            
            startButton.setOnAction(new StartButtonHandler()); 
            
+           
            HBox hbox = new HBox(10, viewDie1, viewDie2);
            
-           VBox vbox = new VBox(10, message1, message2, startButton, hbox, resultDie);
+           VBox vbox = new VBox(10, message1, message2);
+           
+           vbox.getChildren().addAll(startButton, hbox, resultDie);
            vbox.setPadding(new Insets(15));
            vbox.setAlignment(Pos.CENTER);
            
@@ -54,7 +61,7 @@ public class DiceSimulator extends Application
            
        }
        
-       class StartButtonHandler implements EventHandler<ActionEvent>
+       class StartButtonHandler implements EventHandler<ActionEvent>,Initializable
        {
            @Override
            public void handle(ActionEvent event)
@@ -84,6 +91,7 @@ public class DiceSimulator extends Application
                resultDie.setText("You rolled a " + num1 + " and " + num2 + "!");
            }
        }
-       
+
+
          
 }
