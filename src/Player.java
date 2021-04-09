@@ -7,10 +7,10 @@ public abstract class Player {
 	private boolean turn;
 	private ArrayList<Property> propertyHave;
 	private String skill;
-	
+
 	public Player() {
 		// TODO Auto-generated constructor stub
-		
+
 	}
 
 	public String getCharacterPictureLink() {
@@ -42,7 +42,12 @@ public abstract class Player {
 	}
 
 	public void setMoney(int money) {
-		this.money = money;
+		if (money < 0) {
+			this.money = 0;
+		}
+		else {
+			this.money = money;
+		}
 	}
 
 	public void setCharacterPicture(String characterPicture) {
