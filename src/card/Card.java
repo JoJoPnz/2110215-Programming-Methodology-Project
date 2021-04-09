@@ -1,5 +1,5 @@
 package card;
-import Player;
+import player.Player;
 
 public abstract class Card {
 	private String name;

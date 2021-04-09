@@ -1,4 +1,7 @@
+package player;
 import java.util.ArrayList;
+import Property;
+
 
 public abstract class Player {
     private int money;
