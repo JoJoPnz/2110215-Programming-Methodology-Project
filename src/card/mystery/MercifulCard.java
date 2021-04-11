@@ -14,7 +14,7 @@ public class MercifulCard extends MysteryCard {
 	}
 
 	@Override
-	public void useAbility(Player player) {
+	public void useAbility(Player player, Player otherPlayer) {
 		player.setMoney(player.getMoney() + 25);
 	}
 	

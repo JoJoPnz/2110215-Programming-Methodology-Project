@@ -14,7 +14,7 @@ public class GainMoneyCard extends MysteryCard {
 	}
 
 	@Override
-	public void useAbility(Player player) {
+	public void useAbility(Player player, Player otherPlayer) {
 		int currentMoney = player.getMoney();
 		int newMoney = currentMoney + (int)(0.1 * currentMoney);
 		player.setMoney(newMoney);

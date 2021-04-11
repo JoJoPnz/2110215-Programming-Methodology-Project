@@ -14,7 +14,7 @@ public class TaxDodgeCard extends MysteryCard {
 	}
 	
 	@Override
-	public void useAbility(Player player) {
+	public void useAbility(Player player, Player otherPlayer) {
 		
 	}
 	

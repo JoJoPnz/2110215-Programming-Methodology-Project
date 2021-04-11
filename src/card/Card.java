@@ -15,7 +15,7 @@ public abstract class Card {
 		this.description = description;
 	}
 	
-	public abstract void useAbility(Player player);
+	public abstract void useAbility(Player player, Player otherPlayer);
 	
 	public void addToDeck(Deck deck) {
 		deck.getDeckList().add(this);
