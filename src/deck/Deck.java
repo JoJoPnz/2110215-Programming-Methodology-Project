@@ -8,6 +8,7 @@ public class Deck {
 	private String description;
 	private int numberOfCards;
 	private ArrayList<Card> deckList;
+	private ArrayList<Card> useCard;
 	
 	
 	public Deck(String name, String description, ArrayList<Card> deckList) {
@@ -33,7 +34,14 @@ public class Deck {
 		return deckList;
 	}
 
+	public void addOneCard(Card card) {
+		getDeckList().add(card);
+	}
 	
-	
+	public void addManyCard(ArrayList<Card> cards) {
+		for (Card eachCard: cards) {
+			addOneCard(eachCard);
+		}
+	}
 	
 }
