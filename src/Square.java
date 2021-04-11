@@ -28,4 +28,5 @@ public abstract class Square {
 		this.pictureVisualize = pictureVisualize;
 	}
 
+	public abstract createRectangle();
 }

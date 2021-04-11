@@ -10,7 +10,7 @@ public class RectangleExample extends Application {
    @Override 
    public void start(Stage stage) { 
       //Drawing a Rectangle 
-      Rectangle largeRectangle = new Rectangle();  
+      /*Rectangle largeRectangle = new Rectangle();  
       Rectangle smallRectangle = new Rectangle();  
       
       //Setting the properties of the rectangle 
@@ -27,8 +27,10 @@ public class RectangleExample extends Application {
       largeRectangle.setFill(Color.WHITE);
       largeRectangle.setStroke(Color.BLACK);
       
-      smallRectangle.setFill(Color.BLUE);
-
+      smallRectangle.setFill(Color.BLUE);*/
+      
+      Rectangle largeRectangle = createRectangle(250.0f,75.0f,150.0f,100.0f,Color.WHITE,true);
+      Rectangle smallRectangle = createRectangle(250.0f,75.0f,25.0f,100.0f,Color.BLUE,false);
       
       //Creating a Group object  
       Group root = new Group(largeRectangle,smallRectangle); 
@@ -46,7 +48,7 @@ public class RectangleExample extends Application {
       stage.show(); 
    }      
    
-   public void createRectangle(int xPos,int yPos,int boxHeight,int boxWidth,Paint color,boolean isStroke) {
+   public Rectangle createRectangle(float xPos,float yPos,float boxHeight,float boxWidth,Paint color,boolean isStroke) {
 	   Rectangle rectangle = new Rectangle();
 	      rectangle.setX(xPos); 
 	      rectangle.setY(yPos); 
@@ -56,7 +58,7 @@ public class RectangleExample extends Application {
 	      if (isStroke) {
 	    	  rectangle.setStroke(Color.BLACK);
 	      }
-	      
+	      return rectangle;
 	      
 	   
    }
