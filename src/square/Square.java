@@ -1,10 +1,11 @@
+package square;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.*;
 import javafx.scene.layout.GridPane;
 
-public abstract class Square {
+public abstract class Square extends GridPane{
 	private String appearName;
 
 	public Square(String appearName) {
@@ -16,11 +17,14 @@ public abstract class Square {
 		return appearName;
 	}
 
-
 	public void setAppearName(String appearName) {
-		this.appearName = appearName;
-	}
+		if (appearName.isEmpty()) {
+			this.appearName = "Default Name";
+		} else {
+			this.appearName = appearName;
+		}
 
+	}
 
 	public Rectangle createRectangle(float xPos, float yPos, float boxHeight, float boxWidth, Paint color,
 			boolean isStroke) {
@@ -34,9 +38,8 @@ public abstract class Square {
 			rectangle.setStroke(Color.BLACK);
 		}
 		return rectangle;
-		
-	}
-	
-	public abstract GridPane createGridPane();
-}
 
+	}
+
+	public abstract void createGridPane();
+}
