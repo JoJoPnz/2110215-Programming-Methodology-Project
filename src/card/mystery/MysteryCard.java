@@ -1,18 +1,17 @@
-package card;
+package card.mystery;
 
+import card.Card;
 import player.Player;
 
-public class MysteryCard extends Card{
-
+public abstract class MysteryCard extends Card{
+	
+	public MysteryCard() {
+		
+	}
+	
 	public MysteryCard(String name,String description) {
 		// TODO Auto-generated constructor stub
 		super(name,description);
-	}
-
-	@Override
-	public void useAbility(Player player) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
