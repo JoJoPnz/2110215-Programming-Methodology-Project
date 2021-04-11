@@ -1,32 +1,42 @@
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.*;
+import javafx.scene.layout.GridPane;
 
 public abstract class Square {
 	private String appearName;
-	private String pictureVisualize;
 
-	public Square(String appearName, String pictureVisualize) {
+	public Square(String appearName) {
 		// TODO Auto-generated constructor stub
 		setAppearName(appearName);
-		setPictureVisualize(pictureVisualize);
-		
-		Rectangle rectangle = new Rectangle(100, 100, 100, 100); // x,y,width,height
 	}
 
 	public String getAppearName() {
 		return appearName;
 	}
 
-	public String getPictureVisualize() {
-		return pictureVisualize;
-	}
 
 	public void setAppearName(String appearName) {
 		this.appearName = appearName;
 	}
 
-	public void setPictureVisualize(String pictureVisualize) {
-		this.pictureVisualize = pictureVisualize;
-	}
 
-	public abstract createRectangle();
+	public Rectangle createRectangle(float xPos, float yPos, float boxHeight, float boxWidth, Paint color,
+			boolean isStroke) {
+		Rectangle rectangle = new Rectangle();
+		rectangle.setX(xPos);
+		rectangle.setY(yPos);
+		rectangle.setWidth(boxWidth);
+		rectangle.setHeight(boxHeight);
+		rectangle.setFill(color);
+		if (isStroke) {
+			rectangle.setStroke(Color.BLACK);
+		}
+		return rectangle;
+		
+	}
+	
+	public abstract GridPane createGridPane();
 }
+
