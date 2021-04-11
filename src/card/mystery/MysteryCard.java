@@ -6,11 +6,10 @@ import player.Player;
 public abstract class MysteryCard extends Card{
 	
 	public MysteryCard() {
-		
+		super();
 	}
 	
 	public MysteryCard(String name,String description) {
-		// TODO Auto-generated constructor stub
 		super(name,description);
 	}
 

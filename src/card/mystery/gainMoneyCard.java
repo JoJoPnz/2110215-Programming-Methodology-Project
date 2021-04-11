@@ -15,7 +15,6 @@ public class gainMoneyCard extends MysteryCard {
 
 	@Override
 	public void useAbility(Player player) {
-		// TODO Auto-generated method stub
 		int currentMoney = player.getMoney();
 		int newMoney = currentMoney + (int)(0.1 * currentMoney);
 		player.setMoney(newMoney);
