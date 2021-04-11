@@ -2,14 +2,14 @@ package card.mystery;
 
 import player.Player;
 
-public class gainMoneyCard extends MysteryCard {
+public class GainMoneyCard extends MysteryCard {
 	
-	public gainMoneyCard() {
+	public GainMoneyCard() {
 		this.setName("Gain Interest.");
 		this.setDescription("You gain 10% interest on all your cash, take 10% of your total cash amount from the bank.");
 	}
 	
-	public gainMoneyCard(String name, String description) {
+	public GainMoneyCard(String name, String description) {
 		super(name, description);
 	}
 

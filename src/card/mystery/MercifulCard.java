@@ -2,14 +2,14 @@ package card.mystery;
 
 import player.Player;
 
-public class mercifulCard extends MysteryCard {
+public class MercifulCard extends MysteryCard {
 	
-	public mercifulCard() {
+	public MercifulCard() {
 		this.setName("Merciful");
 		this.setDescription("You save a cat in a tree and the grateful owner gives you $25.");
 	}
 
-	public mercifulCard(String name, String description) {
+	public MercifulCard(String name, String description) {
 		super(name, description);
 	}
 
