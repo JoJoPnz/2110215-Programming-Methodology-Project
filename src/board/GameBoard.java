@@ -30,10 +30,6 @@ public class GameBoard extends GridPane {
 		Square square5 = myArray[5];
 		Square square6 = myArray[6];
 		Square square7 = myArray[7];
-<<<<<<< HEAD:src/square/GameBoard.java
-
-=======
->>>>>>> e169d1345582ff493241802a6daffff0372c007f:src/board/GameBoard.java
 		Square square8 = myArray[8];
 		Square square9 = myArray[9];
 		Square square10 = myArray[10];
@@ -41,10 +37,6 @@ public class GameBoard extends GridPane {
 		Square square12 = myArray[12];
 		Square square13 = myArray[13];
 		Square square14 = myArray[14];
-<<<<<<< HEAD:src/square/GameBoard.java
-	
-=======
->>>>>>> e169d1345582ff493241802a6daffff0372c007f:src/board/GameBoard.java
 		Square square15 = myArray[15];
 		Square square16 = myArray[16];
 		Square square17 = myArray[17];
