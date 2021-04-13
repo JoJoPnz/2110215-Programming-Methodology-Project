@@ -1,12 +1,11 @@
+package dice;
 
 import java.util.Random;
 
 public class Dice {
 	
 	public static final int MAXVALUE = 6;
-	public static final int  NUMDICE = 2;
-	private int firstValue = 0;
-	private int secondValue = 0; 
+	private int faceValue = 0;
 
 	private boolean isThrow;
 	
@@ -26,29 +25,17 @@ public class Dice {
 	        Random rand = new Random();
 	        int rollNum = rand.nextInt(MAXVALUE) + 1;
 
-	        Random rand2 = new Random();
-	        int rollNum2 = rand2.nextInt(MAXVALUE) + 1;
-	        
-	        firstValue = rollNum;
-	        secondValue = rollNum2;
+	        faceValue = rollNum;
 	        
 	        setThrow(true);
 	    }
 	 
-	public int getFirstValue() {
-		return firstValue;
+	public int getFaceValue() {
+		return faceValue;
 	}
 
-	public int getSecondValue() {
-		return secondValue;
-	}
-
-	public void setFirstValue(int firstValue) {
-		this.firstValue = firstValue;
-	}
-
-	public void setSecondValue(int secondValue) {
-		this.secondValue = secondValue;
+	public void setFaceValue(int faceValue) {
+		this.faceValue = faceValue;
 	}
 
 	public boolean isThrow() {

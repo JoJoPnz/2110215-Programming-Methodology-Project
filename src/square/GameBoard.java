@@ -1,10 +1,13 @@
 package square;
 
 import java.util.ArrayList;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import property.Area;
 import property.Property;
+
+
 
 public class GameBoard extends GridPane {
 	public static Square[] myArray = new Square[28];
@@ -22,7 +25,6 @@ public class GameBoard extends GridPane {
 		Square square6 = myArray[6];
 		// Square square7 = new PropertySquare("Kyoto", area, 210,"first");
 		Square square7 = myArray[7];
-		// Square square8 = new PropertySquare("เรารักในหลวง", area, 100,"first");
 
 		Square square8 = myArray[8];
 		Square square9 = myArray[9];
@@ -32,14 +34,7 @@ public class GameBoard extends GridPane {
 		Square square13 = myArray[13];
 		// Square square15 = new PropertySquare("Kyoto", area, 210,"second");
 		Square square14 = myArray[14];
-		/*
-		 * Square square21 = new PropertySquare("เรารักในหลวง1",area,100); Square
-		 * square20 = new PropertySquare("เรารักในหลวง2",area,100); Square square19 =
-		 * new PropertySquare("เรารักในหลวง3",area,100); Square square18 = new
-		 * PropertySquare("เรารักในหลวง4",area,100); Square square17 = new
-		 * PropertySquare("เรารักในหลวง5",area,100); Square square22 = new
-		 * GoToJailSquare();
-		 */
+	
 		Square square15 = myArray[15];
 		Square square16 = myArray[16];
 		Square square17 = myArray[17];
@@ -84,6 +79,9 @@ public class GameBoard extends GridPane {
 		this.add(square2, 5, 7);
 		this.add(square1, 6, 7);
 		this.add(square0, 7, 7);
+		
+	
+		
 	}
 
 	public void initializeSqaureBoard() {
