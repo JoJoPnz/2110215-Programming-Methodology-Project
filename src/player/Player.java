@@ -1,66 +1,88 @@
 package player;
+
 import java.util.ArrayList;
 
 import property.Property;
+import square.GameBoard;
+import square.Square;
 
 public abstract class Player {
-    private int money;
-    private String characterPictureLink;
-    private boolean turn;
-    private ArrayList<Property> propertyHave;
-    private String skill;
+	private int money;
+	private String characterPictureLink;
+	private boolean turn;
+	private ArrayList<Property> propertyHave;
+	private Square currentSquare;
+	private int currentPosition;
+	private boolean isBankrupt;
 
-    private boolean isBankrupt;
+	public Player(String characterPictureLink) {
+		// TODO Auto-generated constructor stub
+		setMoney(2000);
+		setCharacterPictureLink("Test");
+		setBankrupt(false);
+		propertyHave = new ArrayList<Property>();
+		setCurrentPosition(0);
+		setCurrentSquare(GameBoard.myArray[0]);
+	}
 
+	public String getCharacterPictureLink() {
+		return characterPictureLink;
+	}
 
-    public Player() {
-        // TODO Auto-generated constructor stub
+	public void setCharacterPictureLink(String characterPictureLink) {
+		this.characterPictureLink = characterPictureLink;
+	}
 
-    }
+	public int getMoney() {
+		return money;
+	}
 
-    public String getCharacterPictureLink() {
-        return characterPictureLink;
-    }
+	public void setMoney(int money) {
+		if (money < 0) {
+			this.money = 0;
+		} else {
+			this.money = money;
+		}
+	}
 
-    public ArrayList<Property> getCityHave() {
-        return propertyHave;
-    }
+	public boolean isTurn() {
+		return turn;
+	}
 
-    public void setCharacterPictureLink(String characterPictureLink) {
-        this.characterPictureLink = characterPictureLink;
-    }
+	public void setTurn(boolean turn) {
+		this.turn = turn;
+	}
 
-    public void setCityHave(ArrayList<Property> cityHave) {
-        this.propertyHave = cityHave;
-    }
+	public ArrayList<Property> getPropertyHave() {
+		return propertyHave;
+	}
 
-    public int getMoney() {
-        return money;
-    }
+	public Square getCurrentSquare() {
+		return currentSquare;
+	}
 
-    public String getCharacterPicture() {
-        return characterPictureLink;
-    }
+	public boolean isBankrupt() {
+		return isBankrupt;
+	}
 
-    public boolean isTurn() {
-        return turn;
-    }
+	public void setPropertyHave(ArrayList<Property> propertyHave) {
+		this.propertyHave = propertyHave;
+	}
 
-    public void setMoney(int money) {
-        if (money < 0) {
-            this.money = 0;
-        }
-        else {
-            this.money = money;
-        }
-    }
+	public void setCurrentSquare(Square currentSquare) {
+		this.currentSquare = currentSquare;
+	}
 
-    public void setCharacterPicture(String characterPicture) {
-        this.characterPictureLink = characterPicture;
-    }
+	public void setBankrupt(boolean isBankrupt) {
+		this.isBankrupt = isBankrupt;
+	}
 
-    public void setTurn(boolean turn) {
-        this.turn = turn;
-    }
+	public int getCurrentPosition() {
+		return currentPosition;
+	}
+
+	public void setCurrentPosition(int currentPosition) {
+		this.currentPosition = currentPosition;
+	}
 
 }
