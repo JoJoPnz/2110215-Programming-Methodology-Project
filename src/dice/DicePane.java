@@ -21,6 +21,7 @@ public class DicePane extends VBox {
 	private Button rollButton;
 	private Label diceLabel;
 	private ImageView diceImage = new ImageView();
+	private int faceValue;
 	
 	public DicePane() {
 		this.setAlignment(Pos.CENTER);
@@ -33,7 +34,8 @@ public class DicePane extends VBox {
 		diceLabel.setFont(new Font("Arial", 20));
 		setDiceLabelText();
 		
-		setDiceImage(1);
+		this.faceValue = 1;
+		setDiceImage(faceValue);
 		//Image i = new Image("dice1.png");
 		//ImageView i2 = new ImageView(i);
 		
@@ -45,7 +47,7 @@ public class DicePane extends VBox {
 			public void handle(ActionEvent event) {
 				Dice dice = new Dice();
 				dice.roll();
-				int faceValue = dice.getFaceValue();
+				faceValue = dice.getFaceValue();
 				setDiceImage(faceValue);	
 			}
 		});
@@ -68,6 +70,10 @@ public class DicePane extends VBox {
 
 	public ImageView getDiceImage() {
 		return diceImage;
+	}
+
+	public int getFaceValue() {
+		return faceValue;
 	}
 	
 	

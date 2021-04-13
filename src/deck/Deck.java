@@ -7,9 +7,12 @@ public class Deck {
 	private String name;
 	private String description;
 	private int numberOfCards;
-	private ArrayList<Card> deckList;
+	private ArrayList<Card> deckList = new ArrayList<>();;
 	private ArrayList<Card> useCard;
 	
+	public Deck() {
+		
+	}
 	
 	public Deck(String name, String description, ArrayList<Card> deckList) {
 		this.name = name;
