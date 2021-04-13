@@ -71,10 +71,15 @@ public abstract class Square extends GridPane {
 		} else {
 			ImageView imageViewChar = GameLogic.player1.getCharacterImage();
 
-			if (GameLogic.player1.getCurrentPosition() < 14) {
+			if (GameLogic.player1.getCurrentPosition() < 14 && GameLogic.player1.getCurrentPosition() > 7) {
 				this.add(imageViewChar, 0, 1);
-				this.setAlignment(Pos.BOTTOM_CENTER);
+				this.setValignment(imageViewChar, VPos.CENTER);
+				this.setHalignment(imageViewChar, HPos.LEFT);
 
+			} else if (GameLogic.player1.getCurrentPosition() < 7) {
+				this.add(imageViewChar, 0, 1);
+				this.setValignment(imageViewChar, VPos.BOTTOM);
+				this.setHalignment(imageViewChar, HPos.CENTER);
 			} else {
 				if (GameLogic.player1.getCurrentPosition() < 22) {
 					this.add(imageViewChar, 0, 0);
@@ -94,7 +99,6 @@ public abstract class Square extends GridPane {
 	// if (GameLogic.player1.getCurrentPosition() in setSpecialSquare) {
 
 	// }
-	
 
 	public void setPlayer2ToSquare() {
 		int[] setSpecialSquare = { 0, 7, 14, 21 };
@@ -116,10 +120,15 @@ public abstract class Square extends GridPane {
 		} else {
 			ImageView imageViewChar = GameLogic.player2.getCharacterImage();
 
-			if (GameLogic.player2.getCurrentPosition() < 14) {
+			if (GameLogic.player2.getCurrentPosition() < 14 && GameLogic.player2.getCurrentPosition() > 7) {
 				this.add(imageViewChar, 0, 1);
-				this.setAlignment(Pos.BOTTOM_CENTER);
+				this.setValignment(imageViewChar, VPos.CENTER);
+				this.setHalignment(imageViewChar, HPos.LEFT);
 
+			} else if (GameLogic.player2.getCurrentPosition() < 7) {
+				this.add(imageViewChar, 0, 1);
+				this.setValignment(imageViewChar, VPos.BOTTOM);
+				this.setHalignment(imageViewChar, HPos.CENTER);
 			} else {
 				if (GameLogic.player2.getCurrentPosition() < 22) {
 					this.add(imageViewChar, 0, 0);
