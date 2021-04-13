@@ -15,10 +15,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
+import Logic.GameLogic;
 
 public class DicePane extends VBox {
 	private Button rollButton;
+	private Button endTurnButton;
 	private Label diceLabel;
 	private ImageView diceImage = new ImageView();
 	private int faceValue;
@@ -51,6 +52,23 @@ public class DicePane extends VBox {
 				setDiceImage(faceValue);	
 			}
 		});
+		
+		Button endTurnButton = new Button("END TURN");
+		rollButton.setPrefWidth(150);
+		rollButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (GameLogic.getPlayer1().isTurn()) {
+					GameLogic.getPlayer1().setTurn(false);
+					GameLogic.getPlayer2().setTurn(true);
+				}
+				else if (GameLogic.getPlayer2().isTurn()) {
+					GameLogic.getPlayer1().setTurn(true);
+					GameLogic.getPlayer2().setTurn(false);
+				}
+			}
+		});
+		
 		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton);
 		
 	}
