@@ -61,6 +61,7 @@ public class Player {
 			int currentPos = (getCurrentPosition()+FaceValue)%27;
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
+			setEverRoll(true);
 			System.out.println(currentPos);
 		}
 	}
