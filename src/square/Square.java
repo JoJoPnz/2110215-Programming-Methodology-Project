@@ -1,11 +1,12 @@
 package square;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.*;
 import javafx.scene.layout.GridPane;
 
-public abstract class Square extends GridPane{
+public abstract class Square extends GridPane {
 	private String appearName;
 
 	public Square(String appearName) {
