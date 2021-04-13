@@ -52,6 +52,14 @@ public abstract class Player {
 	public void setTurn(boolean turn) {
 		this.turn = turn;
 	}
+	
+	public void move(int FaceValue) {
+		if (isTurn()) {
+			int currentPos = (getCurrentPosition()+FaceValue)%27;
+			setCurrentPosition(currentPos);
+			setCurrentSquare(GameBoard.myArray[currentPos]);
+		}
+	}
 
 	public ArrayList<Property> getPropertyHave() {
 		return propertyHave;
