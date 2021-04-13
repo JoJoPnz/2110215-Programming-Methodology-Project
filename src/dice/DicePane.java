@@ -57,10 +57,12 @@ public class DicePane extends VBox {
 					GameLogic.player1.move(faceValue);
 					endTurnButton.setVisible(true);
 					rollButton.setVisible(false);
+					GameLogic.player1.getCurrentSquare().setPlayer1ToSquare();
 				} else if (GameLogic.player2.isTurn()) {
 					GameLogic.player2.move(faceValue);
 					endTurnButton.setVisible(true);
 					rollButton.setVisible(false);
+					GameLogic.player2.getCurrentSquare().setPlayer2ToSquare();
 				}
 			}
 		});

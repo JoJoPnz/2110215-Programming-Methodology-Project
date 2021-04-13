@@ -3,8 +3,8 @@ package Logic;
 import player.Player;
 
 public class GameLogic {
-	public static Player player1 = new Player("Abab");;
-	public static Player player2 = new Player("Abac");;
+	public static Player player1 = new Player("dice1.png");;
+	public static Player player2 = new Player("dice2.png");;
 	
 	public GameLogic() {
 		// TODO Auto-generated constructor stub

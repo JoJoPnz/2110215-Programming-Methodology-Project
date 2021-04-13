@@ -1,6 +1,8 @@
 package board;
 
 import java.util.ArrayList;
+
+import Logic.GameLogic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -13,15 +15,13 @@ import square.PropertySquare;
 import square.Square;
 import square.StartSquare;
 
-
-
 public class GameBoard extends GridPane {
 	public static Square[] myArray = new Square[28];
 
 	public GameBoard() {
 		// TODO Auto-generated constructor stub
 		initializeSqaureBoard();
-		
+
 		Square square0 = myArray[0];
 		Square square1 = myArray[1];
 		Square square2 = myArray[2];
@@ -79,9 +79,10 @@ public class GameBoard extends GridPane {
 		this.add(square2, 5, 7);
 		this.add(square1, 6, 7);
 		this.add(square0, 7, 7);
-		
-	
-		
+
+		this.add(GameLogic.player1.getCharacterImage(),7, 7);
+		this.add(GameLogic.player2.getCharacterImage(),7, 7);
+
 	}
 
 	public void initializeSqaureBoard() {
@@ -111,7 +112,7 @@ public class GameBoard extends GridPane {
 		myArray[23] = new PropertySquare("Tokyo", new Area(), 410, "fourth");
 		myArray[24] = new PropertySquare("Istanbul", new Area(), 430, "fourth");
 		myArray[25] = new PropertySquare("Budapest", new Area(), 430, "fourth");
-		myArray[26] =  new PropertySquare("Munich", new Area(), 450, "fourth");
+		myArray[26] = new PropertySquare("Munich", new Area(), 450, "fourth");
 		myArray[27] = new PropertySquare("Bangkok", new Area(), 470, "fourth");
 
 	}

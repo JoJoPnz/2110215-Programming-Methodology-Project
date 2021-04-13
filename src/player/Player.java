@@ -3,6 +3,8 @@ package player;
 import java.util.ArrayList;
 
 import board.GameBoard;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import property.Property;
 import square.Square;
 
@@ -15,17 +17,19 @@ public class Player {
 	private int currentPosition;
 	private boolean isBankrupt;
 	private boolean everRoll;
+	private ImageView characterImage;
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
 		setMoney(2000);
-		setCharacterPictureLink("Test");
+		setCharacterPictureLink(characterPictureLink);
 		setBankrupt(false);
 		propertyHave = new ArrayList<Property>();
 		setCurrentPosition(0);
 		setCurrentSquare(GameBoard.myArray[0]);
 		setTurn(false);
 		setEverRoll(false);
+		setCharacterImage();
 	}
 
 	public String getCharacterPictureLink() {
@@ -34,6 +38,19 @@ public class Player {
 
 	public void setCharacterPictureLink(String characterPictureLink) {
 		this.characterPictureLink = characterPictureLink;
+	}
+
+	public ImageView getCharacterImage() {
+		return characterImage;
+	}
+
+	// Can Handle Try-catch
+
+	public void setCharacterImage() {
+		Image charImage = new Image(getCharacterPictureLink());
+		this.characterImage = new ImageView(charImage);
+		this.characterImage.setFitHeight(50);
+		this.characterImage.setFitWidth(50);
 	}
 
 	public int getMoney() {
@@ -55,10 +72,10 @@ public class Player {
 	public void setTurn(boolean turn) {
 		this.turn = turn;
 	}
-	
+
 	public void move(int FaceValue) {
 		if (isTurn()) {
-			int currentPos = (getCurrentPosition()+FaceValue)%27;
+			int currentPos = (getCurrentPosition() + FaceValue) % 27;
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
 			setEverRoll(true);
@@ -105,6 +122,5 @@ public class Player {
 	public void setEverRoll(boolean everRoll) {
 		this.everRoll = everRoll;
 	}
-	
 
 }
