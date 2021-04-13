@@ -2,8 +2,8 @@ package player;
 
 import java.util.ArrayList;
 
+import board.GameBoard;
 import property.Property;
-import square.GameBoard;
 import square.Square;
 
 public abstract class Player {

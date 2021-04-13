@@ -1,4 +1,4 @@
-package square;
+package board;
 
 import java.util.ArrayList;
 import javafx.scene.image.Image;
@@ -6,6 +6,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import property.Area;
 import property.Property;
+import square.CarParkSquare;
+import square.GoToJailSquare;
+import square.JailSquare;
+import square.PropertySquare;
+import square.Square;
+import square.StartSquare;
 
 
 
@@ -23,27 +29,29 @@ public class GameBoard extends GridPane {
 		Square square4 = myArray[4];
 		Square square5 = myArray[5];
 		Square square6 = myArray[6];
-		// Square square7 = new PropertySquare("Kyoto", area, 210,"first");
 		Square square7 = myArray[7];
+<<<<<<< HEAD:src/square/GameBoard.java
 
+=======
+>>>>>>> e169d1345582ff493241802a6daffff0372c007f:src/board/GameBoard.java
 		Square square8 = myArray[8];
 		Square square9 = myArray[9];
 		Square square10 = myArray[10];
 		Square square11 = myArray[11];
 		Square square12 = myArray[12];
 		Square square13 = myArray[13];
-		// Square square15 = new PropertySquare("Kyoto", area, 210,"second");
 		Square square14 = myArray[14];
+<<<<<<< HEAD:src/square/GameBoard.java
 	
+=======
+>>>>>>> e169d1345582ff493241802a6daffff0372c007f:src/board/GameBoard.java
 		Square square15 = myArray[15];
 		Square square16 = myArray[16];
 		Square square17 = myArray[17];
 		Square square18 = myArray[18];
 		Square square19 = myArray[19];
 		Square square20 = myArray[20];
-		// Square square15 = new PropertySquare("Kyoto", area, 210,"second");
 		Square square21 = myArray[21];
-
 		Square square22 = myArray[22];
 		Square square23 = myArray[23];
 		Square square24 = myArray[24];
