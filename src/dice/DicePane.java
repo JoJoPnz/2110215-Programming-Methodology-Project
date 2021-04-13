@@ -15,6 +15,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import player.Player;
 import Logic.GameLogic;
 
 public class DicePane extends VBox {
@@ -48,6 +49,7 @@ public class DicePane extends VBox {
 		rollButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				GameLogic.checkInJail();
 				Dice dice = new Dice();
 				dice.roll();
 
@@ -57,6 +59,7 @@ public class DicePane extends VBox {
 					GameLogic.player1.move(faceValue);
 					endTurnButton.setVisible(true);
 					rollButton.setVisible(false);
+					
 					GameLogic.player1.getCurrentSquare().setPlayer1ToSquare();
 				} else if (GameLogic.player2.isTurn()) {
 					GameLogic.player2.move(faceValue);
@@ -79,7 +82,7 @@ public class DicePane extends VBox {
 					rollButton.setVisible(true);
 
 				} else if (GameLogic.player2.isTurn() && GameLogic.player2.isEverRoll()) {
-					System.out.println(2);
+					//System.out.println(2);
 					endTurnButton.setVisible(false);
 					GameLogic.player1.setTurn(true);
 					GameLogic.player2.setTurn(false);

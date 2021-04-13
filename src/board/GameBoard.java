@@ -3,6 +3,8 @@ package board;
 import java.util.ArrayList;
 
 import Logic.GameLogic;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -79,9 +81,21 @@ public class GameBoard extends GridPane {
 		this.add(square2, 5, 7);
 		this.add(square1, 6, 7);
 		this.add(square0, 7, 7);
-
-		this.add(GameLogic.player1.getCharacterImage(),7, 7);
-		this.add(GameLogic.player2.getCharacterImage(),7, 7);
+		
+		// initialize start position
+		
+		ImageView imageViewCharPlayer1 = GameLogic.player1.getCharacterImage();
+		ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
+		
+		this.add(imageViewCharPlayer1,7, 7);
+		this.add(imageViewCharPlayer2,7, 7);
+		
+		this.setValignment(imageViewCharPlayer1, VPos.BOTTOM);
+		this.setHalignment(imageViewCharPlayer1, HPos.LEFT);
+		
+		this.setValignment(imageViewCharPlayer2, VPos.BOTTOM);
+		this.setHalignment(imageViewCharPlayer2, HPos.RIGHT);
+		
 
 	}
 

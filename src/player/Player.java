@@ -2,6 +2,7 @@ package player;
 
 import java.util.ArrayList;
 
+import Logic.GameLogic;
 import board.GameBoard;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,6 +19,7 @@ public class Player {
 	private boolean isBankrupt;
 	private boolean everRoll;
 	private ImageView characterImage;
+	private boolean inJail;
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
@@ -75,12 +77,25 @@ public class Player {
 
 	public void move(int FaceValue) {
 		if (isTurn()) {
-			int currentPos = (getCurrentPosition() + FaceValue) % 27;
+			int currentPos = (getCurrentPosition() + FaceValue) % 28;
+			if (currentPos == 0) {
+				setMoney(getMoney() + 200);
+				System.out.println("Pass Start");
+				System.out.println("Get Income = 200");
+			}
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
 			setEverRoll(true);
 			System.out.println(currentPos);
+
+			if (GameLogic.player1.getCurrentPosition() == 7) {
+				GameLogic.player1.setInJail(true);
+			}
+			else if (GameLogic.player2.getCurrentPosition()==7) {
+				GameLogic.player2.setInJail(true);
+			}
 		}
+
 	}
 
 	public ArrayList<Property> getPropertyHave() {
@@ -121,6 +136,14 @@ public class Player {
 
 	public void setEverRoll(boolean everRoll) {
 		this.everRoll = everRoll;
+	}
+
+	public boolean isInJail() {
+		return inJail;
+	}
+
+	public void setInJail(boolean inJail) {
+		this.inJail = inJail;
 	}
 
 }
