@@ -6,7 +6,7 @@ import board.GameBoard;
 import property.Property;
 import square.Square;
 
-public abstract class Player {
+public class Player {
 	private int money;
 	private String characterPictureLink;
 	private boolean turn;
@@ -14,6 +14,7 @@ public abstract class Player {
 	private Square currentSquare;
 	private int currentPosition;
 	private boolean isBankrupt;
+	private boolean everRoll;
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
@@ -23,6 +24,7 @@ public abstract class Player {
 		propertyHave = new ArrayList<Property>();
 		setCurrentPosition(0);
 		setCurrentSquare(GameBoard.myArray[0]);
+		setEverRoll(false);
 	}
 
 	public String getCharacterPictureLink() {
@@ -58,6 +60,7 @@ public abstract class Player {
 			int currentPos = (getCurrentPosition()+FaceValue)%27;
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
+			System.out.println(currentPos);
 		}
 	}
 
@@ -92,5 +95,14 @@ public abstract class Player {
 	public void setCurrentPosition(int currentPosition) {
 		this.currentPosition = currentPosition;
 	}
+
+	public boolean isEverRoll() {
+		return everRoll;
+	}
+
+	public void setEverRoll(boolean everRoll) {
+		this.everRoll = everRoll;
+	}
+	
 
 }
