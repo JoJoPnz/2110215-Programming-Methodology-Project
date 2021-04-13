@@ -1,4 +1,4 @@
-package square;
+package board;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -14,6 +14,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import property.Area;
 import property.Property;
+import square.GameBoard;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
