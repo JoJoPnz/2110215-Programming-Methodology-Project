@@ -24,6 +24,7 @@ public class Player {
 		propertyHave = new ArrayList<Property>();
 		setCurrentPosition(0);
 		setCurrentSquare(GameBoard.myArray[0]);
+		setTurn(false);
 		setEverRoll(false);
 	}
 

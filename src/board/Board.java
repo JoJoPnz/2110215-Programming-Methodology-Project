@@ -1,5 +1,6 @@
 package board;
 
+import Logic.GameLogic;
 import dice.DicePane;
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -28,6 +29,7 @@ public class Board extends Application {
 		root.setPadding(new Insets(10, 10, 10, 10));
 		root.setPrefHeight(400);
 		
+		GameLogic newGame = new GameLogic();
 		
 		System.out.println(GameBoard.myArray);
 		GridPane gameBoard = new GameBoard();
@@ -37,7 +39,7 @@ public class Board extends Application {
 		root.getChildren().addAll(gameBoard, dicePane);
 		
 		// Creating a scene object
-		Scene scene = new Scene(root, 950, 950);
+		Scene scene = new Scene(root, 1200, 950);
 
 		// Setting title to the Stage
 		stage.setTitle("Drawing a Rectangle");

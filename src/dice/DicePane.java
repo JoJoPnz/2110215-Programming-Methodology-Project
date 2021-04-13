@@ -54,22 +54,24 @@ public class DicePane extends VBox {
 		});
 		
 		Button endTurnButton = new Button("END TURN");
-		rollButton.setPrefWidth(150);
-		rollButton.setOnAction(new EventHandler<ActionEvent>() {
+		endTurnButton.setPrefWidth(150);
+		endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if (GameLogic.getPlayer1().isTurn()) {
-					GameLogic.getPlayer1().setTurn(false);
-					GameLogic.getPlayer2().setTurn(true);
+				if (GameLogic.player1.isTurn()) {
+					System.out.print(1);
+					GameLogic.player1.setTurn(false);
+					GameLogic.player2.setTurn(true);
 				}
-				else if (GameLogic.getPlayer2().isTurn()) {
-					GameLogic.getPlayer1().setTurn(true);
-					GameLogic.getPlayer2().setTurn(false);
+				else if (GameLogic.player2.isTurn()) {
+					System.out.print(2);
+					GameLogic.player1.setTurn(true);
+					GameLogic.player2.setTurn(false);
 				}
 			}
 		});
 		
-		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton);
+		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton,endTurnButton);
 		
 	}
 	
