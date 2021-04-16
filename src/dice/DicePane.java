@@ -56,17 +56,33 @@ public class DicePane extends VBox {
 				faceValue = dice.getFaceValue();
 				setDiceImage(faceValue);
 				if (GameLogic.player1.isTurn()) {
-
+					
+					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+					
 					GameLogic.player1.move(faceValue);
 					endTurnButton.setVisible(true);
 					rollButton.setVisible(false);
 
 					GameLogic.player1.getCurrentSquare().setPlayer1ToSquare();
+					
+					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+					
+					
 				} else if (GameLogic.player2.isTurn()) {
+					
+					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+					
 					GameLogic.player2.move(faceValue);
 					endTurnButton.setVisible(true);
 					rollButton.setVisible(false);
 					GameLogic.player2.getCurrentSquare().setPlayer2ToSquare();
+					
+					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+					
 				}
 			}
 		});
@@ -77,6 +93,10 @@ public class DicePane extends VBox {
 			public void handle(ActionEvent event) {
 				if (GameLogic.player1.isTurn() && GameLogic.player1.isEverRoll()) {
 					// System.out.println(1);
+					
+					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+					
 					if (GameLogic.player2.isInJail()) {
 						System.out.println("Player2 in jail");
 						endTurnButton.setVisible(false);
@@ -97,6 +117,10 @@ public class DicePane extends VBox {
 
 				} else if (GameLogic.player2.isTurn() && GameLogic.player2.isEverRoll()) {
 					// System.out.println(2);
+					
+					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+					
 					if (GameLogic.player1.isInJail()) {
 						System.out.println("Player1 in jail");
 						endTurnButton.setVisible(false);

@@ -87,13 +87,16 @@ public class Player {
 			setCurrentSquare(GameBoard.myArray[currentPos]);
 			setEverRoll(true);
 			System.out.println(currentPos);
-
-			if (GameLogic.player1.getCurrentPosition() == 7) {
+			
+			if (GameLogic.player1.getCurrentPosition() == 7 && GameLogic.player1.isTurn()) {
 				GameLogic.player1.setInJail(true);
 			}
-			else if (GameLogic.player2.getCurrentPosition()==7) {
+			else if (GameLogic.player2.getCurrentPosition()==7 && GameLogic.player2.isTurn()) {
 				GameLogic.player2.setInJail(true);
 			}
+
+			
+			
 		}
 
 	}
