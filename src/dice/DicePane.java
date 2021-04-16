@@ -49,17 +49,18 @@ public class DicePane extends VBox {
 		rollButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				GameLogic.checkInJail();
 				Dice dice = new Dice();
 				dice.roll();
+				// GameLogic.checkInJail();
 
 				faceValue = dice.getFaceValue();
 				setDiceImage(faceValue);
 				if (GameLogic.player1.isTurn()) {
+
 					GameLogic.player1.move(faceValue);
 					endTurnButton.setVisible(true);
 					rollButton.setVisible(false);
-					
+
 					GameLogic.player1.getCurrentSquare().setPlayer1ToSquare();
 				} else if (GameLogic.player2.isTurn()) {
 					GameLogic.player2.move(faceValue);
@@ -76,17 +77,43 @@ public class DicePane extends VBox {
 			public void handle(ActionEvent event) {
 				if (GameLogic.player1.isTurn() && GameLogic.player1.isEverRoll()) {
 					// System.out.println(1);
-					endTurnButton.setVisible(false);
-					GameLogic.player1.setTurn(false);
-					GameLogic.player2.setTurn(true);
-					rollButton.setVisible(true);
+					if (GameLogic.player2.isInJail()) {
+						System.out.println("Player2 in jail");
+						endTurnButton.setVisible(false);
+						GameLogic.player1.setTurn(true);
+						GameLogic.player2.setTurn(false);
+						//GameLogic.checkInJail(GameLogic.player2);
+						GameLogic.player2.setInJail(false);
+						rollButton.setVisible(true);
+						System.out.println(GameLogic.player2.isInJail());
+
+					} else {
+						endTurnButton.setVisible(false);
+						GameLogic.player1.setTurn(false);
+						GameLogic.player2.setTurn(true);
+						rollButton.setVisible(true);
+
+					}
 
 				} else if (GameLogic.player2.isTurn() && GameLogic.player2.isEverRoll()) {
-					//System.out.println(2);
-					endTurnButton.setVisible(false);
-					GameLogic.player1.setTurn(true);
-					GameLogic.player2.setTurn(false);
-					rollButton.setVisible(true);
+					// System.out.println(2);
+					if (GameLogic.player1.isInJail()) {
+						System.out.println("Player1 in jail");
+						endTurnButton.setVisible(false);
+						GameLogic.player1.setTurn(false);
+						GameLogic.player2.setTurn(true);
+						//GameLogic.checkInJail(GameLogic.player1);
+						GameLogic.player1.setInJail(false);
+						rollButton.setVisible(true);
+						System.out.println(GameLogic.player1.isInJail());
+
+					} else {
+
+						endTurnButton.setVisible(false);
+						GameLogic.player1.setTurn(true);
+						GameLogic.player2.setTurn(false);
+						rollButton.setVisible(true);
+					}
 				}
 			}
 		});
