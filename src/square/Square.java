@@ -66,7 +66,12 @@ public abstract class Square extends GridPane {
 		}
 		if (isSpecialSquare) {
 			ImageView imageViewChar = GameLogic.player1.getCharacterImage();
-			this.add(imageViewChar, 0, 0);
+			/*if (GameLogic.player1.getCurrentPosition() == 21) {
+				
+			}
+			else if (GameLogic.player1.getCurrentPosition() == 14){
+				
+			}*/
 			// this.setAlignment(Pos.BOTTOM_CENTER);
 		} else {
 			ImageView imageViewChar = GameLogic.player1.getCharacterImage();

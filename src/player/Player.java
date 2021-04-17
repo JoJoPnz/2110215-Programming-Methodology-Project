@@ -94,6 +94,14 @@ public class Player {
 			else if (GameLogic.player2.getCurrentPosition()==7 && GameLogic.player2.isTurn()) {
 				GameLogic.player2.setInJail(true);
 			}
+			else if (GameLogic.player1.getCurrentPosition() == 21  && GameLogic.player1.isTurn()) {
+				GameLogic.goToJail(GameLogic.player1);
+				
+			}
+			else if (GameLogic.player2.getCurrentPosition() == 21  && GameLogic.player2.isTurn()) {
+				GameLogic.goToJail(GameLogic.player2);
+				
+			}
 
 			
 			
