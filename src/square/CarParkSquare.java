@@ -9,7 +9,6 @@ import javafx.scene.text.Text;
 
 public class CarParkSquare extends Square{
 
-	public static final String imageURL = "";
 
 	public CarParkSquare() {
 		super("Car parking lot");

@@ -12,4 +12,10 @@ public class Hotel extends Property {
 		return 0;
 	}
 
+	@Override
+	public void createImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

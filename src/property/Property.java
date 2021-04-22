@@ -3,20 +3,21 @@ package property;
 import square.PropertySquare;
 
 public abstract class Property {
-	
+
 	private boolean occupy;
 	private int rent;
 	private int level;
 	private int upgradeCost;
 	private PropertySquare squareBuild;
 	private String pictureURL;
+
 	public Property() {
 		setOccupy(false);
-		setRent(rent);
+		setRent(0);
 		setLevel(0);
 	}
-	
-	public Property(boolean isOccupy,int rent,int level,PropertySquare squareBuild) {
+
+	public Property(boolean isOccupy, int rent, int level, PropertySquare squareBuild) {
 		// TODO Auto-generated constructor stub
 		setOccupy(isOccupy);
 		setRent(rent);
@@ -47,6 +48,7 @@ public abstract class Property {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+
 	public abstract int calculateIncome();
 
 	public PropertySquare getSquareBuild() {
@@ -64,7 +66,7 @@ public abstract class Property {
 	public void setUpgradeCost(int upgradeCost) {
 		this.upgradeCost = upgradeCost;
 	}
-	
+
 	public String getPictureURL() {
 		return pictureURL;
 	}
@@ -72,6 +74,5 @@ public abstract class Property {
 	public void setPictureURL(String pictureURL) {
 		this.pictureURL = pictureURL;
 	}
-	
-
+	public abstract void createImage();
 }

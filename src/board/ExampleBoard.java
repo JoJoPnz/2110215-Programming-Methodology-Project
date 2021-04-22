@@ -4,6 +4,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos; 
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -50,9 +51,13 @@ public class ExampleBoard extends Application {
 	  
 	  Square square15 = new PropertySquare("เรารักในหลวง7",area,100);
 	  Square square16 = new CarParkSquare();*/
+	  Square square14 = new PropertySquare("เรารักในหลวง6",null,100,"first");
 	  
+
+	  Area newArea = new Area(true,0,(PropertySquare)square14,"blueFlag.png");
 	  
-	  Square square8 = new PropertySquare("เรารักในหลวง",area,100,"fourth");
+	  ImageView image2 = newArea.getAreaimage();
+	  //Square square8 = new PropertySquare("เรารักในหลวง",area,100,"fourth");
 	  /*Square square9 = new PropertySquare("เรารักในหลวง",area,100);
 	  Square square10 = new PropertySquare("เรารักในหลวง",area,100);
 	  Square square11 = new PropertySquare("เรารักในหลวง",area,100);
@@ -75,7 +80,7 @@ public class ExampleBoard extends Application {
 	  
 	  //rootTop.getChildren().addAll(square8,square7,square6,square5,square4,square3,square2,square1,square0);
 	  //rootLeft.getChildren().addAll(square9,square10,square11,square12,square13,square14,square15);
-	  rootLeft.getChildren().add(square8);
+	  rootLeft.getChildren().add(image2);
 	  //rootLeft.setRotate(90);
 	  //rootBottom.getChildren().addAll(square22,square15,square16,square17,square18,square19,square20,square21,square16);
 	  
