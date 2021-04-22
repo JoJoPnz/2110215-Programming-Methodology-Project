@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import player.Player;
+import square.PropertySquare;
 import Logic.GameLogic;
 
 public class DicePane extends VBox {
@@ -43,7 +44,7 @@ public class DicePane extends VBox {
 		Button rollButton = new Button("ROLL");
 		Button endTurnButton = new Button("END TURN");
 		Button upgradeButton = new Button("Upgrade");
-		//Button buyButton = new Button("Buy Area");
+		// Button buyButton = new Button("Buy Area");
 
 		buyButton.setDisable(true);
 		buyButton.setPrefWidth(150);
@@ -61,16 +62,25 @@ public class DicePane extends VBox {
 				rollButton.setDisable(true);
 			}
 		});
-		//buyButton.setOnAction();
+		// buyButton.setOnAction();
 		buyButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				GameLogic.buyArea();
+				if (GameLogic.player1.isTurn()) {
+					((PropertySquare) GameLogic.player1.getCurrentSquare()).setOccupy(true);
+					GameLogic.player1.getPropertyHave()
+							.add(((PropertySquare) GameLogic.player1.getCurrentSquare()).getProperty());
+				} else if (GameLogic.player2.isTurn()) {
+					((PropertySquare) GameLogic.player2.getCurrentSquare()).setOccupy(true);
+					GameLogic.player2.getPropertyHave()
+							.add(((PropertySquare) GameLogic.player2.getCurrentSquare()).getProperty());
 
+				}
 				buyButton.setDisable(true);
 			}
 		});
-		
+
 		endTurnButton.setPrefWidth(150);
 		endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -83,10 +93,9 @@ public class DicePane extends VBox {
 			}
 		});
 
-		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, buyButton ,endTurnButton);
+		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, buyButton, endTurnButton);
 
 	}
-
 
 	public void setDiceLabelText() {
 		diceLabel.textProperty().setValue("DICE (1-6)");
