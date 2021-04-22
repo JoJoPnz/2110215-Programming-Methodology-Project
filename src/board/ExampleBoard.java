@@ -23,7 +23,7 @@ public class ExampleBoard extends Application {
    @Override 
    public void start(Stage stage) { 
 
-	  Property area = new Area();
+	 //å Property area = new Area(false,);
 	 
 	  HBox rootTop = new HBox();
 	  HBox rootBottom = new HBox();

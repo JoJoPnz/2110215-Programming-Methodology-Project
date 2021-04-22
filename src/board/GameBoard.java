@@ -101,33 +101,33 @@ public class GameBoard extends GridPane {
 
 	public void initializeSqaureBoard() {
 		myArray[0] = new StartSquare();
-		myArray[1] = new PropertySquare("Seoul", new Area(), 100, "first");
-		myArray[2] = new PropertySquare("Beijing", new Area(), 130, "first");
-		myArray[3] = new PropertySquare("Seville", new Area(), 150, "first");
-		myArray[4] = new PropertySquare("Vancouver", new Area(), 150, "first");
-		myArray[5] = new PropertySquare("Edinburgh", new Area(), 170, "first");
-		myArray[6] = new PropertySquare("Prague", new Area(), 190, "first");
+		myArray[1] = new PropertySquare("Seoul", null, 100, "first");
+		myArray[2] = new PropertySquare("Beijing", null, 130, "first");
+		myArray[3] = new PropertySquare("Seville", null, 150, "first");
+		myArray[4] = new PropertySquare("Vancouver", null, 150, "first");
+		myArray[5] = new PropertySquare("Edinburgh", null, 170, "first");
+		myArray[6] = new PropertySquare("Prague", null, 190, "first");
 		myArray[7] = new JailSquare();
-		myArray[8] = new PropertySquare("Tokyo", new Area(), 210, "second");
-		myArray[9] = new PropertySquare("Sydney", new Area(), 210, "second");
-		myArray[10] = new PropertySquare("ChiangMai", new Area(), 230, "second");
-		myArray[11] = new PropertySquare("Athens", new Area(), 250, "second");
-		myArray[12] = new PropertySquare("Dublin", new Area(), 270, "second");
-		myArray[13] = new PropertySquare("Zurich", new Area(), 270, "second");
+		myArray[8] = new PropertySquare("Tokyo", null, 210, "second");
+		myArray[9] = new PropertySquare("Sydney", null, 210, "second");
+		myArray[10] = new PropertySquare("ChiangMai", null, 230, "second");
+		myArray[11] = new PropertySquare("Athens", null, 250, "second");
+		myArray[12] = new PropertySquare("Dublin", null, 270, "second");
+		myArray[13] = new PropertySquare("Zurich", null, 270, "second");
 		myArray[14] = new CarParkSquare();
-		myArray[15] = new PropertySquare("Dubai", new Area(), 300, "third");
-		myArray[16] = new PropertySquare("Madrid", new Area(), 320, "third");
-		myArray[17] = new PropertySquare("Chicago", new Area(), 340, "third");
-		myArray[18] = new PropertySquare("Quebec City", new Area(), 350, "third");
-		myArray[19] = new PropertySquare("Jerusalem", new Area(), 360, "third");
-		myArray[20] = new PropertySquare("Toronto", new Area(), 370, "third");
+		myArray[15] = new PropertySquare("Dubai", null, 300, "third");
+		myArray[16] = new PropertySquare("Madrid", null, 320, "third");
+		myArray[17] = new PropertySquare("Chicago", null, 340, "third");
+		myArray[18] = new PropertySquare("Quebec City",null, 350, "third");
+		myArray[19] = new PropertySquare("Jerusalem", null, 360, "third");
+		myArray[20] = new PropertySquare("Toronto", null, 370, "third");
 		myArray[21] = new GoToJailSquare();
-		myArray[22] = new PropertySquare("Vienna", new Area(), 400, "fourth");
-		myArray[23] = new PropertySquare("Tokyo", new Area(), 410, "fourth");
-		myArray[24] = new PropertySquare("Istanbul", new Area(), 430, "fourth");
-		myArray[25] = new PropertySquare("Budapest", new Area(), 430, "fourth");
-		myArray[26] = new PropertySquare("Munich", new Area(), 450, "fourth");
-		myArray[27] = new PropertySquare("Bangkok", new Area(), 470, "fourth");
+		myArray[22] = new PropertySquare("Vienna", null, 400, "fourth");
+		myArray[23] = new PropertySquare("Tokyo", null, 410, "fourth");
+		myArray[24] = new PropertySquare("Istanbul",null, 430, "fourth");
+		myArray[25] = new PropertySquare("Budapest", null, 430, "fourth");
+		myArray[26] = new PropertySquare("Munich", null, 450, "fourth");
+		myArray[27] = new PropertySquare("Bangkok", null, 470, "fourth");
 
 	}
 }
