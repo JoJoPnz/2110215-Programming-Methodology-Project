@@ -1,6 +1,8 @@
 package Logic;
 
 import board.GameBoard;
+import dice.Dice;
+import dice.DicePane;
 import player.Player;
 import square.Square;
 
@@ -22,28 +24,21 @@ public class GameLogic {
 		return player2;
 	}
 
-	public static void checkInJail(Player player) {
-		if (player.isInJail()) {
-			// System.out.println("Player1 in jail");
-			player.setInJail(false);
-			// System.out.println("Tired");
-			// System.out.println(GameLogic.player1.isTurn()+"
-			// "+GameLogic.player1.isEverRoll());
-			// player1.setEverRoll(true);
-			// System.out.println(player1.isInJail());
-			// player1.setTurn(false);
-			// player2.setTurn(false);
-
-		}
+	public static void rollDice() {
+		Dice dice = new Dice();
+		dice.roll();
+		DicePane.setFaceValue(dice.getFaceValue());
+		DicePane.setDiceImage(dice.getFaceValue());
 	}
-
+	
+	
 	public static void goToJail(Player player) {
 		if (player.getCurrentPosition() == 21) {
 			Square goToJailSquare = GameBoard.myArray[21];
 			goToJailSquare.getChildren().remove(player.getCharacterImage());
 
 			Square jailSquare = GameBoard.myArray[7];
-			//jailSquare.add(player.getCharacterImage(), 0, 0);
+
 			player.setCurrentSquare(jailSquare);
 			player.setCurrentPosition(7);
 			player.setInJail(true);

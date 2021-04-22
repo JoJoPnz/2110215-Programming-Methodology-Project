@@ -22,8 +22,8 @@ public class DicePane extends VBox {
 	private Button rollButton;
 	private Button endTurnButton;
 	private Label diceLabel;
-	private ImageView diceImage = new ImageView();
-	private int faceValue;
+	private static ImageView diceImage = new ImageView();
+	private static int faceValue;
 
 	public DicePane() {
 		this.setAlignment(Pos.CENTER);
@@ -36,54 +36,31 @@ public class DicePane extends VBox {
 		diceLabel.setFont(new Font("Arial", 20));
 		setDiceLabelText();
 
-		this.faceValue = 1;
-		setDiceImage(faceValue);
+		this.faceValue = 1; 
+		setDiceImage(faceValue); //default dice picture
 		// Image i = new Image("dice1.png");
 		// ImageView i2 = new ImageView(i);
 
 		Button rollButton = new Button("ROLL");
-		Button endTurnButton = new Button("END TURN");
-		endTurnButton.setVisible(false);
-
+		Button endTurnButton = new Button("END TURN");;
+		endTurnButton.setDisable(true);
+		
 		rollButton.setPrefWidth(150);
 		rollButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Dice dice = new Dice();
-				dice.roll();
-				// GameLogic.checkInJail();
-
-				faceValue = dice.getFaceValue();
-				setDiceImage(faceValue);
+				GameLogic.rollDice(); // rollDice then change dicePicture and faceValue
 				if (GameLogic.player1.isTurn()) {
-					
-					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-					
 					GameLogic.player1.move(faceValue);
-					endTurnButton.setVisible(true);
-					rollButton.setVisible(false);
-
-					GameLogic.player1.getCurrentSquare().setPlayer1ToSquare();
-					
-					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-					
+					GameLogic.player1.getCurrentSquare().setPlayerToSquare(GameLogic.player1);
 					
 				} else if (GameLogic.player2.isTurn()) {
-					
-					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-					
 					GameLogic.player2.move(faceValue);
-					endTurnButton.setVisible(true);
-					rollButton.setVisible(false);
-					GameLogic.player2.getCurrentSquare().setPlayer2ToSquare();
-					
-					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-					
+					GameLogic.player2.getCurrentSquare().setPlayerToSquare(GameLogic.player2);
 				}
+				
+				endTurnButton.setDisable(false);
+				rollButton.setDisable(true);
 			}
 		});
 
@@ -91,54 +68,44 @@ public class DicePane extends VBox {
 		endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if (GameLogic.player1.isTurn() && GameLogic.player1.isEverRoll()) {
-					// System.out.println(1);
+				if (GameLogic.player1.isTurn()) {	
 					
 					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
 					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
 					
 					if (GameLogic.player2.isInJail()) {
 						System.out.println("Player2 in jail");
-						endTurnButton.setVisible(false);
 						GameLogic.player1.setTurn(true);
 						GameLogic.player2.setTurn(false);
-						//GameLogic.checkInJail(GameLogic.player2);
 						GameLogic.player2.setInJail(false);
-						rollButton.setVisible(true);
 						System.out.println(GameLogic.player2.isInJail());
 
 					} else {
-						endTurnButton.setVisible(false);
 						GameLogic.player1.setTurn(false);
 						GameLogic.player2.setTurn(true);
-						rollButton.setVisible(true);
 
 					}
 
-				} else if (GameLogic.player2.isTurn() && GameLogic.player2.isEverRoll()) {
-					// System.out.println(2);
-					
+				} else if (GameLogic.player2.isTurn()) {
+
 					System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
 					System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
 					
 					if (GameLogic.player1.isInJail()) {
 						System.out.println("Player1 in jail");
-						endTurnButton.setVisible(false);
 						GameLogic.player1.setTurn(false);
 						GameLogic.player2.setTurn(true);
-						//GameLogic.checkInJail(GameLogic.player1);
 						GameLogic.player1.setInJail(false);
-						rollButton.setVisible(true);
 						System.out.println(GameLogic.player1.isInJail());
 
 					} else {
-
-						endTurnButton.setVisible(false);
 						GameLogic.player1.setTurn(true);
 						GameLogic.player2.setTurn(false);
-						rollButton.setVisible(true);
 					}
 				}
+
+				endTurnButton.setDisable(true);
+				rollButton.setDisable(false);
 			}
 		});
 
@@ -150,7 +117,7 @@ public class DicePane extends VBox {
 		diceLabel.textProperty().setValue("DICE (1-6)");
 	}
 
-	public void setDiceImage(int faceValue) {
+	public static void setDiceImage(int faceValue) {
 		DiceImages i = new DiceImages();
 		i.setImage(faceValue);
 		diceImage.setImage(i.getImage());
@@ -166,5 +133,10 @@ public class DicePane extends VBox {
 	public int getFaceValue() {
 		return faceValue;
 	}
+
+	public static void setFaceValue(int faceValue) {
+		DicePane.faceValue = faceValue;
+	}
+	
 
 }

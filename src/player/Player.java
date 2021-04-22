@@ -17,7 +17,6 @@ public class Player {
 	private Square currentSquare;
 	private int currentPosition;
 	private boolean isBankrupt;
-	private boolean everRoll;
 	private ImageView characterImage;
 	private boolean inJail;
 
@@ -30,7 +29,6 @@ public class Player {
 		setCurrentPosition(0);
 		setCurrentSquare(GameBoard.myArray[0]);
 		setTurn(false);
-		setEverRoll(false);
 		setCharacterImage();
 	}
 
@@ -77,15 +75,16 @@ public class Player {
 
 	public void move(int FaceValue) {
 		if (isTurn()) {
+			int pastPos = getCurrentPosition();
 			int currentPos = (getCurrentPosition() + FaceValue) % 28;
-			if (currentPos == 0) {
+			// Get Salary (at start point)
+			if (pastPos - currentPos > 0) {
 				setMoney(getMoney() + 200);
 				System.out.println("Pass Start");
 				System.out.println("Get Income = 200");
 			}
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
-			setEverRoll(true);
 			System.out.println(currentPos);
 			
 			if (this.getCurrentPosition() == 7) {
@@ -131,14 +130,6 @@ public class Player {
 
 	public void setCurrentPosition(int currentPosition) {
 		this.currentPosition = currentPosition;
-	}
-
-	public boolean isEverRoll() {
-		return everRoll;
-	}
-
-	public void setEverRoll(boolean everRoll) {
-		this.everRoll = everRoll;
 	}
 
 	public boolean isInJail() {
