@@ -4,6 +4,8 @@ import board.GameBoard;
 import dice.Dice;
 import dice.DicePane;
 import player.Player;
+import property.Area;
+import square.PropertySquare;
 import square.Square;
 
 public class GameLogic {
@@ -30,20 +32,32 @@ public class GameLogic {
 		DicePane.setFaceValue(dice.getFaceValue());
 		DicePane.setDiceImage(dice.getFaceValue());
 	}
-	
+
 	public static void move() {
 		// check turn
 		if (GameLogic.player1.isTurn()) {
 			GameLogic.player1.move(DicePane.getFaceValue());
-			
+
 		} else if (GameLogic.player2.isTurn()) {
 			GameLogic.player2.move(DicePane.getFaceValue());
 		}
 	}
-	
+
+	public static void buyArea() {
+		if (GameLogic.player1.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
+			currentSq.setProperty(new Area(true, 0, currentSq, "blueFlag.png"));
+			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getPrice());
+		} else if (GameLogic.player2.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
+			currentSq.setProperty(new Area(true, 0, currentSq, "redFlag.png"));
+			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getPrice());
+		}
+	}
+
 	public static void endTurn() {
 		// change turn with Jail condition.
-		if (GameLogic.player1.isTurn()) {	
+		if (GameLogic.player1.isTurn()) {
 			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
 			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
 			if (GameLogic.player2.isInJail()) {
@@ -71,13 +85,4 @@ public class GameLogic {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

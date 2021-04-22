@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import property.Area;
+import property.Hotel;
+import property.House;
 import property.Property;
 import square.PropertySquare;
 import square.Square;
@@ -54,9 +56,9 @@ public class ExampleBoard extends Application {
 	  Square square14 = new PropertySquare("เรารักในหลวง6",null,100,"first");
 	  
 
-	  Area newArea = new Area(true,0,(PropertySquare)square14,"blueFlag.png");
+	  House newArea = new House(true,0,(PropertySquare)square14,"blueHouse.png");
 	  
-	  ImageView image2 = newArea.getAreaimage();
+	  ImageView image2 = newArea.getAreaImage();
 	  //Square square8 = new PropertySquare("เรารักในหลวง",area,100,"fourth");
 	  /*Square square9 = new PropertySquare("เรารักในหลวง",area,100);
 	  Square square10 = new PropertySquare("เรารักในหลวง",area,100);
@@ -80,7 +82,7 @@ public class ExampleBoard extends Application {
 	  
 	  //rootTop.getChildren().addAll(square8,square7,square6,square5,square4,square3,square2,square1,square0);
 	  //rootLeft.getChildren().addAll(square9,square10,square11,square12,square13,square14,square15);
-	  rootLeft.getChildren().add(image2);
+	  rootLeft.getChildren().add(square14);
 	  //rootLeft.setRotate(90);
 	  //rootBottom.getChildren().addAll(square22,square15,square16,square17,square18,square19,square20,square21,square16);
 	  

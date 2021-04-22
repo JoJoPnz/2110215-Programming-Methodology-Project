@@ -1,6 +1,7 @@
 package property;
 
 import square.PropertySquare;
+import square.Square;
 
 public abstract class Property {
 
@@ -11,17 +12,18 @@ public abstract class Property {
 	private PropertySquare squareBuild;
 	private String pictureURL;
 
-	public Property() {
+	/*public Property() {
 		setOccupy(false);
 		setRent(0);
 		setLevel(0);
-	}
+	}*/
 
-	public Property(boolean isOccupy, int rent, int level, PropertySquare squareBuild) {
+	public Property(boolean isOccupy, int level, PropertySquare squareBuild) {
 		// TODO Auto-generated constructor stub
 		setOccupy(isOccupy);
-		setRent(rent);
+		//setRent(rent);
 		setLevel(level);
+		setSquareBuild(squareBuild);
 	}
 
 	public boolean isOccupy() {
@@ -74,5 +76,9 @@ public abstract class Property {
 	public void setPictureURL(String pictureURL) {
 		this.pictureURL = pictureURL;
 	}
+	
+	public abstract void addImageToSquare(Square currentSquare) ;
+	
+	
 	public abstract void createImage();
 }

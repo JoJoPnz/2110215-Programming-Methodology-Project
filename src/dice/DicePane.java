@@ -21,6 +21,7 @@ import Logic.GameLogic;
 public class DicePane extends VBox {
 	private Button rollButton;
 	private Button endTurnButton;
+	public static Button buyButton = new Button("Buy Area");;
 	private Label diceLabel;
 	private static ImageView diceImage = new ImageView();
 	private static int faceValue;
@@ -36,42 +37,56 @@ public class DicePane extends VBox {
 		diceLabel.setFont(new Font("Arial", 20));
 		setDiceLabelText();
 
-		this.faceValue = 1; 
-		setDiceImage(faceValue); //default dice picture
+		this.faceValue = 1;
+		setDiceImage(faceValue); // default dice picture
 
 		Button rollButton = new Button("ROLL");
-		Button endTurnButton = new Button("END TURN");;
-		
+		Button endTurnButton = new Button("END TURN");
+		Button upgradeButton = new Button("Upgrade");
+		//Button buyButton = new Button("Buy Area");
+
+		buyButton.setDisable(true);
+		buyButton.setPrefWidth(150);
 		endTurnButton.setDisable(true);
-		
+
 		rollButton.setPrefWidth(150);
 		rollButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				GameLogic.rollDice(); // rollDice then change dicePicture and faceValue
 				GameLogic.move(); // move a player
-				
+
 				// set button behavior
 				endTurnButton.setDisable(false);
 				rollButton.setDisable(true);
 			}
 		});
+		//buyButton.setOnAction();
+		buyButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				GameLogic.buyArea();
 
+				buyButton.setDisable(true);
+			}
+		});
+		
 		endTurnButton.setPrefWidth(150);
 		endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				GameLogic.endTurn(); // change turn to other player
-				
+
 				// set button behavior
 				endTurnButton.setDisable(true);
 				rollButton.setDisable(false);
 			}
 		});
 
-		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, endTurnButton);
+		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, buyButton ,endTurnButton);
 
 	}
+
 
 	public void setDiceLabelText() {
 		diceLabel.textProperty().setValue("DICE (1-6)");
@@ -97,6 +112,13 @@ public class DicePane extends VBox {
 	public static void setFaceValue(int faceValue) {
 		DicePane.faceValue = faceValue;
 	}
-	
+
+	public static Button getBuyButton() {
+		return buyButton;
+	}
+
+	public void setBuyButton(Button buyButton) {
+		this.buyButton = buyButton;
+	}
 
 }

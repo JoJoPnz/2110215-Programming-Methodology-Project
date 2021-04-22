@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import Logic.GameLogic;
 import board.GameBoard;
+import dice.DicePane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import property.Property;
+import square.PropertySquare;
 import square.Square;
 
 public class Player {
@@ -99,9 +101,25 @@ public class Player {
 			
 			// Set player picture to a new Square
 			this.getCurrentSquare().setPlayerToSquare(this);
-			
-		}
+			if (this.getCurrentSquare() instanceof PropertySquare) {
+				PropertySquare currentSq = (PropertySquare) this.getCurrentSquare();
+				// Check isOccupied and money more than price
+				if (checkUnOccupyArea(currentSq) && (getMoney()>= currentSq.getPrice())) {
+					DicePane.buyButton.setDisable(false);
+				}
+			}
+		}}
 
+	public boolean checkUnOccupyArea(Square square) {
+		if (this.getCurrentSquare() instanceof PropertySquare) {
+			PropertySquare currentArea = (PropertySquare) this.getCurrentSquare();
+			// Check isOccupied and money more than price
+			if (!currentArea.isOccupy()) {
+				return true;
+			}
+
+		}
+		return false;
 	}
 
 	public ArrayList<Property> getPropertyHave() {
