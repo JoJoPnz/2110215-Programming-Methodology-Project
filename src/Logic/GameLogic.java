@@ -42,36 +42,28 @@ public class GameLogic {
 	}
 	
 	public static void endTurn() {
+		// change turn with Jail condition.
 		if (GameLogic.player1.isTurn()) {	
-			
 			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
 			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-			
 			if (GameLogic.player2.isInJail()) {
 				System.out.println("Player2 is in jail");
 				GameLogic.player1.setTurn(true);
 				GameLogic.player2.setTurn(false);
-				GameLogic.player2.setInJail(false);
-				System.out.println(GameLogic.player2.isInJail());
-
+				GameLogic.player2.setInJail(false); // set inJail to false so next turn it can move now.
 			} else {
 				GameLogic.player1.setTurn(false);
 				GameLogic.player2.setTurn(true);
-
 			}
 
 		} else if (GameLogic.player2.isTurn()) {
-
 			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
 			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-			
 			if (GameLogic.player1.isInJail()) {
 				System.out.println("Player1 is in jail");
 				GameLogic.player1.setTurn(false);
 				GameLogic.player2.setTurn(true);
-				GameLogic.player1.setInJail(false);
-				System.out.println(GameLogic.player1.isInJail());
-
+				GameLogic.player1.setInJail(false); // set inJail to false so next turn it can move now.
 			} else {
 				GameLogic.player1.setTurn(true);
 				GameLogic.player2.setTurn(false);
@@ -79,4 +71,13 @@ public class GameLogic {
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
