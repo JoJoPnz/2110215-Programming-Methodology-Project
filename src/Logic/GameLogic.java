@@ -31,19 +31,52 @@ public class GameLogic {
 		DicePane.setDiceImage(dice.getFaceValue());
 	}
 	
-	
-	public static void goToJail(Player player) {
-		if (player.getCurrentPosition() == 21) {
-			Square goToJailSquare = GameBoard.myArray[21];
-			goToJailSquare.getChildren().remove(player.getCharacterImage());
-
-			Square jailSquare = GameBoard.myArray[7];
-
-			player.setCurrentSquare(jailSquare);
-			player.setCurrentPosition(7);
-			player.setInJail(true);
+	public static void move() {
+		// check turn
+		if (GameLogic.player1.isTurn()) {
+			GameLogic.player1.move(DicePane.getFaceValue());
+			
+		} else if (GameLogic.player2.isTurn()) {
+			GameLogic.player2.move(DicePane.getFaceValue());
 		}
+	}
+	
+	public static void endTurn() {
+		if (GameLogic.player1.isTurn()) {	
+			
+			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+			
+			if (GameLogic.player2.isInJail()) {
+				System.out.println("Player2 is in jail");
+				GameLogic.player1.setTurn(true);
+				GameLogic.player2.setTurn(false);
+				GameLogic.player2.setInJail(false);
+				System.out.println(GameLogic.player2.isInJail());
 
+			} else {
+				GameLogic.player1.setTurn(false);
+				GameLogic.player2.setTurn(true);
+
+			}
+
+		} else if (GameLogic.player2.isTurn()) {
+
+			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+			
+			if (GameLogic.player1.isInJail()) {
+				System.out.println("Player1 is in jail");
+				GameLogic.player1.setTurn(false);
+				GameLogic.player2.setTurn(true);
+				GameLogic.player1.setInJail(false);
+				System.out.println(GameLogic.player1.isInJail());
+
+			} else {
+				GameLogic.player1.setTurn(true);
+				GameLogic.player2.setTurn(false);
+			}
+		}
 	}
 
 }

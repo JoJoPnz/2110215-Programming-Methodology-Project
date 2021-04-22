@@ -56,8 +56,10 @@ public abstract class Square extends GridPane {
 	public void setPlayerToSquare(Player player) {
 		int[] setSpecialSquare = { 0, 7, 14, 21 };
 		Arrays.sort(setSpecialSquare);
+		ImageView imageViewChar = player.getCharacterImage();
 		int toCheckValue = player.getCurrentPosition();
 
+		// Check player's currentPosition is a specialSquare or not
 		boolean isSpecialSquare = false;
 		for (int eachSpecialIdx : setSpecialSquare) {
 			if (eachSpecialIdx == toCheckValue) {
@@ -65,8 +67,8 @@ public abstract class Square extends GridPane {
 				break;
 			}
 		}
+		
 		if (isSpecialSquare) {
-			ImageView imageViewChar = player.getCharacterImage();
 			this.add(imageViewChar, 0, 0);
 			/*if (GameLogic.player1.getCurrentPosition() == 21) {
 				
@@ -76,7 +78,6 @@ public abstract class Square extends GridPane {
 			}*/
 			// this.setAlignment(Pos.BOTTOM_CENTER);
 		} else {
-			ImageView imageViewChar = player.getCharacterImage();
 
 			if (player.getCurrentPosition() < 14 && player.getCurrentPosition() > 7) {
 				this.add(imageViewChar, 0, 1);

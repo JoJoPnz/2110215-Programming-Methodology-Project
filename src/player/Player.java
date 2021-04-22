@@ -77,24 +77,28 @@ public class Player {
 		if (isTurn()) {
 			int pastPos = getCurrentPosition();
 			int currentPos = (getCurrentPosition() + FaceValue) % 28;
+			
 			// Get Salary (at start point)
 			if (pastPos - currentPos > 0) {
 				setMoney(getMoney() + 200);
 				System.out.println("Pass Start");
 				System.out.println("Get Income = 200");
 			}
+			
+			// if new position is JAIL --> setInJail to True
+			if (currentPos == 7 || currentPos == 21) {
+				this.setInJail(true);
+				currentPos = 7;
+			}
+			
+			
+			// Set new position and square
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
 			System.out.println(currentPos);
 			
-			if (this.getCurrentPosition() == 7) {
-				this.setInJail(true);
-			}
-			else if (this.getCurrentPosition() == 21) {
-				GameLogic.goToJail(this);
-			}
-
-			
+			// Set player picture to a new Square
+			this.getCurrentSquare().setPlayerToSquare(this);
 			
 		}
 
