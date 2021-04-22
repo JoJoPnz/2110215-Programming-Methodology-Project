@@ -61,11 +61,13 @@ public abstract class Square extends GridPane {
 		for (int eachSpecialIdx : setSpecialSquare) {
 			if (eachSpecialIdx == toCheckValue) {
 				isSpecialSquare = true;
+			
 				break;
 			}
 		}
 		if (isSpecialSquare) {
 			ImageView imageViewChar = GameLogic.player1.getCharacterImage();
+			this.add(imageViewChar, 0, 0);
 			/*if (GameLogic.player1.getCurrentPosition() == 21) {
 				
 			}

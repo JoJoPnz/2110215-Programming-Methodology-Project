@@ -39,12 +39,11 @@ public class GameLogic {
 
 	public static void goToJail(Player player) {
 		if (player.getCurrentPosition() == 21) {
-			player.setInJail(true);
 			Square goToJailSquare = GameBoard.myArray[21];
 			goToJailSquare.getChildren().remove(player.getCharacterImage());
 
 			Square jailSquare = GameBoard.myArray[7];
-			jailSquare.add(player.getCharacterImage(), 0, 0);
+			//jailSquare.add(player.getCharacterImage(), 0, 0);
 			player.setCurrentSquare(jailSquare);
 			player.setCurrentPosition(7);
 			player.setInJail(true);
