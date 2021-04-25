@@ -10,8 +10,8 @@ import square.PropertySquare;
 import square.Square;
 
 public class GameLogic {
-	public static Player player1 = new Player("dice1.png");;
-	public static Player player2 = new Player("dice2.png");;
+	public static Player player1 = new Player("dice1.png");
+	public static Player player2 = new Player("dice2.png");
 	public static Player playingPlayer;
 	
 	public GameLogic() {
@@ -148,9 +148,6 @@ public class GameLogic {
 			}
 		}
 	}
-	public static void upgradeArea() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
