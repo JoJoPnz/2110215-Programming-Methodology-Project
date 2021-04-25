@@ -51,13 +51,13 @@ public class GameLogic {
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		if (GameLogic.player1.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
-			currentSq.setProperty(new Area(true, 0, currentSq, "blueFlag.png"));
+			currentSq.setProperty(new Area(true, 0, currentSq, "blueHotel.png"));
 			currentSq.setOwner(player1);
 			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getPrice());
 			//currentSq.setOccupy(true);
 		} else if (GameLogic.player2.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
-			currentSq.setProperty(new Area(true, 0, currentSq, "redFlag.png"));
+			currentSq.setProperty(new Area(true, 0, currentSq, "redHotel.png"));
 			currentSq.setOwner(player2);
 			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getPrice());
 		}

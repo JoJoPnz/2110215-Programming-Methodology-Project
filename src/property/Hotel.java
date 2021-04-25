@@ -42,8 +42,8 @@ public class Hotel extends Property {
 		// TODO Auto-generated method stub
 		Image charImage = new Image(getPictureURL());
 		this.areaImage = new ImageView(charImage);
-		this.areaImage.setFitHeight(60);
-		this.areaImage.setFitWidth(70);
+		this.areaImage.setFitHeight(530);
+		this.areaImage.setFitWidth(530);
 	}
 	
 

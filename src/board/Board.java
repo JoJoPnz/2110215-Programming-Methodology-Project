@@ -31,7 +31,7 @@ public class Board extends Application {
 		
 		GameLogic newGame = new GameLogic();
 		
-		System.out.println(GameBoard.myArray);
+		System.out.println(GameBoard.myArray); 
 		GridPane gameBoard = new GameBoard();
 		
 		DicePane dicePane = new DicePane();

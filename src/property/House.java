@@ -43,8 +43,8 @@ public class House extends Property {
 		// TODO Auto-generated method stub
 		Image charImage = new Image(getPictureURL());
 		this.areaImage = new ImageView(charImage);
-		this.areaImage.setFitHeight(100);
-		this.areaImage.setFitWidth(100);
+		this.areaImage.setFitHeight(500);
+		this.areaImage.setFitWidth(500);
 	}
 	
 
