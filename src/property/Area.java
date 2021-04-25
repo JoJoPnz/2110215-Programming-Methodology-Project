@@ -16,13 +16,13 @@ public class Area extends Property {
 		// super();
 		// super();
 		// setRent(level,squareBuild);
-		super(isOccupy,level,squareBuild);
+		super(isOccupy, level, squareBuild);
 		setRentArea(squareBuild.getPrice());
 		setPictureURL(pictureURL);
 		createImage();
-		addImageToSquare((Square)getSquareBuild());
+		addImageToSquare((Square) getSquareBuild());
 	}
-	
+
 	public void setRentArea(int price) {
 		// TODO Auto-generated method stub
 		super.setRent(calculateIncome());
@@ -40,8 +40,6 @@ public class Area extends Property {
 		}
 		return rent;
 	}
-	
-
 
 	public ImageView getAreaImage() {
 		return areaImage;
@@ -62,34 +60,57 @@ public class Area extends Property {
 	public void addImageToSquare(Square currentSquare) {
 		// TODO Auto-generated method stub
 		ImageView imageViewProperty = getAreaImage();
-		//ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
-		currentSquare.add(imageViewProperty, 0, 1);
-		//this.add(imageViewCharPlayer1,7, 7);
-		//this.add(imageViewCharPlayer2,7, 7);
-		
-		currentSquare.setValignment(imageViewProperty, VPos.TOP);
-		currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
-		
-		//currentSquare.setValignment(imageViewCharPlayer2, VPos.BOTTOM);
-		//currentSquare.setHalignment(imageViewCharPlayer2, HPos.RIGHT);
+		PropertySquare currentSq = (PropertySquare) currentSquare;
+		// ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
+		if (currentSq.getCondition() == "first") {
+			currentSquare.add(imageViewProperty, 0, 1);
+			// this.add(imageViewCharPlayer1,7, 7);
+			// this.add(imageViewCharPlayer2,7, 7);
+
+			currentSquare.setValignment(imageViewProperty, VPos.TOP);
+			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+
+		} else if (currentSq.getCondition() == "second") {
+			currentSquare.add(imageViewProperty, 0, 1);
+			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
+			currentSquare.setHalignment(imageViewProperty, HPos.RIGHT);
+		} else if (currentSq.getCondition() == "third") {
+			currentSquare.add(imageViewProperty, 0, 0);
+			currentSquare.setValignment(imageViewProperty, VPos.BOTTOM);
+			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+
+		}
+		else if (currentSq.getCondition() == "fourth") {
+			currentSquare.add(imageViewProperty, 1, 0);
+			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
+			currentSquare.setHalignment(imageViewProperty, HPos.LEFT);
+		}
+		// currentSquare.add(imageViewProperty, 0, 1);
+		// this.add(imageViewCharPlayer1,7, 7);
+		// this.add(imageViewCharPlayer2,7, 7);
+
+		// currentSquare.setValignment(imageViewProperty, VPos.TOP);
+		// currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+
+		// currentSquare.setValignment(imageViewCharPlayer2, VPos.BOTTOM);
+		// currentSquare.setHalignment(imageViewCharPlayer2, HPos.RIGHT);
 	}
-	
+
 	public void upgrade() {
 		if (GameLogic.player1.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
 			currentSq.setProperty(new House(true, 1, currentSq, "blueHouse.png"));
 			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getUpgradeCost());
-			
-		}
-		else if (GameLogic.player2.isTurn()) {
+
+		} else if (GameLogic.player2.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
 			currentSq.setProperty(new House(true, 1, currentSq, "redHouse.png"));
 			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getUpgradeCost());
 		}
 	}
-	
+
 	public void removeImage() {
 		this.areaImage = null;
 	}

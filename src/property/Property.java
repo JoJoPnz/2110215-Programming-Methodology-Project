@@ -1,5 +1,7 @@
 package property;
 
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.image.ImageView;
 import square.PropertySquare;
 import square.Square;
@@ -78,9 +80,11 @@ public abstract class Property {
 		this.pictureURL = pictureURL;
 	}
 	
-	public abstract void addImageToSquare(Square currentSquare) ;
+	public abstract void addImageToSquare(Square currentSquare);
 	
 	
+
+
 	public abstract void createImage();
 	
 	public abstract void upgrade();

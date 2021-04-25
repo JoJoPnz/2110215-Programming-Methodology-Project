@@ -61,13 +61,31 @@ public class Hotel extends Property {
 	public void addImageToSquare(Square currentSquare) {
 		// TODO Auto-generated method stub
 		ImageView imageViewProperty = getAreaImage();
-		//ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
-		currentSquare.add(imageViewProperty, 0, 1);
-		//this.add(imageViewCharPlayer1,7, 7);
-		//this.add(imageViewCharPlayer2,7, 7);
-		
-		currentSquare.setValignment(imageViewProperty, VPos.TOP);
-		currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+		PropertySquare currentSq = (PropertySquare) currentSquare;
+		// ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
+		if (currentSq.getCondition() == "first") {
+			currentSquare.add(imageViewProperty, 0, 1);
+			// this.add(imageViewCharPlayer1,7, 7);
+			// this.add(imageViewCharPlayer2,7, 7);
+
+			currentSquare.setValignment(imageViewProperty, VPos.TOP);
+			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+
+		} else if (currentSq.getCondition() == "second") {
+			currentSquare.add(imageViewProperty, 0, 1);
+			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
+			currentSquare.setHalignment(imageViewProperty, HPos.RIGHT);
+		} else if (currentSq.getCondition() == "third") {
+			currentSquare.add(imageViewProperty, 0, 0);
+			currentSquare.setValignment(imageViewProperty, VPos.BOTTOM);
+			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+
+		}
+		else if (currentSq.getCondition() == "fourth") {
+			currentSquare.add(imageViewProperty, 1, 0);
+			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
+			currentSquare.setHalignment(imageViewProperty, HPos.LEFT);
+		}
 	}
 	
 	public void upgrade() {
