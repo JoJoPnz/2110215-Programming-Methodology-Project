@@ -10,8 +10,8 @@ import square.PropertySquare;
 import square.Square;
 
 public class GameLogic {
-	public static Player player1 = new Player("dice1.png");;
-	public static Player player2 = new Player("dice2.png");;
+	public static Player player1 = new Player("dice1.png");
+	public static Player player2 = new Player("dice2.png");
 	public static Player playingPlayer;
 	
 	public GameLogic() {
@@ -129,11 +129,7 @@ public class GameLogic {
 			} else {
 				GameLogic.player1.setTurn(false);
 				GameLogic.player2.setTurn(true);
-<<<<<<< HEAD
 				GameLogic.playingPlayer = GameLogic.player2;
-=======
-				
->>>>>>> 922e8a26494c099096aa69e8ad79d0e5408d653a
 			}
 
 		} else if (GameLogic.player2.isTurn()) {
@@ -152,9 +148,6 @@ public class GameLogic {
 			}
 		}
 	}
-	public static void upgradeArea() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
