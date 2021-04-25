@@ -122,27 +122,18 @@ public class Player {
 					else {
 						GameLogic.payRent(this);
 					}
+				}		
+			
+				// Check isOccupied and money more than price
+				else if (checkUnOccupyArea(currentSq) && (getMoney() >= currentSq.getPrice())) {
+					DicePane.buyButton.setDisable(false);
 				}
+
 				// upgradable if you're the owner, have enough money and not reach max level yet.
 				else if (currentSq.getOwner() == this && currentProperty.getLevel() < 2 && this.getMoney() >= currentSq.getUpgradeCost()) {
 					DicePane.upgradeButton.setDisable(false);
 				}
-				
-			}
-			
-			
-			
-			
-			
-				// Check isOccupied and money more than price
-				if (checkUnOccupyArea(currentSq) && (getMoney() >= currentSq.getPrice())) {
-					DicePane.buyButton.setDisable(false);
-				}
-				else if (!checkUnOccupyArea(currentSq)) {
-					checkUpgradeArea();
-				}
-
-			}
+		}
 		}
 	}
 
