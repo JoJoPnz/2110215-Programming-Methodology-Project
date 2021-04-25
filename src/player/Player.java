@@ -76,35 +76,39 @@ public class Player {
 	}
 
 	public void move(int FaceValue) {
+		System.out.println("Player1 Asset");
+		printAsset(GameLogic.player1);
+		System.out.println("Player2 Asset");
+		printAsset(GameLogic.player2);
 		if (isTurn()) {
 			int pastPos = getCurrentPosition();
 			int currentPos = (getCurrentPosition() + FaceValue) % 28;
-			
+
 			// Get Salary (at start point)
 			if (pastPos - currentPos > 0) {
 				setMoney(getMoney() + 200);
 				System.out.println("Pass Start");
 				System.out.println("Get Income = 200");
 			}
-			
+
 			// if new position is JAIL --> setInJail to True
 			if (currentPos == 7 || currentPos == 21) {
 				this.setInJail(true);
 				currentPos = 7;
 			}
-			
-			
+
 			// Set new position and square
 			setCurrentPosition(currentPos);
 			setCurrentSquare(GameBoard.myArray[currentPos]);
 			System.out.println(currentPos);
-			
+
 			// Set player picture to a new Square
 			this.getCurrentSquare().setPlayerToSquare(this);
 			
 			// Check what destination square and do action.
 			if (this.getCurrentSquare() instanceof PropertySquare) {
 				PropertySquare currentSq = (PropertySquare) this.getCurrentSquare();
+<<<<<<< HEAD
 				Property currentProperty = currentSq.getProperty();
 				// Check isOccupied and has money more than price --> can buy
 				if (checkUnOccupyArea(currentSq) && (getMoney()>= currentSq.getPrice())) {
@@ -131,6 +135,32 @@ public class Player {
 			
 			
 			
+=======
+				// Check isOccupied and money more than price
+				if (checkUnOccupyArea(currentSq) && (getMoney() >= currentSq.getPrice())) {
+					DicePane.buyButton.setDisable(false);
+				}
+				else if (!checkUnOccupyArea(currentSq)) {
+					checkUpgradeArea();
+				}
+
+			}
+		}
+	}
+
+	public static void checkUpgradeArea() {
+		if (GameLogic.player1.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
+			if (GameLogic.haveProperty(currentSq, GameLogic.player1)) {
+				DicePane.upgradeButton.setDisable(false);
+
+			}
+		} else if (GameLogic.player2.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
+			if (GameLogic.haveProperty(currentSq, GameLogic.player2)) {
+				DicePane.upgradeButton.setDisable(false);
+			}
+>>>>>>> 922e8a26494c099096aa69e8ad79d0e5408d653a
 		}
 	}
 
@@ -138,13 +168,18 @@ public class Player {
 		if (square instanceof PropertySquare) {
 			PropertySquare currentArea = (PropertySquare) square;
 			// Check isOccupied and money more than price
-			if (!currentArea.isOccupy()) {
+			if (currentArea.getProperty() == null) {
 				return true;
 			}
 		}
 		return false;
 	}
 
+	public void printAsset(Player player) {
+		for (Property eachProperty:player.getPropertyHave()) {
+			System.out.println(eachProperty);
+		}
+	}
 	public ArrayList<Property> getPropertyHave() {
 		return propertyHave;
 	}

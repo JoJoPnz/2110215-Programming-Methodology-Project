@@ -36,6 +36,7 @@ public class GameLogic {
 	}
 
 	public static void move() {
+		
 		// check turn
 		if (GameLogic.player1.isTurn()) {
 			GameLogic.player1.move(DicePane.getFaceValue());
@@ -54,6 +55,7 @@ public class GameLogic {
 			currentSq.setProperty(new Area(true, 0, currentSq, "blueFlag.png"));
 			currentSq.setOwner(player1);
 			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getPrice());
+			//currentSq.setOccupy(true);
 		} else if (GameLogic.player2.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
 			currentSq.setProperty(new Area(true, 0, currentSq, "redFlag.png"));
@@ -98,13 +100,28 @@ public class GameLogic {
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 	}
 
+	// public boolean checkOccupy
+
+
+	public static boolean haveProperty(PropertySquare currentSq,Player player) {
+		Property checkProperty = currentSq.getProperty();
+		for (Property eachProperty : player.getPropertyHave()) {
+			if (eachProperty.equals(checkProperty)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
 	public static void endTurn() {
 		// change turn with Jail condition.
+		
 		if (GameLogic.player1.isTurn()) {
-			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+			//System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+			//System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
 			if (GameLogic.player2.isInJail()) {
-				System.out.println("Player2 is in jail");
+				//System.out.println("Player2 is in jail");
 				GameLogic.player1.setTurn(true);
 				GameLogic.player2.setTurn(false);
 				GameLogic.player2.setInJail(false); // set inJail to false so next turn it can move now.
@@ -112,14 +129,18 @@ public class GameLogic {
 			} else {
 				GameLogic.player1.setTurn(false);
 				GameLogic.player2.setTurn(true);
+<<<<<<< HEAD
 				GameLogic.playingPlayer = GameLogic.player2;
+=======
+				
+>>>>>>> 922e8a26494c099096aa69e8ad79d0e5408d653a
 			}
 
 		} else if (GameLogic.player2.isTurn()) {
-			System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-			System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
+			//System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
+			//System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
 			if (GameLogic.player1.isInJail()) {
-				System.out.println("Player1 is in jail");
+				//System.out.println("Player1 is in jail");
 				GameLogic.player1.setTurn(false);
 				GameLogic.player2.setTurn(true);
 				GameLogic.player1.setInJail(false); // set inJail to false so next turn it can move now.
@@ -130,6 +151,10 @@ public class GameLogic {
 				GameLogic.playingPlayer = GameLogic.player1;
 			}
 		}
+	}
+	public static void upgradeArea() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
