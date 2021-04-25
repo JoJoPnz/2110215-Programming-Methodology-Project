@@ -34,7 +34,6 @@ public class GameLogic {
 		DicePane.setFaceValue(dice.getFaceValue());
 		DicePane.setDiceImage(dice.getFaceValue());
 	}
-
 	public static void move() {
 		
 		// check turn

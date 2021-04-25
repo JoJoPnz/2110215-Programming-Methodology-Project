@@ -24,7 +24,7 @@ public class Player {
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
-		setMoney(2000);
+		setInitialMoney(10000);
 		setCharacterPictureLink(characterPictureLink);
 		setBankrupt(false);
 		propertyHave = new ArrayList<Property>();
@@ -32,6 +32,15 @@ public class Player {
 		setCurrentSquare(GameBoard.myArray[0]);
 		setTurn(false);
 		setCharacterImage();
+	}
+
+	private void setInitialMoney(int money) {
+		// TODO Auto-generated method stub
+		if (money < 0) {
+			this.money = 0;
+		} else {
+			this.money = money;
+		}
 	}
 
 	public String getCharacterPictureLink() {
@@ -65,6 +74,8 @@ public class Player {
 		} else {
 			this.money = money;
 		}
+		GameBoard.player1Label.setText("Player 1\nMoney: "+GameLogic.player1.getMoney());
+		GameBoard.player2Label.setText("Player 2\nMoney: "+GameLogic.player2.getMoney());
 	}
 
 	public boolean isTurn() {
@@ -104,13 +115,13 @@ public class Player {
 
 			// Set player picture to a new Square
 			this.getCurrentSquare().setPlayerToSquare(this);
-			
+
 			// Check what destination square and do action.
 			if (this.getCurrentSquare() instanceof PropertySquare) {
 				PropertySquare currentSq = (PropertySquare) this.getCurrentSquare();
 				Property currentProperty = currentSq.getProperty();
 				// Check isOccupied and has money more than price --> can buy
-				if (checkUnOccupyArea(currentSq) && (getMoney()>= currentSq.getPrice())) {
+				if (checkUnOccupyArea(currentSq) && (getMoney() >= currentSq.getPrice())) {
 					DicePane.buyButton.setDisable(false);
 				}
 				// opponent area --> pay
@@ -118,22 +129,23 @@ public class Player {
 					DicePane.buyButton.setDisable(true);
 					if (this.getMoney() < currentSq.getRent()) {
 						this.setBankrupt(true);
-					}
-					else {
+					} else {
 						GameLogic.payRent(this);
 					}
-				}		
-			
+				}
+
 				// Check isOccupied and money more than price
 				else if (checkUnOccupyArea(currentSq) && (getMoney() >= currentSq.getPrice())) {
 					DicePane.buyButton.setDisable(false);
 				}
 
-				// upgradable if you're the owner, have enough money and not reach max level yet.
-				else if (currentSq.getOwner() == this && currentProperty.getLevel() < 2 && this.getMoney() >= currentSq.getUpgradeCost()) {
+				// upgradable if you're the owner, have enough money and not reach max level
+				// yet.
+				else if (currentSq.getOwner() == this && currentProperty.getLevel() < 2
+						&& this.getMoney() >= currentSq.getUpgradeCost()) {
 					DicePane.upgradeButton.setDisable(false);
 				}
-		}
+			}
 		}
 	}
 
@@ -164,10 +176,11 @@ public class Player {
 	}
 
 	public void printAsset(Player player) {
-		for (Property eachProperty:player.getPropertyHave()) {
+		for (Property eachProperty : player.getPropertyHave()) {
 			System.out.println(eachProperty);
 		}
 	}
+
 	public ArrayList<Property> getPropertyHave() {
 		return propertyHave;
 	}

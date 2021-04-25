@@ -22,18 +22,17 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
-public class ExampleBoard extends Application { 
+public class SampleApplication extends Application { 
    @Override 
    public void start(Stage stage) { 
 
 	 //å Property area = new Area(false,);
 	 
-	  HBox rootTop = new HBox();
-	  HBox rootBottom = new HBox();
-	  VBox rootLeft = new VBox();
+	 // HBox rootTop = new HBox();
+	  //HBox rootBottom = new HBox();
+	  GridPane dashBoard = new DashBoard();
 	  
-	  BorderPane border = new BorderPane();
-	  
+	  //BorderPane border = new BorderPane();
 	  /*Square square0 = new StartSquare();
 	  Square square1 = new PropertySquare("เรารักในหลวง1",area,100);
 	  Square square2 = new PropertySquare("เรารักในหลวง2",area,100);
@@ -83,20 +82,20 @@ public class ExampleBoard extends Application {
 	  
 	  //rootTop.getChildren().addAll(square8,square7,square6,square5,square4,square3,square2,square1,square0);
 	  //rootLeft.getChildren().addAll(square9,square10,square11,square12,square13,square14,square15);
-	  rootLeft.getChildren().add(square14);
+	  //rootLeft.getChildren().add(square14);
 	  //rootLeft.setRotate(90);
 	  //rootBottom.getChildren().addAll(square22,square15,square16,square17,square18,square19,square20,square21,square16);
 	  
 	  //root.getChildren().add(square1,squarestartSquare);
 	  //border.setBottom(rootTop);
 	  //border.setTop(rootBottom);
-	  border.setLeft(rootLeft);
+	  //border.setLeft(rootLeft);
 	  
 	  //rootBottom.setRotate(180);
 	  //rootBottom.setAlignment(Pos.TOP_RIGHT);
       
       //Creating a scene object 
-      Scene scene = new Scene(border, 1200, 800);  
+      Scene scene = new Scene( dashBoard , 1200, 800);  
       
       //Setting title to the Stage 
       stage.setTitle("Drawing a Rectangle"); 

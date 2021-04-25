@@ -4,10 +4,20 @@ import java.util.ArrayList;
 
 import Logic.GameLogic;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import property.Area;
 import property.Property;
 import square.CarParkSquare;
@@ -19,10 +29,20 @@ import square.StartSquare;
 
 public class GameBoard extends GridPane {
 	public static Square[] myArray = new Square[28];
-
+	public static Text  player1Label = new Text("Player 1\nMoney: 2000");;
+	public static Text  player2Label  = new Text("Player 2\nMoney: 2000");;
 	public GameBoard() {
 		// TODO Auto-generated constructor stub
 		initializeSqaureBoard();
+		DashBoard dashBoard = new DashBoard();
+		//player1Label = new Text("Player 1\nMoney: 2000");
+		//player1IncomeText = new Text("Income = 20");
+		//player2IncomeText = new Text("Income = 20");
+		//player2Label = new Text("Player 2\nMoney: 2000");
+		player1Label.setFont(new Font("Cordia New",17));
+		player2Label.setFont(new Font("Cordia New",17));
+		//Text player1Income = new Text("10");
+		//Text player2Income = new Text("10");
 
 		Square square0 = myArray[0];
 		Square square1 = myArray[1];
@@ -81,21 +101,27 @@ public class GameBoard extends GridPane {
 		this.add(square2, 5, 7);
 		this.add(square1, 6, 7);
 		this.add(square0, 7, 7);
-		
+		//this.add(player1Vbox, 3, 5);
+		//this.add(player2Vbox, 4, 5);
+
 		// initialize start position
-		
+
 		ImageView imageViewCharPlayer1 = GameLogic.player1.getCharacterImage();
 		ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
-		
-		this.add(imageViewCharPlayer1,7, 7);
-		this.add(imageViewCharPlayer2,7, 7);
-		
+
+		this.add(imageViewCharPlayer1, 7, 7);
+		this.add(imageViewCharPlayer2, 7, 7);
+		this.add( player1Label , 2, 2);
+		//this.add(player1IncomeText, 2, 2);
+		this.add( player2Label , 5, 4);
+		//this.add(player2IncomeText, 4, 5);
+		this.setBackground(new Background(new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+
 		this.setValignment(imageViewCharPlayer1, VPos.BOTTOM);
 		this.setHalignment(imageViewCharPlayer1, HPos.LEFT);
-		
+
 		this.setValignment(imageViewCharPlayer2, VPos.BOTTOM);
 		this.setHalignment(imageViewCharPlayer2, HPos.RIGHT);
-		
 
 	}
 
@@ -118,13 +144,13 @@ public class GameBoard extends GridPane {
 		myArray[15] = new PropertySquare("Dubai", null, 300, "third");
 		myArray[16] = new PropertySquare("Madrid", null, 320, "third");
 		myArray[17] = new PropertySquare("Chicago", null, 340, "third");
-		myArray[18] = new PropertySquare("Quebec City",null, 350, "third");
+		myArray[18] = new PropertySquare("Quebec City", null, 350, "third");
 		myArray[19] = new PropertySquare("Jerusalem", null, 360, "third");
 		myArray[20] = new PropertySquare("Toronto", null, 370, "third");
 		myArray[21] = new GoToJailSquare();
 		myArray[22] = new PropertySquare("Vienna", null, 400, "fourth");
 		myArray[23] = new PropertySquare("Tokyo", null, 410, "fourth");
-		myArray[24] = new PropertySquare("Istanbul",null, 430, "fourth");
+		myArray[24] = new PropertySquare("Istanbul", null, 430, "fourth");
 		myArray[25] = new PropertySquare("Budapest", null, 430, "fourth");
 		myArray[26] = new PropertySquare("Munich", null, 450, "fourth");
 		myArray[27] = new PropertySquare("Bangkok", null, 470, "fourth");
