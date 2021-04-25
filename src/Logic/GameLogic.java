@@ -129,11 +129,7 @@ public class GameLogic {
 			} else {
 				GameLogic.player1.setTurn(false);
 				GameLogic.player2.setTurn(true);
-<<<<<<< HEAD
 				GameLogic.playingPlayer = GameLogic.player2;
-=======
-				
->>>>>>> 922e8a26494c099096aa69e8ad79d0e5408d653a
 			}
 
 		} else if (GameLogic.player2.isTurn()) {

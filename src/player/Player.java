@@ -108,7 +108,6 @@ public class Player {
 			// Check what destination square and do action.
 			if (this.getCurrentSquare() instanceof PropertySquare) {
 				PropertySquare currentSq = (PropertySquare) this.getCurrentSquare();
-<<<<<<< HEAD
 				Property currentProperty = currentSq.getProperty();
 				// Check isOccupied and has money more than price --> can buy
 				if (checkUnOccupyArea(currentSq) && (getMoney()>= currentSq.getPrice())) {
@@ -135,7 +134,6 @@ public class Player {
 			
 			
 			
-=======
 				// Check isOccupied and money more than price
 				if (checkUnOccupyArea(currentSq) && (getMoney() >= currentSq.getPrice())) {
 					DicePane.buyButton.setDisable(false);
@@ -160,7 +158,6 @@ public class Player {
 			if (GameLogic.haveProperty(currentSq, GameLogic.player2)) {
 				DicePane.upgradeButton.setDisable(false);
 			}
->>>>>>> 922e8a26494c099096aa69e8ad79d0e5408d653a
 		}
 	}
 
