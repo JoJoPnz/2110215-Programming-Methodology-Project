@@ -8,7 +8,6 @@ import square.PropertySquare;
 import square.Square;
 
 public class Hotel extends Property {
-	private ImageView areaImage;
 
 	public Hotel(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
@@ -70,5 +69,9 @@ public class Hotel extends Property {
 		currentSquare.setValignment(imageViewProperty, VPos.TOP);
 		currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
 	}
-
+	
+	public void upgrade() {
+		
+	}
+	
 }

@@ -1,14 +1,15 @@
 package property;
 
+import javafx.scene.image.ImageView;
 import square.PropertySquare;
 import square.Square;
 
 public abstract class Property {
-
+	protected ImageView areaImage;
 	private boolean occupy;
 	private int rent;
 	private int level;
-	private int upgradeCost;
+	//private int upgradeCost;
 	private PropertySquare squareBuild;
 	private String pictureURL;
 
@@ -61,13 +62,13 @@ public abstract class Property {
 		this.squareBuild = squareBuild;
 	}
 
-	public int getUpgradeCost() {
-		return upgradeCost;
-	}
+//	public int getUpgradeCost() {
+//		return upgradeCost;
+//	}
 
-	public void setUpgradeCost(int upgradeCost) {
-		this.upgradeCost = upgradeCost;
-	}
+//	public void setUpgradeCost(int upgradeCost) {
+//		this.upgradeCost = upgradeCost;
+//	}
 
 	public String getPictureURL() {
 		return pictureURL;
@@ -81,4 +82,6 @@ public abstract class Property {
 	
 	
 	public abstract void createImage();
+	
+	public abstract void upgrade();
 }

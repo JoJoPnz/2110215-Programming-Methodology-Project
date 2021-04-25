@@ -17,6 +17,7 @@ public class PropertySquare extends Square {
 	private int price;
 	private String condition;
 	private boolean occupy;
+	private Player owner;
 
 	public PropertySquare(String Name, Property property, int price, String condition) {
 		// TODO Auto-generated constructor stub
@@ -50,7 +51,25 @@ public class PropertySquare extends Square {
 	public int getPrice() {
 		return price;
 	}
-
+	
+	public int getUpgradeCost() {
+		Property property = this.getProperty();
+		int level = property.getLevel();
+		if (level == 0) {
+			double costRatio = 1.5;
+			int cost = (int) Math.round(costRatio * this.getPrice());
+			return cost;
+		}
+		else if (level == 1) {
+			double costRatio = 2.0;
+			int cost = (int) Math.round(costRatio * this.getPrice());
+			return cost;
+		}
+		else {
+			return 0;
+		}
+	}
+	
 	public void setProperty(Property property) {
 		this.property = property;
 	}
@@ -82,6 +101,14 @@ public class PropertySquare extends Square {
 		} else {
 			return property.getRent();
 		}
+	}
+
+	public Player getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Player owner) {
+		this.owner = owner;
 	}
 
 	public void createGridPane() {
@@ -181,5 +208,8 @@ public class PropertySquare extends Square {
 		}
 
 	}
-
+	
+	
+	
+	
 }

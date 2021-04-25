@@ -9,7 +9,6 @@ import square.PropertySquare;
 import square.Square;
 
 public class Area extends Property {
-	private ImageView areaImage;
 
 	public Area(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
@@ -74,7 +73,24 @@ public class Area extends Property {
 		//currentSquare.setValignment(imageViewCharPlayer2, VPos.BOTTOM);
 		//currentSquare.setHalignment(imageViewCharPlayer2, HPos.RIGHT);
 	}
-
-
-
+	
+	public void upgrade() {
+		if (GameLogic.player1.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
+			currentSq.getProperty().areaImage.setImage(null);
+			currentSq.setProperty(new House(true, 1, currentSq, "blueHouse.png"));
+			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getUpgradeCost());
+			
+		}
+		else if (GameLogic.player2.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
+			currentSq.getProperty().areaImage.setImage(null);
+			currentSq.setProperty(new House(true, 1, currentSq, "redHouse.png"));
+			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getUpgradeCost());
+		}
+	}
+	
+	public void removeImage() {
+		this.areaImage = null;
+	}
 }

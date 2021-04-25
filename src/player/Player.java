@@ -101,23 +101,46 @@ public class Player {
 			
 			// Set player picture to a new Square
 			this.getCurrentSquare().setPlayerToSquare(this);
+			
+			// Check what destination square and do action.
 			if (this.getCurrentSquare() instanceof PropertySquare) {
 				PropertySquare currentSq = (PropertySquare) this.getCurrentSquare();
-				// Check isOccupied and money more than price
+				Property currentProperty = currentSq.getProperty();
+				// Check isOccupied and has money more than price --> can buy
 				if (checkUnOccupyArea(currentSq) && (getMoney()>= currentSq.getPrice())) {
 					DicePane.buyButton.setDisable(false);
 				}
+				// opponent area --> pay
+				else if (!checkUnOccupyArea(currentSq) && currentSq.getOwner() != this) {
+					DicePane.buyButton.setDisable(true);
+					if (this.getMoney() < currentSq.getRent()) {
+						this.setBankrupt(true);
+					}
+					else {
+						GameLogic.payRent(this);
+					}
+				}
+				// upgradable if you're the owner, have enough money and not reach max level yet.
+				else if (currentSq.getOwner() == this && currentProperty.getLevel() < 2 && this.getMoney() >= currentSq.getUpgradeCost()) {
+					DicePane.upgradeButton.setDisable(false);
+				}
+				
 			}
-		}}
+			
+			
+			
+			
+			
+		}
+	}
 
 	public boolean checkUnOccupyArea(Square square) {
-		if (this.getCurrentSquare() instanceof PropertySquare) {
-			PropertySquare currentArea = (PropertySquare) this.getCurrentSquare();
+		if (square instanceof PropertySquare) {
+			PropertySquare currentArea = (PropertySquare) square;
 			// Check isOccupied and money more than price
 			if (!currentArea.isOccupy()) {
 				return true;
 			}
-
 		}
 		return false;
 	}

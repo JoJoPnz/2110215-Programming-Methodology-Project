@@ -1,5 +1,6 @@
 package property;
 
+import Logic.GameLogic;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.image.Image;
@@ -8,7 +9,6 @@ import square.PropertySquare;
 import square.Square;
 
 public class House extends Property {
-	private ImageView areaImage;
 
 	public House(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
@@ -31,7 +31,7 @@ public class House extends Property {
 		// TODO Auto-generated method stub
 		int rent = 0;
 		if (getLevel() == 1) {
-			double rentRatio = 0.5;
+			double rentRatio = 0.35;
 			rent = (int) Math.round(rentRatio * getSquareBuild().getPrice());
 
 		}
@@ -70,4 +70,25 @@ public class House extends Property {
 		currentSquare.setValignment(imageViewProperty, VPos.TOP);
 		currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
 	}
+	
+	public void upgrade() {
+		if (GameLogic.player1.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
+			currentSq.getProperty().areaImage.setImage(null);
+			currentSq.setProperty(new House(true, 1, currentSq, "blueHotel.png"));
+			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getUpgradeCost());
+			
+		}
+		else if (GameLogic.player2.isTurn()) {
+			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
+			currentSq.getProperty().areaImage.setImage(null);
+			currentSq.setProperty(new House(true, 1, currentSq, "redHotel.png"));
+			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getUpgradeCost());
+		}
+	}
+	
+	public void removeImage() {
+		this.areaImage = null;
+	}
+	
 }

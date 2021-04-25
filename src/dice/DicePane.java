@@ -22,7 +22,8 @@ import Logic.GameLogic;
 public class DicePane extends VBox {
 	private Button rollButton;
 	private Button endTurnButton;
-	public static Button buyButton = new Button("Buy Area");;
+	public static Button buyButton = new Button("Buy Area");
+	public static Button upgradeButton = new Button("Upgrade Area");
 	private Label diceLabel;
 	private static ImageView diceImage = new ImageView();
 	private static int faceValue;
@@ -43,8 +44,6 @@ public class DicePane extends VBox {
 
 		Button rollButton = new Button("ROLL");
 		Button endTurnButton = new Button("END TURN");
-		Button upgradeButton = new Button("Upgrade");
-		// Button buyButton = new Button("Buy Area");
 
 		buyButton.setDisable(true);
 		buyButton.setPrefWidth(150);
@@ -80,7 +79,17 @@ public class DicePane extends VBox {
 				buyButton.setDisable(true);
 			}
 		});
-
+		
+		upgradeButton.setPrefWidth(150);
+		upgradeButton.setDisable(true);
+		upgradeButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				GameLogic.upgradeProperty();
+				upgradeButton.setDisable(true);
+			}
+		});
+		
 		endTurnButton.setPrefWidth(150);
 		endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -90,10 +99,12 @@ public class DicePane extends VBox {
 				// set button behavior
 				endTurnButton.setDisable(true);
 				rollButton.setDisable(false);
+				buyButton.setDisable(true);
+				upgradeButton.setDisable(true);
 			}
 		});
 
-		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, buyButton, endTurnButton);
+		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, buyButton, upgradeButton, endTurnButton);
 
 	}
 
