@@ -1,5 +1,7 @@
 package board;
 
+
+
 import Logic.GameLogic;
 import dice.DicePane;
 import javafx.application.Application;
@@ -12,6 +14,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -49,7 +54,16 @@ public class Board extends Application {
 
 		// Displaying the contents of the stage
 		stage.show();
-
+		
+		// Play Background Song
+		try {
+			AudioClip sound = new AudioClip(getClass().getResource("/backgroundSong.mp3").toExternalForm());
+			sound.setCycleCount(AudioClip.INDEFINITE);
+			sound.play();
+		}
+		catch(Exception e) {
+			System.out.println("Music not found.");
+		}
 	}
 
 	public static void main(String args[]) {
