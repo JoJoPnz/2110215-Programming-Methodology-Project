@@ -3,7 +3,9 @@ package square;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -21,18 +23,19 @@ public class StartSquare extends Square {
 		// TODO Auto-generated method stub
 
 		Rectangle largeRectangle = createRectangle(200.0f, 75.0f, 175.0f, 175.0f, Color.LIGHTGREEN, true);
-
+		Image img = new Image("/startPoint.png");
+		largeRectangle.setFill(new ImagePattern(img));
 		this.setAlignment(Pos.BOTTOM_RIGHT);
 		// Text nameText = new Text(getAppearName());
 		// Text priceText = new Text("Price" + getPrice() + "\n Rent = " + getRent());
-		Text nameText = new Text(getAppearName());
+		//Text nameText = new Text(getAppearName());
 
 		this.add(largeRectangle, 0, 0);
-		this.setValignment(nameText, VPos.CENTER);
-		this.setHalignment(nameText, HPos.CENTER);
+//		this.setValignment(nameText, VPos.CENTER);
+//		this.setHalignment(nameText, HPos.CENTER);
 
 		// root.add(smallRectangle, 0, 1);
-		this.add(nameText, 0, 0);
+//		this.add(nameText, 0, 0);
 		/*this.add(priceText, 0, 1);
 
 		this.setValignment(priceText, VPos.BOTTOM);
