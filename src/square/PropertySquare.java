@@ -7,7 +7,10 @@ import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import player.Player;
 import property.Area;
 import property.Property;
@@ -113,14 +116,16 @@ public class PropertySquare extends Square {
 
 	public void createGridPane() {
 		// TODO Auto-generated method stub
-
+		Text nameText = new Text(getAppearName() + "\nPrice = " + getPrice());
+		nameText.setTextAlignment(TextAlignment.CENTER);
+		nameText.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 		if (getCondition().equals("first")) {
 			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 150.0f, 100.0f, Color.WHITE, true);
 			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 25.0f, 100.0f, Color.BLUE, true);
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
 			// Text priceText = new Text("Price" + getPrice() + "\n Rent = " + getRent());
-			Text nameText = new Text(getAppearName() + "\nPrice = " + getPrice());
+			
 			// Text priceText = new Text("Price");
 
 			this.add(smallRectangle, 0, 0);
@@ -148,7 +153,7 @@ public class PropertySquare extends Square {
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
 			// Text priceText = new Text("Price" + getPrice() + "\n Rent = " + getRent());
-			Text nameText = new Text(getAppearName() + "\nPrice = " + getPrice());
+			
 			// Text priceText = new Text("Price");
 
 			nameText.setRotate(90);
@@ -173,7 +178,7 @@ public class PropertySquare extends Square {
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
 			// Text priceText = new Text("Price" + getPrice() + "\n Rent = " + getRent());
-			Text nameText = new Text(getAppearName() + "\nPrice = " + getPrice());
+			
 			// Text priceText = new Text("Price");
 
 			nameText.setRotate(180);
@@ -188,11 +193,11 @@ public class PropertySquare extends Square {
 			this.add(nameText, 0, 0);
 		} else if (getCondition().equals("fourth")) {
 			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 100.0f, 150.0f, Color.WHITE, true);
-			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 100.0f, 25.0f, Color.PINK, true);
+			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 100.0f, 25.0f, Color.RED, true);
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
 			// Text priceText = new Text("Price" + getPrice() + "\n Rent = " + getRent());
-			Text nameText = new Text(getAppearName() + "\nPrice = " + getPrice());
+			
 			// Text priceText = new Text("Price");
 
 			nameText.setRotate(270);
