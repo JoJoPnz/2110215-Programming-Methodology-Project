@@ -13,10 +13,13 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import player.Player;
 import square.PropertySquare;
+
+
 import Logic.GameLogic;
 
 public class DicePane extends VBox {
@@ -68,6 +71,9 @@ public class DicePane extends VBox {
 				// set button behavior
 				endTurnButton.setDisable(false);
 				rollButton.setDisable(true);
+				
+				// play sound
+				playSoundEffect("/rollDice.mp3");
 			}
 		});
 		// buyButton.setOnAction();
@@ -86,6 +92,9 @@ public class DicePane extends VBox {
 
 				}
 				buyButton.setDisable(true);
+				
+				// play sound
+				playSoundEffect("/buy.mp3");
 			}
 		});
 
@@ -97,6 +106,9 @@ public class DicePane extends VBox {
 			public void handle(ActionEvent event) {
 				GameLogic.upgradeProperty();
 				upgradeButton.setDisable(true);
+				
+				// play sound
+				playSoundEffect("/upgrade.mp3");
 			}
 		});
 		
@@ -155,5 +167,15 @@ public class DicePane extends VBox {
 	public void setBuyButton(Button buyButton) {
 		this.buyButton = buyButton;
 	}
-
+	
+	public void playSoundEffect(String url) {
+		try {
+			AudioClip buzzer = new AudioClip(getClass().getResource(url).toExternalForm());
+			buzzer.play();
+		}
+		catch (Exception e){
+			System.out.println("Soundtrack url doesn't exist.");
+		}
+	}
+	
 }
