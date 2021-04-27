@@ -18,11 +18,14 @@ public class GameLogic {
 	public static Player player1 = new Player("dice1.png");
 	public static Player player2 = new Player("dice2.png");
 	public static Player playingPlayer;
+	public static Player waitingPlayer;
 	
 	public GameLogic() {
 		// TODO Auto-generated constructor stub
 		// initialize Starting turn
 		player1.setTurn(true);
+		playingPlayer = player1;
+		waitingPlayer = player2;
 	}
 
 	public static Player getPlayer1() {
@@ -40,32 +43,23 @@ public class GameLogic {
 		DicePane.setDiceImage(dice.getFaceValue());
 	}
 	public static void move() {
-		
-		// check turn
-		if (GameLogic.player1.isTurn()) {
-			GameLogic.player1.move(DicePane.getFaceValue());
-
-		} else if (GameLogic.player2.isTurn()) {
-			GameLogic.player2.move(DicePane.getFaceValue());
-		}
+		GameLogic.playingPlayer.move(DicePane.getFaceValue());
 	}
 
 	public static void buyArea() {
 		System.out.println("========Before Buy=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+		
+		PropertySquare currentSq = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
 		if (GameLogic.player1.isTurn()) {
-			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
 			currentSq.setProperty(new Area(true, 0, currentSq, "blueFlag.png"));
-			currentSq.setOwner(player1);
-			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getPrice());
-			//currentSq.setOccupy(true);
 		} else if (GameLogic.player2.isTurn()) {
-			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
 			currentSq.setProperty(new Area(true, 0, currentSq, "redFlag.png"));
-			currentSq.setOwner(player2);
-			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getPrice());
 		}
+		currentSq.setOwner(playingPlayer);
+		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - currentSq.getPrice());
+		
 		System.out.println("========After Buy=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
@@ -75,37 +69,32 @@ public class GameLogic {
 		System.out.println("========Before Pay=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+		
 		PropertySquare square = (PropertySquare) payer.getCurrentSquare();
 		Property property = square.getProperty();
 		int payAmount = property.calculateIncome();
 		payer.setMoney(payer.getMoney() - payAmount);
 		Player propertyOwner = square.getOwner();
 		propertyOwner.setMoney(propertyOwner.getMoney() + payAmount);
+		
 		System.out.println("========After Pay=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
-		
 	}
 	
 	public static void upgradeProperty() {
 		System.out.println("========Before Upgrade=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
-		PropertySquare currentSq;
-		if (GameLogic.player1.isTurn()) {
-			currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
-		} else {
-			currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
-		}
+		
+		PropertySquare currentSq = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
 		Property property = currentSq.getProperty();
 		property.upgrade();
+		
 		System.out.println("========After Upgrade=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 	}
-
-	// public boolean checkOccupy
-
 
 	public static boolean haveProperty(PropertySquare currentSq,Player player) {
 		Property checkProperty = currentSq.getProperty();
@@ -119,40 +108,34 @@ public class GameLogic {
 	}
 
 	public static void endTurn() {
-		// change turn with Jail condition.
+		// check for switch turn with jail condition
 		
-		if (GameLogic.player1.isTurn()) {
-			//System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-			//System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-			if (GameLogic.player2.isInJail()) {
-				//System.out.println("Player2 is in jail");
-				GameLogic.player1.setTurn(true);
-				GameLogic.player2.setTurn(false);
-				GameLogic.player2.setInJail(false); // set inJail to false so next turn it can move now.
-				GameLogic.playingPlayer = GameLogic.player1;
-			} else {
-				GameLogic.player1.setTurn(false);
-				GameLogic.player2.setTurn(true);
-				GameLogic.playingPlayer = GameLogic.player2;
-			}
-
-		} else if (GameLogic.player2.isTurn()) {
-			//System.out.println("player1 isJail = " + GameLogic.player1.isInJail());
-			//System.out.println("player2 isJail = " + GameLogic.player2.isInJail());
-			if (GameLogic.player1.isInJail()) {
-				//System.out.println("Player1 is in jail");
-				GameLogic.player1.setTurn(false);
-				GameLogic.player2.setTurn(true);
-				GameLogic.player1.setInJail(false); // set inJail to false so next turn it can move now.
-				GameLogic.playingPlayer = GameLogic.player2;
-			} else {
-				GameLogic.player1.setTurn(true);
-				GameLogic.player2.setTurn(false);
-				GameLogic.playingPlayer = GameLogic.player1;
-			}
+		// 1. if playing player move to jail while other player has already in jail. --> switch turn
+		if (GameLogic.playingPlayer.isInJail() && GameLogic.waitingPlayer.isInJail()) {
+			GameLogic.switchTurn();
+		}
+		// 2. if other player is in jail --> not switch turn and also setInJail of other player to false
+		else if (GameLogic.waitingPlayer.isInJail()) {
+			GameLogic.waitingPlayer.setInJail(false); // set inJail to false so next turn it can move now.
+		// 3. no one in jail --> switch turn normally
+		}
+		else {
+			GameLogic.switchTurn();
 		}
 	}
 	
+	public static void switchTurn() {
+		GameLogic.playingPlayer.setTurn(false);
+		GameLogic.waitingPlayer.setTurn(true);
+		if (GameLogic.player1.isTurn()) {
+			GameLogic.playingPlayer = GameLogic.player1;
+			GameLogic.waitingPlayer = GameLogic.player2;
+		}
+		else if (GameLogic.player2.isTurn()) {
+			GameLogic.playingPlayer = GameLogic.player2;
+			GameLogic.waitingPlayer = GameLogic.player1;
+		}
+	}
 	
 	
 	
