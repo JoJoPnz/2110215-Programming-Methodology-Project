@@ -24,6 +24,7 @@ public class GameLogic {
 		// TODO Auto-generated constructor stub
 		// initialize Starting turn
 		player1.setTurn(true);
+		player2.setTurn(false);
 		playingPlayer = player1;
 		waitingPlayer = player2;
 	}
@@ -51,14 +52,17 @@ public class GameLogic {
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
-		PropertySquare currentSq = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
+		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
 		if (GameLogic.player1.isTurn()) {
-			currentSq.setProperty(new Area(true, 0, currentSq, "blueFlag.png"));
+			currentSquare.setProperty(new Area(true, 0, currentSquare, "blueFlag.png"));
 		} else if (GameLogic.player2.isTurn()) {
-			currentSq.setProperty(new Area(true, 0, currentSq, "redFlag.png"));
+			currentSquare.setProperty(new Area(true, 0, currentSquare, "redFlag.png"));
 		}
-		currentSq.setOwner(playingPlayer);
-		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - currentSq.getPrice());
+		currentSquare.setOwner(playingPlayer);
+		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - currentSquare.getPrice());
+		currentSquare.setOccupy(true);
+		GameLogic.playingPlayer.getPropertyHave().add(currentSquare.getProperty());
+		
 		
 		System.out.println("========After Buy=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());

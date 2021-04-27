@@ -25,9 +25,8 @@ import Logic.GameLogic;
 public class DicePane extends VBox {
 
 	public static Button upgradeButton = new Button("Upgrade Area");
-
-	public static Button rollButton;
-	public static Button endTurnButton;
+	public static Button rollButton = new Button("ROLL");
+	public static Button endTurnButton = new Button("END TURN");
 	public static Button buyButton = new Button("Buy Area");
 
 	private Label diceLabel;
@@ -47,15 +46,6 @@ public class DicePane extends VBox {
 
 		this.faceValue = 1;
 		setDiceImage(faceValue); // default dice picture
-
-
-		rollButton = new Button("ROLL");
-		endTurnButton = new Button("END TURN");
-
-
-		// Button upgradeButton = new Button("Upgrade");
-		// Button buyButton = new Button("Buy Area");
-
 
 		buyButton.setDisable(true);
 		buyButton.setPrefWidth(150);
@@ -81,16 +71,6 @@ public class DicePane extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				GameLogic.buyArea();
-				if (GameLogic.player1.isTurn()) {
-					((PropertySquare) GameLogic.player1.getCurrentSquare()).setOccupy(true);
-					GameLogic.player1.getPropertyHave()
-							.add(((PropertySquare) GameLogic.player1.getCurrentSquare()).getProperty());
-				} else if (GameLogic.player2.isTurn()) {
-					((PropertySquare) GameLogic.player2.getCurrentSquare()).setOccupy(true);
-					GameLogic.player2.getPropertyHave()
-							.add(((PropertySquare) GameLogic.player2.getCurrentSquare()).getProperty());
-
-				}
 				buyButton.setDisable(true);
 				
 				// play sound
