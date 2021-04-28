@@ -24,7 +24,7 @@ public class Player {
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
-		setInitialMoney(10000);
+		setInitialMoney(2000);
 		setCharacterPictureLink(characterPictureLink);
 		setBankrupt(false);
 		propertyHave = new ArrayList<Property>();
@@ -87,10 +87,10 @@ public class Player {
 	}
 
 	public void move(int FaceValue) {
-		System.out.println("Player1 Asset");
-		printAsset(GameLogic.player1);
-		System.out.println("Player2 Asset");
-		printAsset(GameLogic.player2);
+//		System.out.println("Player1 Asset");
+//		printAsset(GameLogic.player1);
+//		System.out.println("Player2 Asset");
+//		printAsset(GameLogic.player2);
 		if (isTurn()) {
 			int pastPos = getCurrentPosition();
 			int currentPos = (getCurrentPosition() + FaceValue) % 28;

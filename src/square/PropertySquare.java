@@ -1,9 +1,12 @@
 package square;
 
 import Logic.GameLogic;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import player.Player;
 import property.Area;
+import property.Hotel;
 import property.Property;
 
 public class PropertySquare extends Square {
@@ -21,6 +25,7 @@ public class PropertySquare extends Square {
 	private String condition;
 	private boolean occupy;
 	private Player owner;
+	private Tooltip tooltip;
 
 	public PropertySquare(String Name, Property property, int price, String condition) {
 		// TODO Auto-generated constructor stub
@@ -29,6 +34,8 @@ public class PropertySquare extends Square {
 		setCondition(condition);
 		createGridPane();
 		setOccupy(false);
+		setUpTooltip();
+	
 	}
 
 	public boolean isOccupy() {
@@ -73,6 +80,13 @@ public class PropertySquare extends Square {
 		}
 	}
 	
+	private boolean canGetUpgradeCost() {
+		if (this.property == null || this.property.getLevel() == 2) {
+			return false;
+		}
+		return true;
+	}
+	
 	public void setProperty(Property property) {
 		this.property = property;
 	}
@@ -99,11 +113,14 @@ public class PropertySquare extends Square {
 	}
 
 	public int getRent() {
-		if (getProperty() == null) {
-			return 0;
-		} else {
-			return property.getRent();
+		return property.getRent();
+	}
+	
+	public boolean canGetRent() {
+		if (this.getProperty() == null) {
+			return false;
 		}
+		return true;
 	}
 
 	public Player getOwner() {
@@ -211,10 +228,26 @@ public class PropertySquare extends Square {
 			// root.add(smallRectangle, 0, 1);
 			this.add(nameText, 1, 0);
 		}
-
 	}
 	
-	
-	
+	public void setUpTooltip() {
+		tooltip = new Tooltip();
+		tooltip.setFont(new Font(17));
+		tooltip.setText("City : " + this.getAppearName() + "\n" +
+						"Price : " + this.getPrice() + "$\n");
+		if (this.canGetRent()) {
+			tooltip.setText(tooltip.getText() + "Rent : " + this.getRent() + "$\n");
+		}
+		if (this.canGetUpgradeCost()) {
+			tooltip.setText(tooltip.getText() + "Upgrade cost : " + this.getUpgradeCost() + "$\n");
+		}
+		
+		this.setOnMouseMoved((MouseEvent e) -> {
+			tooltip.show(this, e.getScreenX(), e.getScreenY()+10);
+		});
+		this.setOnMouseExited((MouseEvent e) -> {
+			tooltip.hide();
+		});
+	}
 	
 }

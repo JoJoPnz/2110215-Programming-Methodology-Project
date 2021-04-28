@@ -13,8 +13,6 @@ public class Area extends Property {
 	public Area(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
 		// super(isOccupy,rent,level,squareBuild);
-		// super();
-		// super();
 		// setRent(level,squareBuild);
 		super(isOccupy, level, squareBuild);
 		setRentArea(squareBuild.getPrice());
@@ -36,7 +34,6 @@ public class Area extends Property {
 		if (getLevel() == 0) {
 			double rentRatio = 0.2;
 			rent = (int) Math.round(rentRatio * getSquareBuild().getPrice());
-
 		}
 		return rent;
 	}
@@ -101,13 +98,10 @@ public class Area extends Property {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
 			currentSq.setProperty(new House(true, 1, currentSq, "blueHouse.png"));
-			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getUpgradeCost());
-
 		} else if (GameLogic.player2.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
 			currentSq.setProperty(new House(true, 1, currentSq, "redHouse.png"));
-			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getUpgradeCost());
 		}
 	}
 

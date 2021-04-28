@@ -65,14 +65,12 @@ public class House extends Property {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
 			currentSq.setProperty(new House(true, 1, currentSq, "blueHotel.png"));
-			GameLogic.player1.setMoney(GameLogic.player1.getMoney() - currentSq.getUpgradeCost());
 			
 		}
 		else if (GameLogic.player2.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
 			currentSq.setProperty(new House(true, 1, currentSq, "redHotel.png"));
-			GameLogic.player2.setMoney(GameLogic.player2.getMoney() - currentSq.getUpgradeCost());
 		}
 	}
 	

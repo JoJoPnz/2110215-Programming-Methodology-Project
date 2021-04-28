@@ -63,6 +63,7 @@ public class GameLogic {
 		currentSquare.setOccupy(true);
 		GameLogic.playingPlayer.getPropertyHave().add(currentSquare.getProperty());
 		
+		GameLogic.updateTooltip();
 		
 		System.out.println("========After Buy=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
@@ -92,8 +93,11 @@ public class GameLogic {
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
 		PropertySquare currentSq = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
+		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - currentSq.getUpgradeCost());
 		Property property = currentSq.getProperty();
 		property.upgrade();
+		
+		GameLogic.updateTooltip();
 		
 		System.out.println("========After Upgrade=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
@@ -141,7 +145,12 @@ public class GameLogic {
 		}
 	}
 	
-	
+	public static void updateTooltip() {
+		Square currentSquare = GameLogic.playingPlayer.getCurrentSquare();
+		if (currentSquare instanceof PropertySquare) {
+			((PropertySquare) currentSquare).setUpTooltip();
+		}
+	}
 	
 	
 	
