@@ -11,7 +11,9 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
@@ -36,7 +38,10 @@ public class Board extends Application {
 		
 		//====================Main menu scene=========================
 		VBox root = new VBox();
-		root.setBackground(new BackgroundImage(new Image("menubg.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.default, BackgroundSize.default);
+		
+		root.setBackground(new Background(new BackgroundImage(new Image("menubg.jpg"), BackgroundRepeat.NO_REPEAT, 
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(900,600,true,true,true,true))));
+		
 		Scene menuScene = new Scene(root, 900, 600);
 		
 		//================================================================
@@ -62,11 +67,11 @@ public class Board extends Application {
 		stage.setTitle("Monopoly Game");
 
 		// Adding scene to the stage
-		stage.setScene(scene);
+		stage.setScene(menuScene);
 
 		// Displaying the contents of the stage
 		stage.show();
-		
+		stage.setResizable(false);
 		// Play Background Song
 		try {
 			AudioClip sound = new AudioClip(getClass().getResource("/backgroundSong.mp3").toExternalForm());
