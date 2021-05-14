@@ -34,6 +34,11 @@ public class DicePane extends VBox {
 	private static int faceValue;
 
 	public DicePane() {
+		upgradeButton.setId("inGameButton");
+		rollButton.setId("inGameButton");
+		endTurnButton.setId("inGameButton");
+		buyButton.setId("inGameButton");
+		
 		this.setAlignment(Pos.CENTER);
 		this.setPrefWidth(300);
 		this.setSpacing(15);
