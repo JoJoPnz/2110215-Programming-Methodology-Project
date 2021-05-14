@@ -243,7 +243,7 @@ public class PropertySquare extends Square {
 		}
 		
 		this.setOnMouseMoved((MouseEvent e) -> {
-			tooltip.show(this, e.getScreenX(), e.getScreenY()+10);
+			tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);
 		});
 		this.setOnMouseExited((MouseEvent e) -> {
 			tooltip.hide();
