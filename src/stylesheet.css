@@ -3,7 +3,7 @@
     transition-duration: 0.4s;
     color: white;
     
-    -fx-background-color: lightgreen ;
+    -fx-background-color: green;
     -fx-text-fill: white;
     -fx-background-radius: 16px;
 }

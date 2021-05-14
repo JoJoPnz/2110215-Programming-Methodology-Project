@@ -1,9 +1,12 @@
 package Application;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import logic.ButtonLogic;
 
 public class MainMenu extends HBox {
 	private Button startGame;
@@ -23,6 +26,13 @@ public class MainMenu extends HBox {
 		startGame.setPrefWidth(200);
 		startGame.setPrefHeight(60);
 		
+		startGame.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO fill in this method }
+				//ButtonLogic.topControlPaneOnClick();
+			}
+		});
 		exitGame.setPrefWidth(200);
 		exitGame.setPrefHeight(60);
 		
