@@ -56,9 +56,8 @@ public class Board extends Application {
 		root2.getChildren().addAll(gameBoard, dicePane);
 		
 		// Creating a scene object
-		Scene gameScene = new Scene(root2, 1200, 950);
+		Scene gameScene = new Scene(root2, 1200, 970);
 		gameScene.getStylesheets().add("stylesheet2.css");
-		// Current Scene
 		
 		//====================Main menu scene=========================
 		VBox root = new VBox();
@@ -78,6 +77,13 @@ public class Board extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				stage.setScene(gameScene);
+			}
+		});
+		
+		exitGame.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.exit(0);
 			}
 		});
 		
