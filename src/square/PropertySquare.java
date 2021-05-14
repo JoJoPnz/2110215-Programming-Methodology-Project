@@ -137,7 +137,7 @@ public class PropertySquare extends Square {
 		nameText.setTextAlignment(TextAlignment.CENTER);
 		nameText.setFont(Font.font("Arial", FontWeight.BOLD, 12));
 		if (getCondition().equals("first")) {
-			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 150.0f, 100.0f, Color.WHITE, true);
+			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 150.0f, 100.0f, Color.web("#d4e8cd"), true);
 			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 25.0f, 100.0f, Color.BLUE, true);
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
@@ -164,8 +164,7 @@ public class PropertySquare extends Square {
 			 * Color.WHITE, true); Rectangle smallRectangle = createRectangle(250.0f, 25.0f,
 			 * 25.0f, 100.0f, Color.BLUE, true);
 			 */
-
-			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 100.0f, 150.0f, Color.WHITE, true);
+			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 100.0f, 150.0f, Color.web("#d4e8cd"), true);
 			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 100.0f, 25.0f, Color.GREEN, true);
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
@@ -190,7 +189,7 @@ public class PropertySquare extends Square {
 
 		} else if (getCondition().equals("third")) {
 
-			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 150.0f, 100.0f, Color.WHITE, true);
+			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 150.0f, 100.0f, Color.web("#d4e8cd"), true);
 			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 25.0f, 100.0f, Color.YELLOW, true);
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());
@@ -209,7 +208,7 @@ public class PropertySquare extends Square {
 			// root.add(smallRectangle, 0, 1);
 			this.add(nameText, 0, 0);
 		} else if (getCondition().equals("fourth")) {
-			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 100.0f, 150.0f, Color.WHITE, true);
+			Rectangle largeRectangle = createRectangle(200.0f, 25.0f, 100.0f, 150.0f, Color.web("#d4e8cd"), true);
 			Rectangle smallRectangle = createRectangle(250.0f, 25.0f, 100.0f, 25.0f, Color.RED, true);
 			this.setAlignment(Pos.BOTTOM_RIGHT);
 			// Text nameText = new Text(getAppearName());

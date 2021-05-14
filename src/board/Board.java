@@ -10,6 +10,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -29,10 +33,18 @@ import javafx.scene.transform.Rotate;
 public class Board extends Application {
 	@Override
 	public void start(Stage stage) {
-		HBox root = new HBox();
-		root.setSpacing(10);
-		root.setPadding(new Insets(10, 10, 10, 10));
-		root.setPrefHeight(400);
+		
+		//====================Main menu scene=========================
+		VBox root = new VBox();
+		root.setBackground(new BackgroundImage(new Image("menubg.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.default, BackgroundSize.default);
+		Scene menuScene = new Scene(root, 900, 600);
+		
+		//================================================================
+		
+		HBox root2 = new HBox();
+		root2.setSpacing(10);
+		root2.setPadding(new Insets(10, 10, 10, 10));
+		root2.setPrefHeight(400);
 		
 		GameLogic newGame = new GameLogic();
 		
@@ -41,13 +53,13 @@ public class Board extends Application {
 		
 		DicePane dicePane = new DicePane();
 		
-		root.getChildren().addAll(gameBoard, dicePane);
+		root2.getChildren().addAll(gameBoard, dicePane);
 		
 		// Creating a scene object
-		Scene scene = new Scene(root, 1200, 950);
+		Scene gameScene = new Scene(root2, 1200, 950);
 
 		// Setting title to the Stage
-		stage.setTitle("Drawing a Rectangle");
+		stage.setTitle("Monopoly Game");
 
 		// Adding scene to the stage
 		stage.setScene(scene);

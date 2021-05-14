@@ -35,7 +35,7 @@ public class GameBoard extends GridPane {
 		// TODO Auto-generated constructor stub
 		initializeSqaureBoard();
 		DashBoard dashBoard = new DashBoard();
-		//player1Label = new Text("Player 1\nMoney: 2000");
+		//playeloadr1Label = new Text("Player 1\nMoney: 2000");
 		//player1IncomeText = new Text("Income = 20");
 		//player2IncomeText = new Text("Income = 20");
 		//player2Label = new Text("Player 2\nMoney: 2000");
@@ -115,7 +115,7 @@ public class GameBoard extends GridPane {
 		//this.add(player1IncomeText, 2, 2);
 		this.add( player2Label , 5, 4);
 		//this.add(player2IncomeText, 4, 5);
-		this.setBackground(new Background(new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBackground(new Background(new BackgroundFill(Color.web("#d4e8cd"), CornerRadii.EMPTY, Insets.EMPTY)));
 
 		this.setValignment(imageViewCharPlayer1, VPos.BOTTOM);
 		this.setHalignment(imageViewCharPlayer1, HPos.LEFT);
