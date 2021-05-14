@@ -21,6 +21,7 @@ import property.Property;
 import square.PropertySquare;
 import square.Square;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
@@ -34,7 +35,12 @@ public class CheckMainMenu extends Application {
 		// HBox rootBottom = new HBox();
 		VBox vBox = new VBox();
 		MainMenu mainMenu = new MainMenu();
-		vBox.getChildren().addAll(mainMenu);
+		Text monopolyText = new Text("Monopoly");
+		monopolyText.setFont(new Font("Ariel",30));
+		
+		vBox.getChildren().addAll(monopolyText,mainMenu);
+		vBox.setAlignment(Pos.CENTER);
+		vBox.setSpacing(30);
 		// BorderPane border = new BorderPane();
 		/*
 		 * Square square0 = new StartSquare(); Square square1 = new
@@ -99,8 +105,7 @@ public class CheckMainMenu extends Application {
 
 		// Creating a scene object
 		Scene scene = new Scene(vBox, 900, 600);
-		
-
+		scene.getStylesheets().add("stylesheet.css");
 		// Setting title to the Stage
 		stage.setTitle("Drawing a Rectangle");
 
