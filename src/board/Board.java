@@ -59,10 +59,41 @@ public class Board extends Application {
 		Scene gameScene = new Scene(root2, 1200, 950);
 		gameScene.getStylesheets().add("stylesheet2.css");
 		// Current Scene
-		Scene currentScene;
 		
 		//====================Main menu scene=========================
-		Scene menuScene = createmenuScene();
+		VBox root = new VBox();
+
+		root.setBackground(new Background(new BackgroundImage(new Image("menubg.jpg"), BackgroundRepeat.NO_REPEAT, 
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(900,550,true,true,true,true))));
+		ImageView logo = new ImageView(new Image("logo.png"));
+		logo.setFitHeight(300);
+		logo.setFitWidth(700);
+		root.setAlignment(Pos.CENTER);
+		
+		HBox buttonPane = new HBox();
+		Button startGame = new Button("Play");
+		Button exitGame = new Button("Exit");
+		
+		startGame.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				stage.setScene(gameScene);
+			}
+		});
+		
+		startGame.setFont(new Font("Ariel",50));
+		exitGame.setFont(new Font("Ariel",50));
+		startGame.setPrefWidth(300);
+		startGame.setPrefHeight(80);
+		exitGame.setPrefWidth(300);
+		exitGame.setPrefHeight(80);
+		buttonPane.setAlignment(Pos.CENTER);
+		buttonPane.setSpacing(50);
+		buttonPane.getChildren().addAll(startGame, exitGame);
+		
+		root.getChildren().addAll(logo,buttonPane);
+		Scene menuScene = new Scene(root, 900, 550);
+		menuScene.getStylesheets().add("stylesheet.css");
 		//================================================================
 		
 
@@ -91,41 +122,5 @@ public class Board extends Application {
 		launch(args);
 	}
 	
-	public Scene createmenuScene() {
-		VBox root = new VBox();
-
-		root.setBackground(new Background(new BackgroundImage(new Image("menubg.jpg"), BackgroundRepeat.NO_REPEAT, 
-				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(900,550,true,true,true,true))));
-		ImageView logo = new ImageView(new Image("logo.png"));
-		logo.setFitHeight(300);
-		logo.setFitWidth(700);
-		root.setAlignment(Pos.CENTER);
-		
-		HBox buttonPane = new HBox();
-		Button startGame = new Button("Play");
-		Button exitGame = new Button("Exit");
-		
-		startGame.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				
-			}
-		});
-		
-		startGame.setFont(new Font("Ariel",50));
-		exitGame.setFont(new Font("Ariel",50));
-		startGame.setPrefWidth(300);
-		startGame.setPrefHeight(80);
-		exitGame.setPrefWidth(300);
-		exitGame.setPrefHeight(80);
-		buttonPane.setAlignment(Pos.CENTER);
-		buttonPane.setSpacing(50);
-		buttonPane.getChildren().addAll(startGame, exitGame);
-		
-		root.getChildren().addAll(logo,buttonPane);
-		Scene menuScene = new Scene(root, 900, 550);
-		menuScene.getStylesheets().add("stylesheet.css");
-		
-		return menuScene;
-	}
+	
 }
