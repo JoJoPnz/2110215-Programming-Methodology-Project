@@ -25,13 +25,7 @@ public class MainMenu extends HBox {
 		startGame.setPrefWidth(200);
 		startGame.setPrefHeight(60);
 		
-		startGame.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				// TODO fill in this method }
-				//ButtonLogic.topControlPaneOnClick();
-			}
-		});
+
 		
 		exitGame.setPrefWidth(200);
 		exitGame.setPrefHeight(60);
@@ -46,5 +40,22 @@ public class MainMenu extends HBox {
 		});
 		
 	}
+
+	public Button getStartGame() {
+		return startGame;
+	}
+
+	public Button getExitGame() {
+		return exitGame;
+	}
+
+	public void setStartGame(Button startGame) {
+		this.startGame = startGame;
+	}
+
+	public void setExitGame(Button exitGame) {
+		this.exitGame = exitGame;
+	}
+	
 
 }
