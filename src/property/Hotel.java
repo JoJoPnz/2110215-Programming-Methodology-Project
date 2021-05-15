@@ -12,16 +12,16 @@ public class Hotel extends Property {
 	public Hotel(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
 		super(isOccupy,level,squareBuild);
-		setRentArea(squareBuild.getPrice());
+		setRentArea();
 		setPictureURL(pictureURL);
 		createImage();
 		addImageToSquare((Square)getSquareBuild());
 	}
 	
 
-	private void setRentArea(int price) {
+	private void setRentArea() {
 		// TODO Auto-generated method stub
-		super.setRent(calculateIncome());
+		this.setRent(calculateIncome());
 	}
 
 
@@ -29,7 +29,7 @@ public class Hotel extends Property {
 	public int calculateIncome() {
 		// TODO Auto-generated method stub
 		int rent = 0;
-		if (getLevel() == 1) {
+		if (getLevel() == 2) {
 			double rentRatio = 0.5;
 			rent = (int) Math.round(rentRatio * getSquareBuild().getPrice());
 
@@ -42,8 +42,8 @@ public class Hotel extends Property {
 		// TODO Auto-generated method stub
 		Image charImage = new Image(getPictureURL());
 		this.areaImage = new ImageView(charImage);
-		this.areaImage.setFitHeight(530);
-		this.areaImage.setFitWidth(530);
+		this.areaImage.setFitHeight(50);
+		this.areaImage.setFitWidth(50);
 	}
 	
 

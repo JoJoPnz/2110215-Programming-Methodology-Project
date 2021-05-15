@@ -21,10 +21,11 @@ public class Player {
 	private boolean isBankrupt;
 	private ImageView characterImage;
 	private boolean inJail;
+	public static final int START_MONEY = 2000;
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
-		setInitialMoney(2000);
+		setInitialMoney(START_MONEY);
 		setCharacterPictureLink(characterPictureLink);
 		setBankrupt(false);
 		propertyHave = new ArrayList<Property>();
@@ -129,9 +130,8 @@ public class Player {
 					DicePane.buyButton.setDisable(true);
 					if (this.getMoney() < currentSq.getRent()) {
 						this.setBankrupt(true);
-					} else {
-						GameLogic.payRent(this);
 					}
+					GameLogic.payRent(this);
 				}
 
 				// Check isOccupied and money more than price
