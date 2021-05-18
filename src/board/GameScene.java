@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 public class GameScene {
 	public static Scene gameScene;
 	public static GameLogic newGame;
+	public static DicePane dicePane;
 	
 	public GameScene() {
 		HBox root = new HBox();
@@ -19,7 +20,7 @@ public class GameScene {
 		
 		GridPane gameBoard = new GameBoard();
 		newGame = new GameLogic();
-		DicePane dicePane = new DicePane();
+		dicePane = new DicePane();
 		
 		root.getChildren().addAll(gameBoard, dicePane);
 		

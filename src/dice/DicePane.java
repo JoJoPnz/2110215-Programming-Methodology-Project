@@ -38,7 +38,6 @@ public class DicePane extends VBox {
 	private static int faceValue;
 
 	public DicePane() {
-		
 //		upgradeButton.setId("inGameButton");
 //		rollButton.setId("inGameButton");
 //		endTurnButton.setId("inGameButton");
@@ -70,6 +69,7 @@ public class DicePane extends VBox {
 
 		rollButton.setPrefWidth(150);
 		rollButton.setPrefHeight(50);
+		rollButton.setDisable(false);
 		rollButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
