@@ -1,16 +1,16 @@
 .button{
     -fx-padding: 3 6 6 6;
     transition-duration: 0.4s;
-    color: white;
-    
-    -fx-background-color: #04db90;
+
+    -fx-background-color: #ff653b;
     -fx-text-fill: white;
     -fx-background-radius: 16px;
+    -fx-font-size: 18px;
 }
 .button:hover {
     -fx-background-color: 
-        linear-gradient(from 0% 93% to 0% 100%, #c3d83a 0%, #96d83a 100%),
-        #9bd83a,
-        #9bd83a,
-        radial-gradient(center 50% 50%, radius 100%, #4ad83a, #9bd83a);
+        linear-gradient(from 0% 93% to 0% 100%, #f70505 0%, #f70505 100%),
+        #f7aa05,
+        #f7aa05,
+        radial-gradient(center 50% 50%, radius 100%, #f75205, #f72105);
 }

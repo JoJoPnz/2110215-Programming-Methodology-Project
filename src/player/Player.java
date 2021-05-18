@@ -73,6 +73,9 @@ public class Player {
 		if (money < 0) {
 			this.money = 0;
 			this.setBankrupt(true);
+			GameLogic.updateStatusText("You are bankrupted !!!!! \n");
+			GameLogic.alertBankrupt();
+			GameLogic.endGame();
 			
 		} else {
 			this.money = money;
@@ -112,7 +115,7 @@ public class Player {
 				this.setInJail(true);
 				currentPos = 7;
 				
-				GameLogic.updateStatusText("You're in jail. :(\nCann't roll dice for 1 turn.\n");
+				GameLogic.updateStatusText("You're in jail. :(\nCan't roll dice for 1 turn.\n");
 			}
 
 			// Set new position and square

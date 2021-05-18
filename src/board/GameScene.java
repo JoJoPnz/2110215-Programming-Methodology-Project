@@ -9,7 +9,8 @@ import javafx.scene.layout.HBox;
 
 public class GameScene {
 	public static Scene gameScene;
-
+	public static GameLogic newGame;
+	
 	public GameScene() {
 		HBox root = new HBox();
 		root.setSpacing(10);
@@ -17,7 +18,7 @@ public class GameScene {
 		root.setPrefHeight(400);
 		
 		GridPane gameBoard = new GameBoard();
-		GameLogic newGame = new GameLogic();
+		newGame = new GameLogic();
 		DicePane dicePane = new DicePane();
 		
 		root.getChildren().addAll(gameBoard, dicePane);

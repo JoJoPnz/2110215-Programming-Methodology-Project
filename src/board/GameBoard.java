@@ -37,8 +37,8 @@ public class GameBoard extends GridPane {
 		// TODO Auto-generated constructor stub
 		initializeSqaureBoard();
 		
-		player1Label.setFont(new Font("Cordia New",25));
-		player2Label.setFont(new Font("Cordia New",25));
+		player1Label.setFont(new Font("Cordia New",20));
+		player2Label.setFont(new Font("Cordia New",20));
 
 		Square square0 = myArray[0];
 		Square square1 = myArray[1];

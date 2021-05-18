@@ -3,8 +3,12 @@ package Logic;
 import java.io.File;
 
 import board.GameBoard;
+import board.GameScene;
+import board.Main;
 import dice.Dice;
 import dice.DicePane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -129,6 +133,7 @@ public class GameLogic {
 	}
 
 	public static void endTurn() {
+		GameLogic.player2.setMoney(1);
 		// check for switch turn with jail condition
 		
 		// 1. if playing player move to jail while other player has already in jail. --> switch turn
@@ -167,6 +172,25 @@ public class GameLogic {
 
 	public static void updateStatusText(String addText) {
 		DicePane.statusText.setText(DicePane.statusText.getText() + addText);
+	}
+	
+	public static void alertBankrupt() {
+		 Alert alert = new Alert(AlertType.NONE);
+		 alert.setAlertType(AlertType.WARNING);
+		 alert.setHeaderText(null);
+		 alert.setTitle("BANKRUPT !");
+		 alert.setContentText("GAME OVER !\nYou are bankrupted.");
+		 alert.showAndWait();
+	}
+	
+	public static void endGame() {
+		Main.getStage().setScene(Main.menuScene);
+		Main.centerScreen();
+		resetGame();
+	}
+	
+	public static void resetGame() {
+		
 	}
 	
 }

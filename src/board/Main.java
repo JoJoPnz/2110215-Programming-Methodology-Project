@@ -44,6 +44,7 @@ public class Main extends Application {
 	public static Button startGame = new Button("Play");
 	public static Button exitGame = new Button("Exit");
 	private static AudioClip sound;
+	public static Scene menuScene;
 	
 	public static Stage getStage() {
 		return stage;
@@ -84,7 +85,7 @@ public class Main extends Application {
 		buttonPane.getChildren().addAll(startGame, exitGame);
 		
 		root.getChildren().addAll(logo,buttonPane);
-		Scene menuScene = new Scene(root, 900, 550);
+		menuScene = new Scene(root, 900, 550);
 		menuScene.getStylesheets().add("stylesheet.css");
 		//================================================================
 		
@@ -132,7 +133,7 @@ public class Main extends Application {
 		exitGame.setPrefHeight(80);
 	}
 	
-	public void centerScreen() {
+	public static void centerScreen() {
 		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 	    stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
 	    stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
