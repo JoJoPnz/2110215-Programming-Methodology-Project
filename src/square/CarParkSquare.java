@@ -3,18 +3,22 @@ package square;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class CarParkSquare extends Square{
-
+	private Tooltip tooltip;
 
 	public CarParkSquare() {
 		super("Car parking lot");
 		createGridPane();
+		setUpTooltip();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -42,5 +46,18 @@ public class CarParkSquare extends Square{
 		this.setHalignment(priceText, HPos.CENTER);*/
 		
 	}
-
+	
+	public void setUpTooltip() {
+		tooltip = new Tooltip();
+		tooltip.setFont(new Font(17));
+		tooltip.setText("Take a rest.");
+		
+		this.setOnMouseMoved((MouseEvent e) -> {
+			tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);
+		});
+		this.setOnMouseExited((MouseEvent e) -> {
+			tooltip.hide();
+		});
+	}
+	
 }

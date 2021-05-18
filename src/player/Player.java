@@ -72,6 +72,8 @@ public class Player {
 	public void setMoney(int money) {
 		if (money < 0) {
 			this.money = 0;
+			this.setBankrupt(true);
+			
 		} else {
 			this.money = money;
 		}
@@ -128,9 +130,9 @@ public class Player {
 				// opponent area --> pay
 				else if (!checkUnOccupyArea(currentSq) && currentSq.getOwner() != this) {
 					DicePane.buyButton.setDisable(true);
-					if (this.getMoney() < currentSq.getRent()) {
-						this.setBankrupt(true);
-					}
+//					if (this.getMoney() < currentSq.getRent()) {
+//						this.setBankrupt(true);
+//					}
 					GameLogic.payRent(this);
 				}
 

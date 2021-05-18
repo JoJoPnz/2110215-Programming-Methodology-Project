@@ -82,6 +82,9 @@ public class GameLogic {
 		Player propertyOwner = square.getOwner();
 		propertyOwner.setMoney(propertyOwner.getMoney() + payAmount);
 		
+		// After payRent --> check that player has already bankrupt or not
+		
+		
 		System.out.println("========After Pay=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
@@ -151,8 +154,7 @@ public class GameLogic {
 			((PropertySquare) currentSquare).setUpTooltip();
 		}
 	}
-	
-	
+
 	
 	
 }
