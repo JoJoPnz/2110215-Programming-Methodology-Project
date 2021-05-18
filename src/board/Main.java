@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import property.Area;
 import property.Property;
@@ -97,7 +99,7 @@ public class Main extends Application {
 		// Displaying the contents of the stage
 		stage.show();
 		stage.setResizable(false);
-		
+		centerScreen();
 		
 	}
 
@@ -111,6 +113,7 @@ public class Main extends Application {
 			public void handle(ActionEvent event) {
 				GameScene game = new GameScene();
 				stage.setScene(GameScene.gameScene);
+				centerScreen();
 			}
 		});
 		
@@ -128,4 +131,11 @@ public class Main extends Application {
 		exitGame.setPrefWidth(300);
 		exitGame.setPrefHeight(80);
 	}
+	
+	public void centerScreen() {
+		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+	    stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+	    stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+	}
+	
 }

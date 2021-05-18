@@ -77,8 +77,8 @@ public class Player {
 		} else {
 			this.money = money;
 		}
-		GameBoard.player1Label.setText("Player 1\nMoney: "+GameLogic.player1.getMoney());
-		GameBoard.player2Label.setText("Player 2\nMoney: "+GameLogic.player2.getMoney());
+		GameBoard.player1Label.setText("Player 1\nMoney: "+GameLogic.player1.getMoney() + "$");
+		GameBoard.player2Label.setText("Player 2\nMoney: "+GameLogic.player2.getMoney() + "$");
 	}
 
 	public boolean isTurn() {
