@@ -13,16 +13,16 @@ public class House extends Property {
 	public House(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
 		super(isOccupy,level,squareBuild);
-		setRentArea(squareBuild.getPrice());
+		setRentArea();
 		setPictureURL(pictureURL);
 		createImage();
 		addImageToSquare((Square)getSquareBuild());
 	}
 	
 
-	private void setRentArea(int price) {
+	private void setRentArea() {
 		// TODO Auto-generated method stub
-		super.setRent(calculateIncome());
+		this.setRent(calculateIncome());
 	}
 
 
@@ -64,13 +64,13 @@ public class House extends Property {
 		if (GameLogic.player1.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player1.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
-			currentSq.setProperty(new House(true, 1, currentSq, "blueHotel.png"));
+			currentSq.setProperty(new Hotel(true, 2, currentSq, "blueHotel.png"));
 			
 		}
 		else if (GameLogic.player2.isTurn()) {
 			PropertySquare currentSq = (PropertySquare) GameLogic.player2.getCurrentSquare();
 			currentSq.getProperty().areaImage.setImage(null);
-			currentSq.setProperty(new House(true, 1, currentSq, "redHotel.png"));
+			currentSq.setProperty(new Hotel(true, 2, currentSq, "redHotel.png"));
 		}
 	}
 	

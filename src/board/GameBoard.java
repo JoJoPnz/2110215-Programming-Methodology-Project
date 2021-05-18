@@ -16,8 +16,10 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import player.Player;
 import property.Area;
 import property.Property;
 import square.CarParkSquare;
@@ -29,20 +31,14 @@ import square.StartSquare;
 
 public class GameBoard extends GridPane {
 	public static Square[] myArray = new Square[28];
-	public static Text  player1Label = new Text("Player 1\nMoney: 2000");;
-	public static Text  player2Label  = new Text("Player 2\nMoney: 2000");;
+	public static Text  player1Label = new Text("Player 1\nMoney: " + Player.START_MONEY + "$");;
+	public static Text  player2Label  = new Text("Player 2\nMoney: " + Player.START_MONEY + "$");;
 	public GameBoard() {
 		// TODO Auto-generated constructor stub
 		initializeSqaureBoard();
-		DashBoard dashBoard = new DashBoard();
-		//playeloadr1Label = new Text("Player 1\nMoney: 2000");
-		//player1IncomeText = new Text("Income = 20");
-		//player2IncomeText = new Text("Income = 20");
-		//player2Label = new Text("Player 2\nMoney: 2000");
-		player1Label.setFont(new Font("Cordia New",17));
-		player2Label.setFont(new Font("Cordia New",17));
-		//Text player1Income = new Text("10");
-		//Text player2Income = new Text("10");
+		
+		player1Label.setFont(new Font("Cordia New",20));
+		player2Label.setFont(new Font("Cordia New",20));
 
 		Square square0 = myArray[0];
 		Square square1 = myArray[1];

@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import property.Area;
 import property.Property;
@@ -37,28 +39,32 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
-public class Board extends Application {
+public class Main extends Application {
+	private static Stage stage;
+	public static Button startGame = new Button("Play");
+	public static Button exitGame = new Button("Exit");
+	private static AudioClip sound;
+	public static Scene menuScene;
+	
+	public static Stage getStage() {
+		return stage;
+	}
+
 	@Override
-	public void start(Stage stage) {
+	public void start(Stage primaryStage) {
+		stage = primaryStage;
 		
-		HBox root2 = new HBox();
-		root2.setSpacing(10);
-		root2.setPadding(new Insets(10, 10, 10, 10));
-		root2.setPrefHeight(400);
+		// Play Background Song
+		try {
+			sound = new AudioClip(getClass().getResource("/backgroundSong.mp3").toExternalForm());
+			sound.setCycleCount(AudioClip.INDEFINITE);
+			sound.play();
+			}
+		catch(Exception e) {
+			System.out.println("Music not found.");
+			}
 		
-		GameLogic newGame = new GameLogic();
 		
-		System.out.println(GameBoard.myArray); 
-		GridPane gameBoard = new GameBoard();
-		
-		DicePane dicePane = new DicePane();
-		
-		root2.getChildren().addAll(gameBoard, dicePane);
-		
-		// Creating a scene object
-		Scene gameScene = new Scene(root2, 1200, 950);
-		gameScene.getStylesheets().add("stylesheet2.css");
-		// Current Scene
 		
 		//====================Main menu scene=========================
 		VBox root = new VBox();
@@ -71,28 +77,15 @@ public class Board extends Application {
 		root.setAlignment(Pos.CENTER);
 		
 		HBox buttonPane = new HBox();
-		Button startGame = new Button("Play");
-		Button exitGame = new Button("Exit");
 		
-		startGame.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				stage.setScene(gameScene);
-			}
-		});
+		initButton();
 		
-		startGame.setFont(new Font("Ariel",50));
-		exitGame.setFont(new Font("Ariel",50));
-		startGame.setPrefWidth(300);
-		startGame.setPrefHeight(80);
-		exitGame.setPrefWidth(300);
-		exitGame.setPrefHeight(80);
 		buttonPane.setAlignment(Pos.CENTER);
 		buttonPane.setSpacing(50);
 		buttonPane.getChildren().addAll(startGame, exitGame);
 		
 		root.getChildren().addAll(logo,buttonPane);
-		Scene menuScene = new Scene(root, 900, 550);
+		menuScene = new Scene(root, 900, 550);
 		menuScene.getStylesheets().add("stylesheet.css");
 		//================================================================
 		
@@ -107,20 +100,43 @@ public class Board extends Application {
 		// Displaying the contents of the stage
 		stage.show();
 		stage.setResizable(false);
-		// Play Background Song
-		try {
-			AudioClip sound = new AudioClip(getClass().getResource("/backgroundSong.mp3").toExternalForm());
-			sound.setCycleCount(AudioClip.INDEFINITE);
-			sound.play();
-		}
-		catch(Exception e) {
-			System.out.println("Music not found.");
-		}
+		centerScreen();
+		
 	}
 
 	public static void main(String args[]) {
 		launch(args);
 	}
 	
+	private void initButton() {
+		startGame.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				GameScene game = new GameScene();
+				stage.setScene(GameScene.gameScene);
+				centerScreen();
+			}
+		});
+		
+		exitGame.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				stage.close();
+			}
+		});
+		
+		startGame.setFont(new Font("Ariel",50));
+		exitGame.setFont(new Font("Ariel",50));
+		startGame.setPrefWidth(300);
+		startGame.setPrefHeight(80);
+		exitGame.setPrefWidth(300);
+		exitGame.setPrefHeight(80);
+	}
+	
+	public static void centerScreen() {
+		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+	    stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+	    stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+	}
 	
 }

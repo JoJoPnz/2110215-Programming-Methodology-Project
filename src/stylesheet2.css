@@ -1,10 +1,11 @@
 .button{
     -fx-padding: 3 6 6 6;
     transition-duration: 0.4s;
-    
+
     -fx-background-color: #ff653b;
     -fx-text-fill: white;
     -fx-background-radius: 16px;
+    -fx-font-size: 18px;
 }
 .button:hover {
     -fx-background-color: 

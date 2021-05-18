@@ -15,15 +15,15 @@ public class Area extends Property {
 		// super(isOccupy,rent,level,squareBuild);
 		// setRent(level,squareBuild);
 		super(isOccupy, level, squareBuild);
-		setRentArea(squareBuild.getPrice());
+		setRentArea();
 		setPictureURL(pictureURL);
 		createImage();
 		addImageToSquare((Square) getSquareBuild());
 	}
 
-	public void setRentArea(int price) {
+	public void setRentArea() {
 		// TODO Auto-generated method stub
-		super.setRent(calculateIncome());
+		this.setRent(calculateIncome());
 
 	}
 

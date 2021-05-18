@@ -21,10 +21,11 @@ public class Player {
 	private boolean isBankrupt;
 	private ImageView characterImage;
 	private boolean inJail;
+	public static final int START_MONEY = 2000;
 
 	public Player(String characterPictureLink) {
 		// TODO Auto-generated constructor stub
-		setInitialMoney(2000);
+		setInitialMoney(START_MONEY);
 		setCharacterPictureLink(characterPictureLink);
 		setBankrupt(false);
 		propertyHave = new ArrayList<Property>();
@@ -71,11 +72,16 @@ public class Player {
 	public void setMoney(int money) {
 		if (money < 0) {
 			this.money = 0;
+			this.setBankrupt(true);
+			GameLogic.updateStatusText("You are bankrupted !!!!! \n");
+			GameLogic.alertBankrupt();
+			GameLogic.endGame();
+			
 		} else {
 			this.money = money;
 		}
-		GameBoard.player1Label.setText("Player 1\nMoney: "+GameLogic.player1.getMoney());
-		GameBoard.player2Label.setText("Player 2\nMoney: "+GameLogic.player2.getMoney());
+		GameBoard.player1Label.setText("Player 1\nMoney: "+GameLogic.player1.getMoney() + "$");
+		GameBoard.player2Label.setText("Player 2\nMoney: "+GameLogic.player2.getMoney() + "$");
 	}
 
 	public boolean isTurn() {
@@ -100,12 +106,16 @@ public class Player {
 				setMoney(getMoney() + 200);
 				System.out.println("Pass Start");
 				System.out.println("Get Income = 200");
+				
+				GameLogic.updateStatusText("You get income for 200$\n");
 			}
 
 			// if new position is JAIL --> setInJail to True
 			if (currentPos == 7 || currentPos == 21) {
 				this.setInJail(true);
 				currentPos = 7;
+				
+				GameLogic.updateStatusText("You're in jail. :(\nCan't roll dice for 1 turn.\n");
 			}
 
 			// Set new position and square
@@ -127,11 +137,10 @@ public class Player {
 				// opponent area --> pay
 				else if (!checkUnOccupyArea(currentSq) && currentSq.getOwner() != this) {
 					DicePane.buyButton.setDisable(true);
-					if (this.getMoney() < currentSq.getRent()) {
-						this.setBankrupt(true);
-					} else {
-						GameLogic.payRent(this);
-					}
+//					if (this.getMoney() < currentSq.getRent()) {
+//						this.setBankrupt(true);
+//					}
+					GameLogic.payRent(this);
 				}
 
 				// Check isOccupied and money more than price

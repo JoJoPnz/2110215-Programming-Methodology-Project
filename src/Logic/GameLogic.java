@@ -3,8 +3,12 @@ package Logic;
 import java.io.File;
 
 import board.GameBoard;
+import board.GameScene;
+import board.Main;
 import dice.Dice;
 import dice.DicePane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -40,8 +44,11 @@ public class GameLogic {
 	public static void rollDice() {
 		Dice dice = new Dice();
 		dice.roll();
-		DicePane.setFaceValue(dice.getFaceValue());
-		DicePane.setDiceImage(dice.getFaceValue());
+		int faceValue = dice.getFaceValue();
+		DicePane.setFaceValue(faceValue);
+		DicePane.setDiceImage(faceValue);
+		
+		GameLogic.updateStatusText("Roll Dice : " + faceValue + "\n");
 	}
 	public static void move() {
 		GameLogic.playingPlayer.move(DicePane.getFaceValue());
@@ -53,6 +60,9 @@ public class GameLogic {
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
 		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
+		String cityName = currentSquare.getAppearName();
+		int price = currentSquare.getPrice();
+		
 		if (GameLogic.player1.isTurn()) {
 			currentSquare.setProperty(new Area(true, 0, currentSquare, "blueFlag.png"));
 		} else if (GameLogic.player2.isTurn()) {
@@ -64,6 +74,7 @@ public class GameLogic {
 		GameLogic.playingPlayer.getPropertyHave().add(currentSquare.getProperty());
 		
 		GameLogic.updateTooltip();
+		GameLogic.updateStatusText("Buying " + cityName + " for " + price + "$\n");
 		
 		System.out.println("========After Buy=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
@@ -82,6 +93,9 @@ public class GameLogic {
 		Player propertyOwner = square.getOwner();
 		propertyOwner.setMoney(propertyOwner.getMoney() + payAmount);
 		
+		GameLogic.updateStatusText("Pay rent for " + payAmount + "$\n");
+		
+		
 		System.out.println("========After Pay=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
@@ -92,12 +106,15 @@ public class GameLogic {
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
-		PropertySquare currentSq = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
-		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - currentSq.getUpgradeCost());
-		Property property = currentSq.getProperty();
+		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
+		int cost = currentSquare.getUpgradeCost();
+		String cityName = currentSquare.getAppearName();
+		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - cost);
+		Property property = currentSquare.getProperty();
 		property.upgrade();
 		
 		GameLogic.updateTooltip();
+		GameLogic.updateStatusText("Upgrade " + cityName + " for " + cost + "$\n");
 		
 		System.out.println("========After Upgrade=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
@@ -116,6 +133,7 @@ public class GameLogic {
 	}
 
 	public static void endTurn() {
+		GameLogic.player2.setMoney(1);
 		// check for switch turn with jail condition
 		
 		// 1. if playing player move to jail while other player has already in jail. --> switch turn
@@ -151,8 +169,28 @@ public class GameLogic {
 			((PropertySquare) currentSquare).setUpTooltip();
 		}
 	}
+
+	public static void updateStatusText(String addText) {
+		DicePane.statusText.setText(DicePane.statusText.getText() + addText);
+	}
 	
+	public static void alertBankrupt() {
+		 Alert alert = new Alert(AlertType.NONE);
+		 alert.setAlertType(AlertType.WARNING);
+		 alert.setHeaderText(null);
+		 alert.setTitle("BANKRUPT !");
+		 alert.setContentText("GAME OVER !\nYou are bankrupted.");
+		 alert.showAndWait();
+	}
 	
+	public static void endGame() {
+		Main.getStage().setScene(Main.menuScene);
+		Main.centerScreen();
+		resetGame();
+	}
 	
+	public static void resetGame() {
+		
+	}
 	
 }
