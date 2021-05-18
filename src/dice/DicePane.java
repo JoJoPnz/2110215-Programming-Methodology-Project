@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
@@ -28,7 +29,9 @@ public class DicePane extends VBox {
 	public static Button rollButton = new Button("ROLL");
 	public static Button endTurnButton = new Button("END TURN");
 	public static Button buyButton = new Button("Buy Area");
-
+	public static TextArea statusText = new TextArea();
+	
+	
 	private Label diceLabel;
 	private static ImageView diceImage = new ImageView();
 	private static int faceValue;
@@ -44,7 +47,11 @@ public class DicePane extends VBox {
 		this.setSpacing(15);
 		this.setBorder(new Border(
 				new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-
+		
+		statusText.setText("==== Player 1 Turn ====\n\n"); // start text
+		statusText.setFont(new Font("Arial", 15));
+		statusText.setWrapText(true);
+		
 		diceLabel = new Label();
 		diceLabel.setFont(new Font("Arial", 20));
 		setDiceLabelText();
@@ -104,7 +111,8 @@ public class DicePane extends VBox {
 			@Override
 			public void handle(ActionEvent event) {
 				GameLogic.endTurn(); // change turn to other player
-
+				clearStatusText(); // clear text
+				
 				// set button behavior
 				endTurnButton.setDisable(true);
 				rollButton.setDisable(false);
@@ -114,7 +122,7 @@ public class DicePane extends VBox {
 		});
 
 
-		this.getChildren().addAll(diceLabel, this.getDiceImage(), rollButton, buyButton, upgradeButton, endTurnButton);
+		this.getChildren().addAll(statusText, diceLabel, this.getDiceImage(), rollButton, buyButton, upgradeButton, endTurnButton);
 
 
 
@@ -153,7 +161,7 @@ public class DicePane extends VBox {
 		this.buyButton = buyButton;
 	}
 	
-	public void playSoundEffect(String url) {
+	private void playSoundEffect(String url) {
 		try {
 			AudioClip buzzer = new AudioClip(getClass().getResource(url).toExternalForm());
 			buzzer.play();
@@ -162,5 +170,19 @@ public class DicePane extends VBox {
 			System.out.println("Soundtrack url doesn't exist.");
 		}
 	}
+	
+	private void clearStatusText() {
+		// Set Header text
+		if (GameLogic.player1.isTurn()) {
+			statusText.setText("==== Player 1 Turn ====\n\n");
+		}
+		else {
+			statusText.setText("==== Player 2 Turn ====\n\n");
+		}
+		
+	}
+	
+	
+	
 	
 }

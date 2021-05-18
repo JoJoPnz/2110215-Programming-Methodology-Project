@@ -40,8 +40,11 @@ public class GameLogic {
 	public static void rollDice() {
 		Dice dice = new Dice();
 		dice.roll();
-		DicePane.setFaceValue(dice.getFaceValue());
-		DicePane.setDiceImage(dice.getFaceValue());
+		int faceValue = dice.getFaceValue();
+		DicePane.setFaceValue(faceValue);
+		DicePane.setDiceImage(faceValue);
+		
+		GameLogic.updateStatusText("Roll Dice : " + faceValue + "\n");
 	}
 	public static void move() {
 		GameLogic.playingPlayer.move(DicePane.getFaceValue());
@@ -53,6 +56,9 @@ public class GameLogic {
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
 		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
+		String cityName = currentSquare.getAppearName();
+		int price = currentSquare.getPrice();
+		
 		if (GameLogic.player1.isTurn()) {
 			currentSquare.setProperty(new Area(true, 0, currentSquare, "blueFlag.png"));
 		} else if (GameLogic.player2.isTurn()) {
@@ -64,6 +70,7 @@ public class GameLogic {
 		GameLogic.playingPlayer.getPropertyHave().add(currentSquare.getProperty());
 		
 		GameLogic.updateTooltip();
+		GameLogic.updateStatusText("Buying " + cityName + " for " + price + "$\n");
 		
 		System.out.println("========After Buy=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
@@ -82,7 +89,7 @@ public class GameLogic {
 		Player propertyOwner = square.getOwner();
 		propertyOwner.setMoney(propertyOwner.getMoney() + payAmount);
 		
-		// After payRent --> check that player has already bankrupt or not
+		GameLogic.updateStatusText("Pay rent for " + payAmount + "$\n");
 		
 		
 		System.out.println("========After Pay=======");
@@ -95,12 +102,15 @@ public class GameLogic {
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
-		PropertySquare currentSq = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
-		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - currentSq.getUpgradeCost());
-		Property property = currentSq.getProperty();
+		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
+		int cost = currentSquare.getUpgradeCost();
+		String cityName = currentSquare.getAppearName();
+		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - cost);
+		Property property = currentSquare.getProperty();
 		property.upgrade();
 		
 		GameLogic.updateTooltip();
+		GameLogic.updateStatusText("Upgrade " + cityName + " for " + cost + "$\n");
 		
 		System.out.println("========After Upgrade=======");
 		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
@@ -155,6 +165,8 @@ public class GameLogic {
 		}
 	}
 
-	
+	public static void updateStatusText(String addText) {
+		DicePane.statusText.setText(DicePane.statusText.getText() + addText);
+	}
 	
 }

@@ -39,8 +39,8 @@ import javafx.scene.transform.Rotate;
 
 public class Main extends Application {
 	private static Stage stage;
-	private static Button startGame = new Button("Play");
-	private static Button exitGame = new Button("Exit");
+	public static Button startGame = new Button("Play");
+	public static Button exitGame = new Button("Exit");
 	private static AudioClip sound;
 	
 	public static Stage getStage() {

@@ -103,12 +103,16 @@ public class Player {
 				setMoney(getMoney() + 200);
 				System.out.println("Pass Start");
 				System.out.println("Get Income = 200");
+				
+				GameLogic.updateStatusText("You get income for 200$\n");
 			}
 
 			// if new position is JAIL --> setInJail to True
 			if (currentPos == 7 || currentPos == 21) {
 				this.setInJail(true);
 				currentPos = 7;
+				
+				GameLogic.updateStatusText("You're in jail. :(\nCann't roll dice for 1 turn.\n");
 			}
 
 			// Set new position and square
