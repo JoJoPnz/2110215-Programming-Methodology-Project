@@ -190,7 +190,13 @@ public class GameLogic {
 	}
 	
 	public static void resetGame() {
-		
+		GameLogic.player1.setMoney(Player.START_MONEY);
+		GameLogic.player2.setMoney(Player.START_MONEY);
+		GameLogic.player1.setTurn(true);
+		GameLogic.player2.setTurn(false);
+		GameLogic.playingPlayer = player1;
+		GameLogic.waitingPlayer = player2;
+		DicePane.rollButton.setDisable(false);
 	}
 	
 }
