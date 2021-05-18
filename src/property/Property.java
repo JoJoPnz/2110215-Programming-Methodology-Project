@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import square.PropertySquare;
 import square.Square;
 
-public abstract class Property implements Calculatable{
+public abstract class Property {
 	protected ImageView areaImage;
 	private boolean occupy;
 	private int rent;
@@ -53,6 +53,7 @@ public abstract class Property implements Calculatable{
 	public void setLevel(int level) {
 		this.level = level;
 	}
+	public abstract int calculateIncome();
 
 
 	public PropertySquare getSquareBuild() {
