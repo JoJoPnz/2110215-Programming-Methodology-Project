@@ -26,7 +26,7 @@ public class House extends Property {
 	}
 
 
-	@Override
+
 	public int calculateIncome() {
 		// TODO Auto-generated method stub
 		int rent = 0;

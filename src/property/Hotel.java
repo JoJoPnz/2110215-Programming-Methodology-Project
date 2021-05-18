@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import square.PropertySquare;
 import square.Square;
 
-public class Hotel extends Property {
+public class Hotel extends Property  {
 
 	public Hotel(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
 		// TODO Auto-generated constructor stub
@@ -25,7 +25,7 @@ public class Hotel extends Property {
 	}
 
 
-	@Override
+	
 	public int calculateIncome() {
 		// TODO Auto-generated method stub
 		int rent = 0;
