@@ -58,7 +58,7 @@ public class Main extends Application {
 		stage = primaryStage;
 		
 		//sound = new AudioClip(getClass().getResource("/backgroundSongห.mp3").toExternalForm());
-		sound = new LoadAudio("Nani.mp3").LoadAudioFile();
+		sound = new LoadAudio("/backgroundSong.mp3").LoadAudioFile();
 		sound.setCycleCount(AudioClip.INDEFINITE);
 		sound.play();
 		
