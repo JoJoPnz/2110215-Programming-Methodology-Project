@@ -38,12 +38,6 @@ public class DicePane extends VBox {
 	private static int faceValue;
 
 	public DicePane() {
-//		upgradeButton.setId("inGameButton");
-//		rollButton.setId("inGameButton");
-//		endTurnButton.setId("inGameButton");
-//		buyButton.setId("inGameButton");
-//		exitButton.setId("inGameButton");
-		
 		this.setAlignment(Pos.CENTER);
 		this.setPrefWidth(300);
 		this.setSpacing(40);
@@ -160,7 +154,6 @@ public class DicePane extends VBox {
 		diceImage.setImage(i.getImage());
 		diceImage.setFitWidth(100);
 		diceImage.setFitHeight(100);
-		// this.diceImage = new ImageView(i.getImage());
 	}
 
 	public ImageView getDiceImage() {
@@ -177,10 +170,6 @@ public class DicePane extends VBox {
 
 	public static Button getBuyButton() {
 		return buyButton;
-	}
-
-	public void setBuyButton(Button buyButton) {
-		this.buyButton = buyButton;
 	}
 	
 	private void playSoundEffect(String url) {
