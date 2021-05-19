@@ -15,6 +15,7 @@ import javafx.scene.media.MediaPlayer;
 import player.Player;
 import property.Area;
 import property.Property;
+import property.Upgradable;
 import square.PropertySquare;
 import square.Square;
 
@@ -111,7 +112,9 @@ public class GameLogic {
 		String cityName = currentSquare.getAppearName();
 		GameLogic.playingPlayer.setMoney(GameLogic.playingPlayer.getMoney() - cost);
 		Property property = currentSquare.getProperty();
-		property.upgrade();
+		if (property instanceof Upgradable) {
+			((Upgradable) property).upgrade();
+		}
 		
 		GameLogic.updateTooltip();
 		GameLogic.updateStatusText("Upgrade " + cityName + " for " + cost + "$\n");
@@ -122,7 +125,6 @@ public class GameLogic {
 	}
 
 	public static void endTurn() {
-		GameLogic.player2.setMoney(1);
 		// check for switch turn with jail condition
 		
 		// 1. if playing player move to jail while other player has already in jail. --> switch turn

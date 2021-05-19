@@ -2,6 +2,7 @@ package property;
 
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import square.PropertySquare;
 import square.Square;
@@ -11,25 +12,24 @@ public abstract class Property {
 	private boolean occupy;
 	private int rent;
 	private int level;
-	//private int upgradeCost;
 	private PropertySquare squareBuild;
 	private String pictureURL;
 	public static final int MAX_LEVEL = 2;
 
-	/*public Property() {
-		setOccupy(false);
-		setRent(0);
-		setLevel(0);
-	}*/
-
 	public Property(boolean isOccupy, int level, PropertySquare squareBuild) {
-		// TODO Auto-generated constructor stub
 		setOccupy(isOccupy);
-		//setRent(rent);
 		setLevel(level);
 		setSquareBuild(squareBuild);
 	}
-
+	
+	public ImageView getAreaImage() {
+		return areaImage;
+	}
+	
+	public void setAreaImage(ImageView areaImage) {
+		this.areaImage = areaImage;
+	}
+	
 	public boolean isOccupy() {
 		return occupy;
 	}
@@ -39,7 +39,6 @@ public abstract class Property {
 	}
 
 	public int getRent() {
-		// TODO Auto-generated method stub
 		return this.rent;
 	}
 
@@ -54,8 +53,6 @@ public abstract class Property {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	public abstract int calculateIncome();
-
 
 	public PropertySquare getSquareBuild() {
 		return squareBuild;
@@ -65,14 +62,6 @@ public abstract class Property {
 		this.squareBuild = squareBuild;
 	}
 
-//	public int getUpgradeCost() {
-//		return upgradeCost;
-//	}
-
-//	public void setUpgradeCost(int upgradeCost) {
-//		this.upgradeCost = upgradeCost;
-//	}
-
 	public String getPictureURL() {
 		return pictureURL;
 	}
@@ -81,12 +70,34 @@ public abstract class Property {
 		this.pictureURL = pictureURL;
 	}
 	
-	public abstract void addImageToSquare(Square currentSquare);
+	public void createImage() {
+		Image charImage = new Image(getPictureURL());
+		this.areaImage = new ImageView(charImage);
+		this.areaImage.setFitHeight(50);
+		this.areaImage.setFitWidth(50);
+	}
 	
+	public void addImageToSquare(Square currentSquare) {
+		ImageView imageViewProperty = getAreaImage();
+		PropertySquare currentSq = (PropertySquare) currentSquare;
+		if (currentSq.getCondition() == "first") {
+			currentSquare.add(imageViewProperty, 0, 1);
+			currentSquare.setValignment(imageViewProperty, VPos.TOP);
+			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+		} else if (currentSq.getCondition() == "second") {
+			currentSquare.add(imageViewProperty, 0, 1);
+			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
+			currentSquare.setHalignment(imageViewProperty, HPos.RIGHT);
+		} else if (currentSq.getCondition() == "third") {
+			currentSquare.add(imageViewProperty, 0, 0);
+			currentSquare.setValignment(imageViewProperty, VPos.BOTTOM);
+			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
+		} else if (currentSq.getCondition() == "fourth") {
+			currentSquare.add(imageViewProperty, 1, 0);
+			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
+			currentSquare.setHalignment(imageViewProperty, HPos.LEFT);
+		}
+	}
 	
-
-
-	public abstract void createImage();
-	
-	public abstract void upgrade();
+	public abstract int calculateIncome();
 }

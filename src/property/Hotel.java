@@ -10,86 +10,24 @@ import square.Square;
 public class Hotel extends Property  {
 
 	public Hotel(boolean isOccupy, int level, PropertySquare squareBuild, String pictureURL) {
-		// TODO Auto-generated constructor stub
 		super(isOccupy,level,squareBuild);
 		setRentArea();
 		setPictureURL(pictureURL);
 		createImage();
 		addImageToSquare((Square)getSquareBuild());
 	}
-	
 
 	private void setRentArea() {
-		// TODO Auto-generated method stub
 		this.setRent(calculateIncome());
 	}
 
-
-	
+	@Override
 	public int calculateIncome() {
-		// TODO Auto-generated method stub
 		int rent = 0;
 		if (getLevel() == 2) {
 			double rentRatio = 0.5;
 			rent = (int) Math.round(rentRatio * getSquareBuild().getPrice());
-
 		}
 		return rent;
 	}
-
-	@Override
-	public void createImage() {
-		// TODO Auto-generated method stub
-		Image charImage = new Image(getPictureURL());
-		this.areaImage = new ImageView(charImage);
-		this.areaImage.setFitHeight(50);
-		this.areaImage.setFitWidth(50);
-	}
-	
-
-	public ImageView getAreaImage() {
-		return areaImage;
-	}
-
-
-	public void setAreaImage(ImageView areaImage) {
-		this.areaImage = areaImage;
-	}
-
-
-	@Override
-	public void addImageToSquare(Square currentSquare) {
-		// TODO Auto-generated method stub
-		ImageView imageViewProperty = getAreaImage();
-		PropertySquare currentSq = (PropertySquare) currentSquare;
-		// ImageView imageViewCharPlayer2 = GameLogic.player2.getCharacterImage();
-		if (currentSq.getCondition() == "first") {
-			currentSquare.add(imageViewProperty, 0, 1);
-			// this.add(imageViewCharPlayer1,7, 7);
-			// this.add(imageViewCharPlayer2,7, 7);
-
-			currentSquare.setValignment(imageViewProperty, VPos.TOP);
-			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
-
-		} else if (currentSq.getCondition() == "second") {
-			currentSquare.add(imageViewProperty, 0, 1);
-			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
-			currentSquare.setHalignment(imageViewProperty, HPos.RIGHT);
-		} else if (currentSq.getCondition() == "third") {
-			currentSquare.add(imageViewProperty, 0, 0);
-			currentSquare.setValignment(imageViewProperty, VPos.BOTTOM);
-			currentSquare.setHalignment(imageViewProperty, HPos.CENTER);
-
-		}
-		else if (currentSq.getCondition() == "fourth") {
-			currentSquare.add(imageViewProperty, 1, 0);
-			currentSquare.setValignment(imageViewProperty, VPos.CENTER);
-			currentSquare.setHalignment(imageViewProperty, HPos.LEFT);
-		}
-	}
-	
-	public void upgrade() {
-		
-	}
-	
 }
