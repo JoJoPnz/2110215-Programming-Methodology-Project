@@ -14,6 +14,7 @@ public abstract class Property {
 	//private int upgradeCost;
 	private PropertySquare squareBuild;
 	private String pictureURL;
+	public static final int MAX_LEVEL = 2;
 
 	/*public Property() {
 		setOccupy(false);

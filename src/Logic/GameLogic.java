@@ -121,17 +121,6 @@ public class GameLogic {
 		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 	}
 
-	public static boolean haveProperty(PropertySquare currentSq,Player player) {
-		Property checkProperty = currentSq.getProperty();
-		for (Property eachProperty : player.getPropertyHave()) {
-			if (eachProperty.equals(checkProperty)) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
-
 	public static void endTurn() {
 		GameLogic.player2.setMoney(1);
 		// check for switch turn with jail condition

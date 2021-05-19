@@ -12,30 +12,15 @@ import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.*;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public abstract class Square extends GridPane {
 	private String appearName;
-	private boolean hasPlayer1;
-	private boolean hasPlayer2;
-
+	protected Tooltip tooltip;
 	public Square(String appearName) {
-		// TODO Auto-generated constructor stub
 		setAppearName(appearName);
-	}
-
-	public String getAppearName() {
-		return appearName;
-	}
-
-	public void setAppearName(String appearName) {
-		if (appearName.isEmpty()) {
-			this.appearName = "Default Name";
-		} else {
-			this.appearName = appearName;
-		}
-
 	}
 
 	public Rectangle createRectangle(float xPos, float yPos, float boxHeight, float boxWidth, Paint color,
@@ -70,13 +55,6 @@ public abstract class Square extends GridPane {
 		
 		if (isSpecialSquare) {
 			this.add(imageViewChar, 0, 0);
-			/*if (GameLogic.player1.getCurrentPosition() == 21) {
-				
-			}
-			else if (GameLogic.player1.getCurrentPosition() == 14){
-				
-			}*/
-			// this.setAlignment(Pos.BOTTOM_CENTER);
 		} else {
 
 			if (player.getCurrentPosition() < 14 && player.getCurrentPosition() > 7) {
@@ -99,12 +77,24 @@ public abstract class Square extends GridPane {
 					this.setHalignment(imageViewChar, HPos.RIGHT);
 				}
 			}
-
 		}
-
 	}
 
-	
 
 	public abstract void createGridPane();
+	
+	public abstract void setUpTooltip();
+	
+	public String getAppearName() {
+		return appearName;
+	}
+
+	public void setAppearName(String appearName) {
+		if (appearName.isEmpty()) {
+			this.appearName = "Default Name";
+		} else {
+			this.appearName = appearName;
+		}
+	}
+	
 }
