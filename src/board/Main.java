@@ -2,7 +2,10 @@ package board;
 
 
 
+import Exception.EmptyUrlException;
+import Exception.UrlErrorException;
 import Logic.GameLogic;
+import Utility.LoadAudio;
 import dice.DicePane;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -51,18 +54,14 @@ public class Main extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws UrlErrorException, EmptyUrlException {
 		stage = primaryStage;
 		
-		// Play Background Song
-		try {
-			sound = new AudioClip(getClass().getResource("/backgroundSong.mp3").toExternalForm());
-			sound.setCycleCount(AudioClip.INDEFINITE);
-			sound.play();
-			}
-		catch(Exception e) {
-			System.out.println("Music not found.");
-			}
+		//sound = new AudioClip(getClass().getResource("/backgroundSongห.mp3").toExternalForm());
+		sound = new LoadAudio("Nani.mp3").LoadAudioFile();
+		sound.setCycleCount(AudioClip.INDEFINITE);
+		sound.play();
+		
 		
 		
 		
