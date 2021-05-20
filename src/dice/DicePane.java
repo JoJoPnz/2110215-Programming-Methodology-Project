@@ -33,7 +33,7 @@ public class DicePane extends VBox {
 	public static Button buyButton = new Button("Buy Area");
 	public static TextArea statusText = new TextArea();
 	public static Button exitButton = new Button("Exit");
-	private Label diceLabel;
+	private static Label diceLabel;
 	private static ImageView diceImage = new ImageView();
 	private static int faceValue = 1;
 
@@ -74,9 +74,9 @@ public class DicePane extends VBox {
 	}
 
 	public static void setDiceImage(int faceValue) {
-		DiceImages i = new DiceImages();
-		i.setImage(faceValue);
-		diceImage.setImage(i.getImage());
+		DiceImages image = new DiceImages();
+		image.setImage(faceValue);
+		diceImage.setImage(image.getImage());
 		diceImage.setFitWidth(100);
 		diceImage.setFitHeight(100);
 	}
@@ -192,9 +192,6 @@ public class DicePane extends VBox {
 		DicePane.faceValue = faceValue;
 	}
 
-	public static Button getBuyButton() {
-		return buyButton;
-	}
 	
 	
 }
