@@ -26,20 +26,11 @@ public class GameLogic {
 	public static Player waitingPlayer;
 	
 	public GameLogic() {
-		// TODO Auto-generated constructor stub
 		// initialize Starting turn
 		player1.setTurn(true);
 		player2.setTurn(false);
 		playingPlayer = player1;
 		waitingPlayer = player2;
-	}
-
-	public static Player getPlayer1() {
-		return player1;
-	}
-
-	public static Player getPlayer2() {
-		return player2;
 	}
 
 	public static void rollDice() {
@@ -56,9 +47,9 @@ public class GameLogic {
 	}
 
 	public static void buyArea() {
-		System.out.println("========Before Buy=======");
-		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
-		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+//		System.out.println("========Before Buy=======");
+//		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
+//		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
 		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
 		String cityName = currentSquare.getAppearName();
@@ -77,15 +68,15 @@ public class GameLogic {
 		GameLogic.updateTooltip();
 		GameLogic.updateStatusText("Buying " + cityName + " for " + price + "$\n");
 		
-		System.out.println("========After Buy=======");
-		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
-		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+//		System.out.println("========After Buy=======");
+//		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
+//		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 	}
 	
 	public static void payRent(Player payer) {
-		System.out.println("========Before Pay=======");
-		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
-		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+//		System.out.println("========Before Pay=======");
+//		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
+//		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
 		PropertySquare square = (PropertySquare) payer.getCurrentSquare();
 		Property property = square.getProperty();
@@ -97,15 +88,15 @@ public class GameLogic {
 		GameLogic.updateStatusText("Pay rent for " + payAmount + "$\n");
 		
 		
-		System.out.println("========After Pay=======");
-		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
-		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+//		System.out.println("========After Pay=======");
+//		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
+//		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 	}
 	
 	public static void upgradeProperty() {
-		System.out.println("========Before Upgrade=======");
-		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
-		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+//		System.out.println("========Before Upgrade=======");
+//		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
+//		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 		
 		PropertySquare currentSquare = (PropertySquare) GameLogic.playingPlayer.getCurrentSquare();
 		int cost = currentSquare.getUpgradeCost();
@@ -119,9 +110,9 @@ public class GameLogic {
 		GameLogic.updateTooltip();
 		GameLogic.updateStatusText("Upgrade " + cityName + " for " + cost + "$\n");
 		
-		System.out.println("========After Upgrade=======");
-		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
-		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
+//		System.out.println("========After Upgrade=======");
+//		System.out.println("Player1 Money:" + GameLogic.player1.getMoney());
+//		System.out.println("Player2 Money:" + GameLogic.player2.getMoney());
 	}
 
 	public static void endTurn() {
@@ -170,7 +161,7 @@ public class GameLogic {
 		 alert.setAlertType(AlertType.WARNING);
 		 alert.setHeaderText(null);
 		 alert.setTitle("BANKRUPT !");
-		 alert.setContentText("GAME OVER !\nYou are bankrupted.");
+		 alert.setContentText("GAME OVER !\nYou are bankrupt.");
 		 alert.showAndWait();
 	}
 	
