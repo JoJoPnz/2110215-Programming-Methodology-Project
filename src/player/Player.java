@@ -32,7 +32,7 @@ public class Player {
 		setBankrupt(false);
 		propertyHave = new ArrayList<Property>();
 		setCurrentPosition(0);
-		setCurrentSquare(GameBoard.myArray[0]);
+		setCurrentSquare(GameBoard.gameSquareArray[0]);
 		setTurn(false);
 		setCharacterImage();
 	}
@@ -67,7 +67,7 @@ public class Player {
 
 			// Set new position and square
 			setCurrentPosition(currentPos);
-			setCurrentSquare(GameBoard.myArray[currentPos]);
+			setCurrentSquare(GameBoard.gameSquareArray[currentPos]);
 
 			// Set player picture to a new Square
 			this.getCurrentSquare().setPlayerToSquare(this);
