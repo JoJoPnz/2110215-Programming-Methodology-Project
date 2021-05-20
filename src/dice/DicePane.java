@@ -24,6 +24,7 @@ import square.PropertySquare;
 import java.util.ArrayList;
 
 import Logic.GameLogic;
+import Utility.LoadAudio;
 
 public class DicePane extends VBox {
 
@@ -123,7 +124,7 @@ public class DicePane extends VBox {
 				endTurnButton.setDisable(false);
 				rollButton.setDisable(true);
 				// play sound
-				playSoundEffect("/rollDice.mp3");
+				playSoundEffect("rollDice.mp3");
 			}
 		});
 		
@@ -134,7 +135,7 @@ public class DicePane extends VBox {
 				// set button behavior
 				buyButton.setDisable(true);
 				// play sound
-				playSoundEffect("/buy.mp3");
+				playSoundEffect("buy.mp3");
 			}
 		});	
 		
@@ -145,7 +146,7 @@ public class DicePane extends VBox {
 				// set button behavior
 				upgradeButton.setDisable(true);
 				// play sound
-				playSoundEffect("/upgrade.mp3");
+				playSoundEffect("upgrade.mp3");
 			}
 		});
 
@@ -172,8 +173,9 @@ public class DicePane extends VBox {
 	
 	private void playSoundEffect(String url) {
 		try {
-			AudioClip buzzer = new AudioClip(getClass().getResource(url).toExternalForm());
-			buzzer.play();
+			String soundPath = ClassLoader.getSystemResource(url).toString();
+			AudioClip sound = new AudioClip(soundPath);
+			sound.play();
 		}
 		catch (Exception e){
 			System.out.println("Soundtrack url doesn't exist.");

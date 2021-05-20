@@ -56,15 +56,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws UrlErrorException, EmptyUrlException {
 		stage = primaryStage;
-		
-		//sound = new AudioClip(getClass().getResource("/backgroundSongห.mp3").toExternalForm());
+
 		sound = new LoadAudio("/backgroundSong.mp3").LoadAudioFile();
 		sound.setCycleCount(AudioClip.INDEFINITE);
 		sound.play();
-		
-		
-		
-		
+
 		//====================Main menu scene=========================
 		VBox root = new VBox();
 
