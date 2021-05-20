@@ -2,8 +2,8 @@ package player;
 
 import java.util.ArrayList;
 
+import Application.GameBoard;
 import Logic.GameLogic;
-import board.GameBoard;
 import dice.DicePane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

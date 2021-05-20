@@ -2,9 +2,9 @@ package Logic;
 
 import java.io.File;
 
-import board.GameBoard;
-import board.GameScene;
-import board.Main;
+import Application.GameBoard;
+import Application.GameScene;
+import Application.Main;
 import dice.Dice;
 import dice.DicePane;
 import javafx.scene.control.Alert;

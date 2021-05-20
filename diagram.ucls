@@ -172,8 +172,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="board.EndScene" project="Monopoly" file="/Monopoly/src/board/EndScene.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="20" language="java" name="Application.EndScene" project="Monopoly" 
+    file="/Monopoly/src/Application/EndScene.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1786" y="209"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -181,8 +181,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="board.GameBoard" project="Monopoly" file="/Monopoly/src/board/GameBoard.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="21" language="java" name="Application.GameBoard" project="Monopoly" 
+    file="/Monopoly/src/Application/GameBoard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1957" y="467"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -190,8 +190,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="board.GameScene" project="Monopoly" file="/Monopoly/src/board/GameScene.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="22" language="java" name="Application.GameScene" project="Monopoly" 
+    file="/Monopoly/src/Application/GameScene.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1788" y="374"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -199,7 +199,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="board.Main" project="Monopoly" file="/Monopoly/src/board/Main.java" 
+  <class id="23" language="java" name="Application.Main" project="Monopoly" file="/Monopoly/src/Application/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="277" width="123" x="1879" y="98"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 

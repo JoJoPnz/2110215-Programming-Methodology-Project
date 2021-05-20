@@ -1,4 +1,4 @@
-package board;
+package Application;
 
 import Logic.GameLogic;
 import dice.DicePane;
