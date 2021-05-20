@@ -15,18 +15,14 @@ public class DiceImages {
     public static Image dice5 = new Image("dice5.png");
     public static Image dice6 = new Image("dice6.png");
     
-    private int value;
     private Image diceImage = dice1;
     
     public DiceImages() {
     	
     }
     
-   
-    
-    public void setImage(int sides)
+    public void setImage(int value)
     {
-        int value = sides;
         if(value == 1)
             diceImage = dice1;
         if(value == 2)
