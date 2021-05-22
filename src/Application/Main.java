@@ -43,15 +43,11 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
 public class Main extends Application {
-	private static Stage stage;
+	public static Stage stage;
 	public static Button startGame = new Button("Play");
 	public static Button exitGame = new Button("Exit");
-	private static AudioClip sound;
+	public static AudioClip sound;
 	public static Scene menuScene;
-	
-	public static Stage getStage() {
-		return stage;
-	}
 
 	@Override
 	public void start(Stage primaryStage) throws UrlErrorException, EmptyUrlException {
@@ -132,6 +128,10 @@ public class Main extends Application {
 		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 	    stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
 	    stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+	}
+	
+	public static Stage getStage() {
+		return stage;
 	}
 	
 }
